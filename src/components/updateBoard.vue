@@ -1,48 +1,7 @@
 
 <template>
 	<div class="container">
-        <nav class="navbar navbar-inverse navbar-fixed-top">
-			<div class="container-fluid">
-				<!-- Brand and toggle get grouped for better mobile display -->
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed"
-						data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-						<span class="sr-only">Toggle navigation</span> <span
-							class="icon-bar"></span> <span class="icon-bar"></span> <span
-							class="icon-bar"></span>
-					</button>
-	
-				</div>
-				<div class="collapse navbar-collapse"
-					id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav">
-						<li><a href="#">공지 사항 <span
-								class="sr-only">(current)</span></a></li>
-						
-						<li class="dropdown" id="menuFood"><a
-									class="btn btn-sm dropdown-toggle" href="#"
-									data-toggle="dropdown" id="navFood"><span>&nbsp;상품</span>
-								</a>
-									<div class="dropdown-menu" id="dropdownFood" >
-										<ul>
-											<li><a href="#" >상품 정보</a></li>
-											<li><a href="#" >상품 입력</a></li>
-										</ul>
-									</div>
-						</li>
-						<li>
-						<a href="#">상품 정보</a></li>
-						<c:if test="${currentId != null }">
-						<li><a href="#">섭취 상품 정보</a></li>
-						</c:if>
-						<li><a href="#">질문 게시판</a></li>
-					</ul>
-				</div>
-			</div>
-		</nav>
-	
-		<div class="jumbotron">
-			<h1>
+		<div class="jumbotron"><h1>
 				WHAT WE <strong style="color: #4d7d5a;">PROVIDE</strong>
 			</h1>
 			<hr>
