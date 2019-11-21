@@ -10,7 +10,22 @@
       <router-link class="nav_btn" to="/signuppage">회원가입</router-link> |
 
  </nav>
+ 
         <router-view/>
+    <footer style="background: #ececec; padding: 50px;">
+		<h1>Find Us</h1>
+		<hr>
+		<p>
+			<i class="glyphicon glyphicon-envelope"></i> (SSAFY) 서울시 강남구 테헤란로
+			멀티스퀘어
+		</p>
+		<p>
+			<i class="glyphicon glyphicon-envelope"></i> 1544-9001
+		</p>
+		<p>
+			<i class="glyphicon glyphicon-envelope"></i> admin@ssafy.com
+		</p>
+	</footer>
 </div>
 </template>
 <script>
