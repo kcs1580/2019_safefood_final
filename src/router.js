@@ -2,9 +2,13 @@ import Vue from "vue";
 import Router from "vue-router";
 
 import InsertBoard from "./components/InsertBoard.vue";
+import insertNotice from "./components/insertNotice.vue";
 import listBoard from "./components/listBoard.vue";
+import listNotice from "./components/listNotice.vue";
 import viewBoard from "./components/viewBoard.vue";
+import viewNotice from "./components/viewNotice.vue";
 import updateBoard from "./components/updateBoard.vue";
+import updateNotice from "./components/updateNotice.vue";
 import main from "./components/main.vue";
 import signUp from "./components/signUp.vue";
 
@@ -20,10 +24,34 @@ export default new Router({
       component: main
     },
     {
+      path: '/listNotice',
+      name: 'listNotice',
+      component: listNotice
+    },
+    {
+      path: '/insertNotice',
+      name: 'insertNotice',
+      component: insertNotice
+    },
+    {
       path: '/insertboard',
       name: 'insertboard',
       component: InsertBoard
     },
+    {
+      path: "/viewNotice",
+      name: "viewNotice",
+      alias: "/viewNotice",
+      component: viewNotice
+
+    },
+    {
+      path: '/updateNotice',
+      name: 'updateNotice',
+      component: updateNotice,
+      props: true,
+    },
+
     {
       path: "/listBoard",
       name: "listBoard",

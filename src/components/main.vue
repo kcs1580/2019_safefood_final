@@ -2,12 +2,13 @@
 	<div class="container" >
   <img src="../../public/food.jpg" id="bg" alt="">
   <nav class="navbar">
- <a class="nav_btn1" href="http://localhost:8090">홈으로</a>     		
-        <router-link class="nav_btn1" to="/insertboard">공지사항</router-link> |
+
+        <a class="nav_btn1" href="http://localhost:8090">홈으로</a>     		
+        <router-link class="nav_btn1" to="/listNotice">공지사항</router-link> |
         <router-link class="nav_btn1" to="/insertboard">상품</router-link> |
         <router-link class="nav_btn1" to="/insertboard">상품정보</router-link> |
         <router-link class="nav_btn1" to="/listBoard">질문게시판</router-link> |
-       <router-link class="nav_btn1" to="/signuppage">회원가입</router-link> |
+        <router-link class="nav_btn1" to="/signuppage">회원가입</router-link> |
 
  </nav>
   <!-- <div id="slide">
