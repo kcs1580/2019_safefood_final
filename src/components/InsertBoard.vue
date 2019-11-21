@@ -90,8 +90,6 @@ export default {
 			bcontent: this.ccontent,
 			bcount: this.bcount,
 			user_id: this.cuser_id,
-
-
 		} 
 		).then(response => {
 				if (response.data.state==0) {
