@@ -2,7 +2,7 @@
 <template>
 	<div class="container">
 <div>
-<!-- <div v-if="!submitted">	 -->
+<!-- <div v-if="!sssubmitted">	 -->
 
 	<h1 style="text-align: center; font-size: 3em; margin-bottom:">질문
 			게시판</h1>
