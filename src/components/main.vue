@@ -1,41 +1,35 @@
 <template class="a">
 	<div class="container" >
 
-<!-- </div> -->
-
-
-<!-- 
-<div v-else>
-      <h4>성공적으로 질문등록을 완료하였습니다!</h4>
-      <button class="btn btn-success" v-on:click="newBoard">새로운 질문 등록하기</button>
-    </div> -->
-
-</div>
+  <img src="../../public/food.jpg" id="bg" alt="">
+  <nav class="navbar">
+    <a class="btn btn-primary" href="http://localhost:8090">홈으로</a>     		
+      <router-link class="btn btn-primary" to="/insertboard">공지사항</router-link> |
+      <router-link class="btn btn-primary" to="/insertboard">상품</router-link> |
+      <router-link class="btn btn-primary" to="/insertboard">상품정보</router-link> |
+      <router-link class="btn btn-primary" to="/listBoard">질문게시판</router-link> |
+ </nav>
+  </div>
 
 </template>
 
-
-
 <style>
-.a{
-
+/* 배경화면 조정하는 css #bg랑 body, html */
+#bg {  
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+    
+  /* Preserve aspet ratio */
+  min-width: 100%;
+  min-height: 100%;
 }
-.submitform {
-  max-width: 300px;
-  margin: auto;
-
+body, html { 
+    margin: 0;
+    padding: 0;
+    height: 100%;
 }
-.container{
-height: 1000px;
-width: 1000px;
 
-background: url( "../../public/food.jpg");
-}
 
 
 </style>
-<!--<style>
-#main{
-    background: url( "../public/food.jpg")
-}
-</style>-->

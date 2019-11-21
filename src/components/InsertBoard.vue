@@ -2,7 +2,6 @@
 <template>
 	<div class="container">
 <div>
-<!-- <div v-if="!sssubmitted">	 -->
 
 	<h1 style="text-align: center; font-size: 3em; margin-bottom:">질문
 			게시판</h1>
@@ -45,14 +44,7 @@
 			<i class="glyphicon glyphicon-envelope"></i> admin@ssafy.com
 		</p>
 	</footer>
-<!-- </div> -->
 
-
-<!-- 
-<div v-else>
-      <h4>성공적으로 질문등록을 완료하였습니다!</h4>
-      <button class="btn btn-success" v-on:click="newBoard">새로운 질문 등록하기</button>
-    </div> -->
  </div> 
 
 </div>
@@ -80,27 +72,7 @@ export default {
 		};
 	},
 		mounted () {
-	// http
-	// 	.get('/findAllEmployees')
-	// 	.then(response => (this.info = response.data))
-	// 	.catch(() => {
-	// 		this.errored = true
-	// 	})
-	// 	.finally(() => this.loading = false);
-	// http
-	// 	.get('/findAllDepartments')
-	// 	.then(response => (this.deps = response.data))
-	// 	.catch(() => {
-	// 		this.errored = true
-	// 	})
-	// 	.finally(() => this.loading = false);
-	// http
-	// 	.get('/findAllTitles')
-	// 	.then(response => (this.titls = response.data))
-	// 	.catch(() => {
-	// 		this.errored = true
-	// 	})
-	//	.finally(() => this.loading = false);
+
 	},
 
 	methods: {

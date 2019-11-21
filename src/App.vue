@@ -1,15 +1,14 @@
 <template>
 <div id="app">
-<!-- <div class='headtitle'><h2>| Safe Food |</h2></div> -->
-<div class='search_box'>
- <nav class="navbar navbar-inverse navbar-fixed-top">
+  <nav class="navbar-navbar">
+  <div class="navbar">
  <a class="btn btn-primary" href="http://localhost:8090">홈으로</a>     		
          <router-link class="btn btn-primary" to="/insertboard">공지사항</router-link> |
           <router-link class="btn btn-primary" to="/insertboard">상품</router-link> |
           <router-link class="btn btn-primary" to="/insertboard">상품정보</router-link> |
         <router-link class="btn btn-primary" to="/listBoard">질문게시판</router-link> |
- </nav>
-</div>
+ </div>
+  </nav>
         <router-view/>
 </div>
 </template>
@@ -19,5 +18,16 @@ export default {
 };
 </script>
 <style>
+.navbar-navbar{
+    /* border-width: 0px;
+    -webkit-box-shadow: 0px 0px;
+    box-shadow: 0px 0px;
+    background-color: rgba(0,0,0,0.0);
+    background-image: -webkit-gradient(linear, 50.00% 0.00%, 50.00% 100.00%, color-stop( 0% , rgba(0,0,0,0.00)),color-stop( 100% , rgba(0,0,0,0.00)));
+    background-image: -webkit-linear-gradient(270deg,rgba(0,0,0,0.00) 0%,rgba(0,0,0,0.00) 100%);
+    background-image: linear-gradient(180deg,rgba(0,0,0,0.00) 0%,rgba(0,0,0,0.00) 100%);
+ */
+          opacity: 1;
 
+}
 </style>
