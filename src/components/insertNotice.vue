@@ -91,10 +91,10 @@ export default {
 		} 
 		).then(response => {
 				if (response.data.state==0) {
-					alert("질문등록 완료zz.");
+					alert("질문등록 완료.");
 						this.showlist();
 				}else{
-					alert("질문등록 성공zz.");
+					alert("질문등록 성공.");
 						this.showlist();
 				}
 		});
