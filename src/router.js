@@ -3,6 +3,7 @@ import Router from "vue-router";
 
 import InsertBoard from "./components/InsertBoard.vue";
 import listBoard from "./components/listBoard.vue";
+import listNotice from "./components/listNotice.vue";
 import viewBoard from "./components/viewBoard.vue";
 import updateBoard from "./components/updateBoard.vue";
 import main from "./components/main.vue";
@@ -17,6 +18,11 @@ export default new Router({
       path: '/',
       name: 'main',
       component: main
+    },
+    {
+      path: '/listNotice',
+      name: 'listNotice',
+      component: listNotice
     },
     {
       path: '/insertboard',
