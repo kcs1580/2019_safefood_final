@@ -109,7 +109,7 @@ export default {
 
 	methods: {
 		showlist() {      
-			this.$router.push("/main");
+			this.$router.push("/");
     },
 	signup() {
 	
