@@ -8,7 +8,7 @@
 		<div class="panel panel-default">
 			<div class="panel-body">
 				<form action="" method="post" id="_brdFrom" name = "brdForm" @submit.prevent="insertNotice">
-					<input type="hidden" name="user_id" value="orora@com" />
+					<!-- <input type="hidden" name="user_id" value="orora@com" /> Notice는 필요없다. -->
 
 					<div class="form-group">
 						<label for="title">제목</label>
@@ -48,7 +48,7 @@
 import http from "../http-common";
 
 export default {
-	name: "InsertNotice",
+	name: "insertNotice",
 	data() {
 		return {
 			loading: true,
@@ -83,10 +83,11 @@ export default {
 		).then(response => {
 				if (response.data.state==0) {
 					alert("질문등록 완료.");
-						this.showlist();
+
+					this.showlist();
 				}else{
 					alert("질문등록 성공.");
-						this.showlist();
+					this.showlist();
 				}
 		});
 		this.submitted = true;
