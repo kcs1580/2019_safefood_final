@@ -3,11 +3,11 @@
 
   <img src="../../public/food.jpg" id="bg" alt="">
   <nav class="navbar">
-    <a class="btn btn-primary" href="http://localhost:8090">홈으로</a>     		
-      <router-link class="btn btn-primary" to="/insertboard">공지사항</router-link> |
-      <router-link class="btn btn-primary" to="/insertboard">상품</router-link> |
-      <router-link class="btn btn-primary" to="/insertboard">상품정보</router-link> |
-      <router-link class="btn btn-primary" to="/listBoard">질문게시판</router-link> |
+ <a class="nav_btn" href="http://localhost:8090">홈으로</a>     		
+        <router-link class="nav_btn" to="/insertboard">공지사항</router-link> |
+        <router-link class="nav_btn" to="/insertboard">상품</router-link> |
+        <router-link class="nav_btn" to="/insertboard">상품정보</router-link> |
+        <router-link class="nav_btn" to="/listBoard">질문게시판</router-link> |
  </nav>
   </div>
 
@@ -30,6 +30,22 @@ body, html {
     height: 100%;
 }
 
+.nav_btn{
+  color: aliceblue;
+  font-size: 30px;
+}
 
+@font-face {
+	font-family: 'BMHANNAAir';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.0/BMHANNAAir.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+html * {
+	font-family: 'BMHANNAAir';
+}
 
 </style>

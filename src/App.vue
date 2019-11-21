@@ -1,14 +1,12 @@
 <template>
 <div id="app">
-  <nav class="navbar-navbar">
-  <div class="navbar">
- <a class="btn btn-primary" href="http://localhost:8090">홈으로</a>     		
-         <router-link class="btn btn-primary" to="/insertboard">공지사항</router-link> |
-          <router-link class="btn btn-primary" to="/insertboard">상품</router-link> |
-          <router-link class="btn btn-primary" to="/insertboard">상품정보</router-link> |
-        <router-link class="btn btn-primary" to="/listBoard">질문게시판</router-link> |
- </div>
-  </nav>
+  <nav class="navbar">
+    <a class="btn btn-primary" href="http://localhost:8090">홈으로</a>     		
+      <router-link class="btn btn-primary" to="/insertboard">공지사항</router-link> |
+      <router-link class="btn btn-primary" to="/insertboard">상품</router-link> |
+      <router-link class="btn btn-primary" to="/insertboard">상품정보</router-link> |
+      <router-link class="btn btn-primary" to="/listBoard">질문게시판</router-link> |
+ </nav>
         <router-view/>
 </div>
 </template>
