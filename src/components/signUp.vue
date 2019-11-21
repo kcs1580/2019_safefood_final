@@ -144,14 +144,14 @@ export default {
 #outex{
     width: 100%;
     text-align: left;
-    padding: 50px 500px;
+    padding: 50px 650px;
     font-size: 20px;
 
 }
 .ex{
  display: inline-block;
- height:900px; 
- width:800px;
+ height:800px; 
+ width:650px;
  background-color: white;
  opacity: 0.9;
 }
