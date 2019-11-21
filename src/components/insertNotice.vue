@@ -57,7 +57,6 @@ export default {
 	name: "InsertNotice",
 	data() {
 		return {
-			
 			loading: true,
 			errored: false,			
 			ctitle:'',
@@ -65,8 +64,6 @@ export default {
 			ccount:0,
 			cid:'',			
 			submitted: false
-
-
 		};
 	},
 		mounted () {

@@ -58,7 +58,6 @@ export default {
 	name: "InsertBoard",
 	data() {
 		return {
-			
 			loading: true,
 			errored: false,			
 			ctitle:'',
@@ -67,8 +66,6 @@ export default {
 			cid:'',
 			cuser_id:'orora@com',
 			submitted: false
-
-
 		};
 	},
 		mounted () {
@@ -89,7 +86,7 @@ export default {
 			btitle: this.ctitle,
 			bcontent: this.ccontent,
 			bcount: this.bcount,
-			user_id: this.cuser_id,
+			user_id: this.cuser_id
 		} 
 		).then(response => {
 				if (response.data.state==0) {
