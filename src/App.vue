@@ -1,11 +1,13 @@
 <template>
 <div id="app">
   <nav class="navbar">
-    <a class="btn btn-primary" href="http://localhost:8090">홈으로</a>     		
-      <router-link class="btn btn-primary" to="/insertboard">공지사항</router-link> |
-      <router-link class="btn btn-primary" to="/insertboard">상품</router-link> |
-      <router-link class="btn btn-primary" to="/insertboard">상품정보</router-link> |
-      <router-link class="btn btn-primary" to="/listBoard">질문게시판</router-link> |
+ <a class="nav_btn" href="http://localhost:8090">홈으로</a>     		
+        <router-link class="nav_btn" to="/insertboard">공지사항</router-link> |
+        <router-link class="nav_btn" to="/insertboard">상품</router-link> |
+        <router-link class="nav_btn" to="/insertboard">상품정보</router-link> |
+        <router-link class="nav_btn" to="/listBoard">질문게시판</router-link> |
+       <router-link class="nav_btn" to="/signuppage">회원가입</router-link> |
+         
  </nav>
         <router-view/>
 </div>
@@ -16,16 +18,27 @@ export default {
 };
 </script>
 <style>
-.navbar-navbar{
-    /* border-width: 0px;
-    -webkit-box-shadow: 0px 0px;
-    box-shadow: 0px 0px;
-    background-color: rgba(0,0,0,0.0);
-    background-image: -webkit-gradient(linear, 50.00% 0.00%, 50.00% 100.00%, color-stop( 0% , rgba(0,0,0,0.00)),color-stop( 100% , rgba(0,0,0,0.00)));
-    background-image: -webkit-linear-gradient(270deg,rgba(0,0,0,0.00) 0%,rgba(0,0,0,0.00) 100%);
-    background-image: linear-gradient(180deg,rgba(0,0,0,0.00) 0%,rgba(0,0,0,0.00) 100%);
- */
-          opacity: 1;
-
+#app{
+  background-image: url("../public/bg.jpg");
 }
+
+@font-face {
+	font-family: 'BMHANNAAir';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.0/BMHANNAAir.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+html * {
+	font-family: 'BMHANNAAir';
+}
+
+.nav_btn{
+  color: black;
+  font-size: 30px;
+}
+
+
 </style>

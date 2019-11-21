@@ -6,6 +6,7 @@ import listBoard from "./components/listBoard.vue";
 import viewBoard from "./components/viewBoard.vue";
 import updateBoard from "./components/updateBoard.vue";
 import main from "./components/main.vue";
+import signUp from "./components/signUp.vue";
 
 //import ChartPieCustomer2 from "./components/ChartPieCustomer2.vue";
 Vue.use(Router);
@@ -43,6 +44,11 @@ export default new Router({
       component: updateBoard,
       props: true,
     },
+    {
+      path: '/signuppage',
+      name: 'signuppage',
+      component: signUp
+    }
 
   ]
 });
