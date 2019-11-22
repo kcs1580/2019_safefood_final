@@ -1,14 +1,26 @@
 
 <template>
 	<div class="container">
-<div>
+	<div class="row">
+		<h1 align="center">총 섭취 데이터 </h1>
+		<canvas id="myChart" class="col-xs-12 col-sm-4 col-md-3"></canvas>
+			<div class="col-xs-12"
+				style="text-align: right; margin-bottom: 15px;">
+				<form action="searchintake" class="form-inline">					
+					<div class="form-group">
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control" name="keyword" placeholder="상품 이름을 입력하세요.">
+					</div>
+					<button type="submit" class="btn btn-info">검색</button>
+				</form>
+			</div>
+		</div>
 
-		<hr style="margin-bottom: 40px;">
 
-		<div class="panel panel-default">
 			<div class="panel-body">
 				<form action="" method="post" id="_brdFrom" name = "brdForm" @submit.prevent="insertNotice">
-					<input type="hidden" name="user_id" value="orora@com" />
+					<!-- <input type="hidden" name="user_id" value="orora@com" /> Notice는 필요없다. -->
 
 					<div class="form-group">
 						<label for="title">제목</label>
@@ -33,14 +45,7 @@
 			</div>
 		</div>
 
-<div>
-	<br>
-	<br>
-	<br>
-</div>
- </div> 
 
-</div>
 
 </template>
 
@@ -48,7 +53,7 @@
 import http from "../http-common";
 
 export default {
-	name: "InsertNotice",
+	name: "insertNotice",
 	data() {
 		return {
 			loading: true,
@@ -83,10 +88,11 @@ export default {
 		).then(response => {
 				if (response.data.state==0) {
 					alert("질문등록 완료.");
-						this.showlist();
+
+					this.showlist();
 				}else{
 					alert("질문등록 성공.");
-						this.showlist();
+					this.showlist();
 				}
 		});
 		this.submitted = true;

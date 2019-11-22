@@ -1,53 +1,63 @@
 <template>
- <div class="container">
-	<h1 style="text-align: center; font-size: 3em; margin-bottom:">질문 게시판List</h1>
-		<hr style="margin-bottom: 40px;">
+<div class="container">
 
-		<div class="panel panel-default" >
-			<div class="panel-body">
-				<table class="table text-center table-bordered table-hover">
+  <div>
+			<div class="col-xs-12"
+				style="text-align: right; margin-bottom: 15px;">
+        <form action="searchfood" class="form-inline" style="float: right">
+					<input type="hidden" />
+					<div class="form-group">
+						<select v-model = "selected" class="form-control" placeholder="선택">							
+  <option>상품명</option>
+  <option>제조사</option>
+  <option>재료명</option>
+</select>					
 					
-          <div v-for="item in list" class="#" :key="item.bid">
-            <div class="row productRow">
-			<div class="col-xs-12 col-sm-4 col-md-3" style="max-height: 250px;">
-				<img :src= "require('../' + item.img)" alt="item.name" width="200">
-				<div class="custom_tooltip"
-					style="position: absolute; width: 200px; background: #696969a8; bottom: 0; color: white; padding: 10px; vertical-align: middle; text-align: center; display: none;">
-					<p>{{item.name}}</p>
-					<p style="margin-bottom: 0">
-						<strong> </strong>
-					</p>
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control" id="keyword" name="keyword" placeholder="검색어를 입력하세요.">
+					</div>
+					<button type="submit" class="btn btn-info">검색</button>
+        
+        </form>
+       
+			</div>
+
+			</div>
+	
+
+
+     
+     <div class="panel panel-default">
+			<div class="panel-body">
+
+				<div v-for = "item in list" class="row productRow"  :key="item.code">			
+					<form action="detailfood" method="post">
+						<input type="hidden" name="code" value="item.code" />
+						<div class="col-sm-6 col-md-4">
+						<div class="thumbnail" style="border:none;">
+						<div class="overlay">
+						<p class="text">{{item.name}}</p>
+						</div>
+						<img :src= "require('../' + item.img)" alt="item.name" width="200px">
+						<!-- <div class="caption" style="opacity:1;"> -->
+						<button type="submit" class="btn btn-lg btn-block btn-primary">상품 정보로 이동 &nbsp;</button>
+						<!-- </div> -->
+						</div>
+						</div>
+					</form>
+				
 				</div>
 			</div>
-			<div class="col-xs-12 col-sm-8 col-md-9">
-				<h3>
-					<a class="productName" @click="detailproduct()">{{item.name}}</a>
-				</h3>
-				<hr>
-				<!-- <p>{{item.material}}</p> -->
-				<div class="btn-group" role="group">
-					<a @click="insertintake()" class="btn btn-flat btn-sm btn-info" role="button"><i
-						class="glyphicon glyphicon-tag"></i> 추가</a> <a href="#"
-						class="btn btn-flat btn-sm btn-info" role="button"><i
-						class="glyphicon glyphicon-tag"></i> 찜</a>
-				</div>
 			</div>
-		</div>
 
-          </div>
-
-
-				</table>
 				<div class="row">
 					<div class="col-sm-12 text-right">
-						<a href="" @click="showinsert()" class="btn btn-info btn-flat">글쓰기</a>
-            
+						<a href="" @click="showinsert()" class="btn btn-info btn-flat">글쓰기</a>            
 					</div>
 				</div>
-			</div>
-		</div>
-
-</div>
+        </div>
+    
 </template>
 
 <script>
@@ -74,8 +84,10 @@ export default {
         .then(response => (this.list = response.data['list']))
         .catch(() => {
           this.errored = true;
+
         })
         .finally(() => (this.loading = false));
+       
     },
     refreshList() {
       this.retrieveBoards();
@@ -96,6 +108,7 @@ export default {
   },
   mounted() {
     this.retrieveproduct();
+  
    
   }
 };

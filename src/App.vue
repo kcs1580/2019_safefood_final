@@ -2,13 +2,15 @@
 <div id="app">
   <nav class="navbar">
 
-    <a class="nav_btn" href="http://localhost:8090">홈으로</a>     		
-    <router-link class="nav_btn" to="/listNotice">공지사항</router-link> |
-    <router-link class="nav_btn" to="/insertboard">상품</router-link> |
-    <router-link class="nav_btn" to="/productlist">상품정보</router-link> |
-    <router-link class="nav_btn" to="/listBoard">질문게시판</router-link> |
+    <a class="nav_btn" href="http://localhost:8090">홈으로</a>
+	<router-link class="nav_btn" to="/listNotice">공지사항</router-link>
+	<router-link class="nav_btn" to="/insertboard">상품</router-link>
+	<router-link class="nav_btn" to="/productlist">상품정보</router-link>
+	<router-link class="nav_btn" to="/mytakeinfo">섭취정보</router-link>
+	<router-link class="nav_btn" to="/listBoard">질문게시판</router-link>
 	<router-link class="nav_btn" to="/signuppage">회원가입</router-link> |
-	<router-link class="nav_btn" to="/updatemem">회원정보수정</router-link> |
+
+
  </nav>
  
         <router-view/>
