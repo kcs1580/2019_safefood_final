@@ -9,6 +9,7 @@ import viewBoard from "./components/viewBoard.vue";
 import viewNotice from "./components/viewNotice.vue";
 import updateBoard from "./components/updateBoard.vue";
 import updateNotice from "./components/updateNotice.vue";
+import mytakeinfo from "./components/mytakeinfo.vue";
 import main from "./components/main.vue";
 import signUp from "./components/signUp.vue";
 import productlist from "./components/productlist.vue";
@@ -81,16 +82,21 @@ export default new Router({
       name: 'signuppage',
       component: signUp
     },
- {
-  path: '/productlist',
-  name: 'productlist',
-  component: productlist
- },
- 
+    {
+      path: '/productlist',
+      name: 'productlist',
+      component: productlist
+    },
     {
       path: '/updatemem',
       name: 'updatemem',
       component: updateMember
+    },
+    {
+      path: '/mytakeinfo',
+      name: 'mytakeinfo',
+      component: mytakeinfo
+
     }
 
   ]
