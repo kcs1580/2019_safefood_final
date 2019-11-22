@@ -14,6 +14,7 @@ import main from "./components/main.vue";
 import signUp from "./components/signUp.vue";
 import productlist from "./components/productlist.vue";
 import updateMember from "./components/updateMember.vue";
+import Login from "./components/Login.vue";
 
 //import ChartPieCustomer2 from "./components/ChartPieCustomer2.vue";
 Vue.use(Router);
@@ -21,6 +22,11 @@ Vue.use(Router);
 export default new Router({
     mode: "history",
     routes: [
+      {
+        path: '/Login',
+        name: 'Login',
+        component: Login
+        },
         {
             path: '/',
             name: 'main',
