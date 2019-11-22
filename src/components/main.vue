@@ -6,8 +6,6 @@
                 <a class="nav_btn1" href="http://localhost:8090">홈으로</a>
                 <router-link class="nav_btn1" to="/listNotice">공지사항</router-link>
                 |
-                <router-link class="nav_btn1" to="/insertboard">상품</router-link>
-                |
                 <router-link class="nav_btn1" to="/insertboard">상품정보</router-link>
                 |
                 <router-link class="nav_btn1" to="/listBoard">질문게시판</router-link>
@@ -71,6 +69,7 @@
                             .get("http://localhost:8090/api/recommendFood")
                             .then(response => {
                                 this.recommend = response.data.recommend;
+                                this.is_show=false;
                             })
                             .catch(() => {
                                 this.errored = true
@@ -121,7 +120,7 @@
                 position: fixed;
                 z-index: 9998;
                 top: 0;
-                left: 0;
+                left: 300;
                 width: 100%;
                 height: 100%;
                 background-color: rgba(0, 0, 0, .5);
@@ -145,12 +144,5 @@
                 font-family: Helvetica, Arial, sans-serif;
             }
 
-            .modal-header h3 {
-                margin-top: 0;
-                color: #42b983;
-            }
-
-            .modal-body {
-                margin: 20px 0;
-            }
+      
         </style>
