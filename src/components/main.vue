@@ -82,12 +82,7 @@
                     this.init();
                 },
 
-                // $(document).ready(function(){ 	$('#modalbtn').on('click', function(){
-                // $.ajax({ 			type : "post", 			url : "recommendfood", 			dataType : "html",
-                // success : sFunc, 			error : eFunc 		}); 		function sFunc(data) {
-                // $('.modal-body').html(data); 			$('#recommendModal').modal(); 		}; 		function
-                // eFunc(e){ 			console.log(e) 		}; 	}); })
-
+        
             }
         </script>
         <style>

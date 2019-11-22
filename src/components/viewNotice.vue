@@ -3,16 +3,13 @@
 <h1 style="text-align: center; font-size: 3em; margin-bottom:">공지 사항 </h1>
 		<hr style="margin-bottom: 40px;">
 		
-		<div class="panel panel-info">
+		<div class="panel panel-info" style="background-color: rgba( 255, 255, 255,0.8 ); height: 800px; ">
 			<div class="panel-heading">
 				<strong>{{notice.ntitle }}</strong>
-				<!-- <input type="hidden" name="user_id" value="${currentId }"/> -->
-				<!-- <input type="hidden" name="bid" value="{{board.bid }}" />
-				<input type="hidden" name="btitle" value="{{board.btitle }}" /> -->
 			</div>
-			<div class="panel-body">
+      <hr>
+			<div class="panel-body" style="height:650px; font-size:40px;">
 				{{notice.ncontent }}
-				<!-- <input type="hidden" name="bcontent" value="{{board.bcontent }}" /> -->
 			</div>
 			<div class="panel-footer text-right">
 				<button class="btn btn-info btn-flat" @click="edit()">수정</button>

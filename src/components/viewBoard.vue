@@ -3,18 +3,15 @@
 <h1 style="text-align: center; font-size: 3em; margin-bottom:">질문 게시판</h1>
 		<hr style="margin-bottom: 40px;">
 		
-		<div class="panel panel-info">
-			<div class="panel-heading">
+		<div class="panel panel-info" style="background-color: rgba( 255, 255, 255,0.8 ); height: 800px; ">
+      <div class="panel-heading" >
 				<strong>{{board.btitle }}</strong>
-				<!-- <input type="hidden" name="user_id" value="${currentId }"/> -->
-				<!-- <input type="hidden" name="bid" value="{{board.bid }}" />
-				<input type="hidden" name="btitle" value="{{board.btitle }}" /> -->
 			</div>
-			<div class="panel-body">
+      <hr>
+			<div class="panel-body"  style="height:650px; font-size:40px;">
 				{{board.bcontent }}
-				<!-- <input type="hidden" name="bcontent" value="{{board.bcontent }}" /> -->
 			</div>
-			<div class="panel-footer text-right">
+			<div class="panel-footer text-right" >
 				<button class="btn btn-info btn-flat" @click="edit()">수정</button>
         <button class="btn btn-danger btn-fla" @click="remove()">삭제</button>
         <button class="btn btn-primary btn-flatt" @click="backtolist()">목록</button>

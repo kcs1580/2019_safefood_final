@@ -1,12 +1,22 @@
 
+<style>
+.submitform {
+  max-width: 300px;
+  margin: auto;
+}
+
+
+</style>
+
+
 <template>
 	<div class="container">
 <div>
-	<h1 style="text-align: center; font-size: 3em; margin-bottom:">질문 게시판</h1>
+	<h1 style="text-align: center; font-size: 50px; margin-bottom:">지일무운게시판</h1>
 
 		<hr style="margin-bottom: 40px;">
 		<div class="panel panel-default">
-			<div class="panel-body">
+			<div class="panel-body" >
 				<form action="" method="post" id="_brdFrom" name = "brdForm" @submit.prevent="insertBoard">
 					<input type="hidden" name="user_id" value="orora@com" />
 
@@ -94,9 +104,3 @@ export default {
 }
 </script>
 
-<style>
-.submitform {
-  max-width: 300px;
-  margin: auto;
-}
-</style>
