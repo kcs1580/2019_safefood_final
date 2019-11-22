@@ -1,7 +1,7 @@
 <template>
     <div class="container">
 	<div class="row">
-		<h1 align="center">총 섭취 데이터</h1>
+		<h1 align="center">총 섭취 데이터 </h1>
 		<canvas id="myChart" class="col-xs-12 col-sm-4 col-md-3"></canvas>
 			<div class="col-xs-12"
 				style="text-align: right; margin-bottom: 15px;">
