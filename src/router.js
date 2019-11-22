@@ -86,7 +86,6 @@ export default new Router({
   name: 'productlist',
   component: productlist
  },
- 
     {
       path: '/updatemem',
       name: 'updatemem',
