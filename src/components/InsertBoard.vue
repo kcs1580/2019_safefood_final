@@ -30,20 +30,7 @@
 			</div>
 		</div>
 		
-		<footer style="background: #ececec; padding: 50px;">
-		<h1>Find Us</h1>
-		<hr>
-		<p>
-			<i class="glyphicon glyphicon-envelope"></i> (SSAFY) 서울시 강남구 테헤란로
-			멀티스퀘어
-		</p>
-		<p>
-			<i class="glyphicon glyphicon-envelope"></i> 1544-9001
-		</p>
-		<p>
-			<i class="glyphicon glyphicon-envelope"></i> admin@ssafy.com
-		</p>
-	</footer>
+
 
  </div> 
 
@@ -58,7 +45,6 @@ export default {
 	name: "InsertBoard",
 	data() {
 		return {
-			
 			loading: true,
 			errored: false,			
 			ctitle:'',
@@ -67,8 +53,6 @@ export default {
 			cid:'',
 			cuser_id:'orora@com',
 			submitted: false
-
-
 		};
 	},
 		mounted () {
@@ -89,7 +73,7 @@ export default {
 			btitle: this.ctitle,
 			bcontent: this.ccontent,
 			bcount: this.bcount,
-			user_id: this.cuser_id,
+			user_id: this.cuser_id
 		} 
 		).then(response => {
 				if (response.data.state==0) {

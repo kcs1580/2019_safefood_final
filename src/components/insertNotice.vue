@@ -28,21 +28,7 @@
 				</form>
 			</div>
 		</div>
-		
-		<footer style="background: #ececec; padding: 50px;">
-		<h1>Find Us</h1>
-		<hr>
-		<p>
-			<i class="glyphicon glyphicon-envelope"></i> (SSAFY) 서울시 강남구 테헤란로
-			멀티스퀘어
-		</p>
-		<p>
-			<i class="glyphicon glyphicon-envelope"></i> 1544-9001
-		</p>
-		<p>
-			<i class="glyphicon glyphicon-envelope"></i> admin@ssafy.com
-		</p>
-	</footer>
+
 
  </div> 
 
@@ -57,7 +43,6 @@ export default {
 	name: "InsertNotice",
 	data() {
 		return {
-			
 			loading: true,
 			errored: false,			
 			ctitle:'',
@@ -65,8 +50,6 @@ export default {
 			ccount:0,
 			cid:'',			
 			submitted: false
-
-
 		};
 	},
 		mounted () {
@@ -91,10 +74,10 @@ export default {
 		} 
 		).then(response => {
 				if (response.data.state==0) {
-					alert("질문등록 완료zz.");
+					alert("질문등록 완료.");
 						this.showlist();
 				}else{
-					alert("질문등록 성공zz.");
+					alert("질문등록 성공.");
 						this.showlist();
 				}
 		});
