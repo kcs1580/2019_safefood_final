@@ -4,7 +4,7 @@
   <div>
 			<div class="col-xs-12"
 				style="text-align: right; margin-bottom: 15px;">
-        <form action="searchfood" class="form-inline" style="float: right">
+        
 					<input type="hidden" />
 					<div class="form-group">
 						<select v-model = "selected" class="form-control" placeholder="선택">							
@@ -15,24 +15,21 @@
 					
 					</div>
 					<div class="form-group">
-						<input type="text" class="form-control" id="keyword" name="keyword" placeholder="검색어를 입력하세요.">
+						<input type="text" name = "keyword" v-model = "keyword" class="form-control" placeholder="검색어를 입력하세요." @change="searchfood">
 					</div>
 					<button type="submit" class="btn btn-info">검색</button>
         
-        </form>
+       
        
 			</div>
 
 			</div>
-	
-
-
      
      <div class="panel panel-default">
 			<div class="panel-body">
 
 				<div v-for = "item in list" class="row productRow"  :key="item.code">			
-					<form action="detailfood" method="post">
+					
 						<input type="hidden" name="code" value="item.code" />
 						<div class="col-sm-6 col-md-4">
 						<div class="thumbnail" style="border:none;">
@@ -45,17 +42,13 @@
 						<!-- </div> -->
 						</div>
 						</div>
-					</form>
+					
 				
 				</div>
 			</div>
 			</div>
 
-				<div class="row">
-					<div class="col-sm-12 text-right">
-						<a href="" @click="showinsert()" class="btn btn-info btn-flat">글쓰기</a>            
-					</div>
-				</div>
+			
         </div>
     
 </template>
@@ -75,7 +68,7 @@ export default {
   },
   methods: {
     showinsert() {      
-			this.$router.push("/insertboard");
+			this.$router.push("/proudctdetail");
     },
     retrieveproduct() {
       
@@ -90,7 +83,7 @@ export default {
        
     },
     refreshList() {
-      this.retrieveBoards();
+      this.retrieveproduct();
     },
     show_detail: function(bid) {
       //alert(bid + " 클릭했음");
@@ -100,7 +93,7 @@ export default {
      // App.$router.push('/viewboard');
       //App.$router.push( {path:'viewboard'});
     //this.$router.push("/board-view/:App.bid" +  App.bid);
-    this.$router.push(  {name: 'viewBoard', params:{bid: App.bid}});
+    this.$router.push(  {name: 'detailfood', params:{bid: App.bid}});
     }
   },
   filters: {
