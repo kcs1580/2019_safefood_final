@@ -2,11 +2,7 @@
 <template>
 	<div class="container">
 <div>
-
-	<h1 style="text-align: center; font-size: 3em; margin-bottom:">질문
-			게시판</h1>
 		<hr style="margin-bottom: 40px;">
-
 		<div class="panel panel-default">
 			<div class="panel-body">
 				<form action="" method="post" id="_brdFrom" name = "brdForm" @submit.prevent="insertBoard">
@@ -21,9 +17,14 @@
 						<input data-msg="내용"  type="text" name="bcontent" id="bcontent" v-model="ccontent"  class="form-control"  style="height:500px; width:100%" placeholder="내용을 입력해주세요." >
 					</div>
 					
-					<div class="row">
+									<div class="row">
 						<div class="col-sm-12 text-right">
-							<button type="submit" class="btn btn-info btn-flat">글쓰기</button>
+							<div style="float:left;">
+							<button type="reset" class="btn btn-danger" style="width:550px;">취소 </button>
+							</div>
+							<div  style="float:left;">
+							<button type="submit" class="btn btn-primary" style="width:550px;">글쓰기</button>
+							</div>
 						</div>
 					</div>
 				</form>
@@ -86,17 +87,7 @@ export default {
 		});
 		this.submitted = true;
 	},
-	// newBoard() {
-	// 	this.submitted=false,		
-	// 	this.loading=true,
-	// 	this.errored=false,
-	// 	this.cid='',			
-	// 	this.ctitle='',
-	// 	this.ccontent='',
-	// 	this.ccount=0,
-	// 	this.cuser_id='asdf@asdf'
-	// }
-		
+
   }
 }
 </script>

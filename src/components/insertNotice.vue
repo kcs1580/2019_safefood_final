@@ -3,7 +3,6 @@
 	<div class="container">
 <div>
 
-	<h1 style="text-align: center; font-size: 3em; margin-bottom:">공지사항</h1>
 		<hr style="margin-bottom: 40px;">
 
 		<div class="panel panel-default">
@@ -22,14 +21,23 @@
 					
 					<div class="row">
 						<div class="col-sm-12 text-right">
-							<button type="submit" class="btn btn-info btn-flat">글쓰기</button>
+							<div style="float:left;">
+							<button type="reset" class="btn btn-danger" style="width:550px;">취소 </button>
+							</div>
+							<div  style="float:left;">
+							<button type="submit" class="btn btn-primary" style="width:550px;">글쓰기</button>
+							</div>
 						</div>
 					</div>
 				</form>
 			</div>
 		</div>
 
-
+<div>
+	<br>
+	<br>
+	<br>
+</div>
  </div> 
 
 </div>

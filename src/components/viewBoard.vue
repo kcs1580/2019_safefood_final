@@ -55,7 +55,6 @@ export default {
     },
     edit(){
 		this.$router.push("/UpdateBoard");
-
     },
     remove(){    
       alert(App.bid + "번 게시물 삭제합니다.");
