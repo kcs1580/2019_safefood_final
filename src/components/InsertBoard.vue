@@ -2,6 +2,8 @@
 <template>
 	<div class="container">
 <div>
+	<h1 style="text-align: center; font-size: 3em; margin-bottom:">질 문 게시판</h1>
+
 		<hr style="margin-bottom: 40px;">
 		<div class="panel panel-default">
 			<div class="panel-body">
