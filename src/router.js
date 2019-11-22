@@ -14,6 +14,7 @@ import signUp from "./components/signUp.vue";
 import productlist from "./components/productlist.vue";
 
 
+
 //import ChartPieCustomer2 from "./components/ChartPieCustomer2.vue";
 Vue.use(Router);
 
@@ -79,11 +80,12 @@ export default new Router({
       name: 'signuppage',
       component: signUp
     },
-    {
-      path: '/productlist',
-      name: 'productlist',
-      component: productlist
-    }
+ {
+  path: '/productlist',
+  name: 'productlist',
+  component: productlist
+ }
+ 
 
   ]
 });
