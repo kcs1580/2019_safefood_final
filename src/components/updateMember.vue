@@ -1,8 +1,8 @@
 <template>
 <div id="outex">
 	<div class="ex">
-		<form class="form-horizontal" role="form" method="post"
-			@submit.prevent="signup">
+		<form class="form-horizontal" role="form" method="put"
+			@submit.prevent="updatemem">
 			<input type="hidden" name="action" value="signup" />
 			<div class="form-group" id="divId">
 				<label for="inputId" class="col-lg-2 control-label">아이디</label>
@@ -84,9 +84,10 @@
 </template>
 <script>
 import http from "../http-common";
+// import App from "../App.vue";
 
 export default {
-	name: "signup",
+	name: "updatemem",
 	data() {
 		return {
 			loading: true,
@@ -104,23 +105,39 @@ export default {
 		};
 	},
 		mounted () {
-
+			this.infomem();
 	},
 
 	methods: {
 		showlist() {      
 			this.$router.push("/");
-    },
-	signup() {
-	
-		http.post('/signup', {
+	},
+	infomem(){
+		http
+		.get("http://localhost:8090/api/memlist/"+"12@12")
+        .then(response => {
+			this.member = response.data.resvalue;
+			this.cid = this.member.id;
+            this.cpassword = this.member.password;
+            this.cmname = this.member.mname;
+            this.caddr = this.member.addr;
+            this.ctel = this.member.tel;
+            this.carr = this.member.addr;
+			})
+        .catch(() => {
+			//alert("fail");
+          this.errored = true;
+        })
+        .finally(() => (this.loading = false));
+	},
+	updatemem() {
+		http.put('/memupdate', {
 			id: this.cid,
             password: this.cpassword,
             mname: this.cmname,
             addr: this.caddr,
             tel: this.ctel,
             allergyArr: this.carr
-
 		} 
 		).then(response => {
 				if (response.data.state==0) {

@@ -81,8 +81,8 @@ export default new Router({
       component: signUp
     },
     {
-      path: '/updateMember',
-      name: 'updateMember',
+      path: '/updatemem',
+      name: 'updatemem',
       component: updateMember
     }
 

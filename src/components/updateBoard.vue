@@ -62,7 +62,6 @@ export default {
 			this.$router.push("/listBoard");
     },
     viewBoards() {
-
       http
         .get("http://localhost:8090/api/infoboard/"+App.bid)
         .then(response => {
@@ -72,7 +71,7 @@ export default {
 			this.ccontent = this.board.bcontent;
 			})
         .catch(() => {
-			alert("fail");
+			//alert("fail");
           this.errored = true;
         })
         .finally(() => (this.loading = false));

@@ -1,11 +1,11 @@
 <template>
  <div class="container">
-	<h1 style="text-align: center; font-size: 3em; margin-bottom:"></h1>
+	<h1 style="text-align: center; font-size: 3em; margin-bottom:">질문 게시판List</h1>
 		<hr style="margin-bottom: 40px;">
 
-		<div class="panel">
+		<div class="panel panel-default">
 			<div class="panel-body">
-				<table class="table">
+				<table class="table text-center table-bordered table-hover">
 					<thead>
 						<tr>
 							<th>번호</th>
@@ -31,7 +31,6 @@
 				</div>
 			</div>
 		</div>
-
 
 </div>
 </template>
@@ -86,15 +85,4 @@ export default {
 </script>
 
 <style>
-.panel{
-  width: auto;
-  height: 1000px;
-}
-.panel-body{
-  padding: 100px 100px;
-   background-color: white;
-  opacity: 0.9;
-  height: 800px;
-}
-
 </style>
