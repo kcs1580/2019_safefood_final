@@ -11,6 +11,7 @@ import updateBoard from "./components/updateBoard.vue";
 import updateNotice from "./components/updateNotice.vue";
 import main from "./components/main.vue";
 import signUp from "./components/signUp.vue";
+import productlist from "./components/productlist.vue";
 
 //import ChartPieCustomer2 from "./components/ChartPieCustomer2.vue";
 Vue.use(Router);
@@ -76,6 +77,11 @@ export default new Router({
       path: '/signuppage',
       name: 'signuppage',
       component: signUp
+    },
+    {
+      path: '/productlist',
+      name: 'productlist',
+      component: productlist
     }
 
   ]
