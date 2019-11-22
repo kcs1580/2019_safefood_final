@@ -1,6 +1,5 @@
 <template>
     <div class="container">
-
         <div>
             <div class="col-xs-12" style="text-align: right; margin-bottom: 15px;">
 
@@ -40,7 +39,7 @@
                                 </div>
                                 <img :src="require('../' + item.img)" alt="item.name" width="200px">
                                     <!-- <div class="caption" style="opacity:1;"> -->
-                                    <button type="submit" class="btn btn-lg btn-block btn-primary">상품 정보로 이동 &nbsp;</button>
+                                    <a class="btn btn-lg btn-block btn-primary" @click="showdetail(item.code)">상품 정보로 이동 &nbsp;</a>
                                     <!-- </div> -->
                                 </div>
                             </div>
@@ -80,10 +79,8 @@
 
                     },
 
-                    showinsert() {
-                        this
-                            .$router
-                            .push("/proudctdetail");
+                    showdetail() {
+                        this.$router.push("/productdetail");
                     },
                     retrieveproduct() {
 
@@ -100,9 +97,9 @@
                     refreshList() {
                         this.retrieveproduct();
                     },
-                    show_detail: function (bid) {
+                    fooddetail: function (code) {
                         //alert(bid + " 클릭했음");
-                        App.bid = bid;
+                        App.code = code;
                         // App.$router.push( { path: 'viewboard' }); 아래를 수정했다.
                         // App.$router.push('/viewboard'); App.$router.push( {path:'viewboard'});
                         // this.$router.push("/board-view/:App.bid" +  App.bid);
@@ -111,7 +108,7 @@
                             .push({
                                 name: 'detailfood',
                                 params: {
-                                    bid: App.bid
+                                    code: App.code
                                 }
                             });
                     }
