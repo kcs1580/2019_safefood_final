@@ -11,11 +11,8 @@ import updateBoard from "./components/updateBoard.vue";
 import updateNotice from "./components/updateNotice.vue";
 import main from "./components/main.vue";
 import signUp from "./components/signUp.vue";
-<<<<<<< HEAD
 import productlist from "./components/productlist.vue";
-=======
 import updateMember from "./components/updateMember.vue";
->>>>>>> c96fd1437fd53af08ed8a4992b04804d6321b8c5
 
 
 
@@ -84,20 +81,17 @@ export default new Router({
       name: 'signuppage',
       component: signUp
     },
-<<<<<<< HEAD
  {
   path: '/productlist',
   name: 'productlist',
   component: productlist
- }
+ },
  
-=======
     {
       path: '/updatemem',
       name: 'updatemem',
       component: updateMember
     }
->>>>>>> c96fd1437fd53af08ed8a4992b04804d6321b8c5
 
   ]
 });
