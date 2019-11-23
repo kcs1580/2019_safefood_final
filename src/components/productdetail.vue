@@ -127,9 +127,7 @@ export default {
   filters: {
 
   },
-  mounted() {
-	  
-   
+  mounted() {``  
   }
 };
 </script>
