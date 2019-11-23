@@ -22,7 +22,7 @@
                         @change="searchfood"></div>
                     <button type="submit" class="btn btn-info">검색</button>
 
-                </div>
+                </div>n n
 
             </div>
 
@@ -39,7 +39,7 @@
                                 </div>
                                 <img :src="require('../' + item.img)" alt="item.name" width="200px">
                                     <!-- <div class="caption" style="opacity:1;"> -->
-                                    <a class="btn btn-lg btn-block btn-primary" @click="showdetail(item.code)">상품 정보로 이동 &nbsp;</a>
+                                    <a class="btn btn-lg btn-block btn-primary" @click="fooddetail(item.code)">상품 정보로 이동 &nbsp; {{item.code}}</a>
                                     <!-- </div> -->
                                 </div>
                             </div>
@@ -78,10 +78,7 @@
                             . finally(() => (this.loading = false));
 
                     },
-
-                    showdetail() {
-                        this.$router.push("/productdetail");
-                    },
+                    
                     retrieveproduct() {
 
                         http
@@ -106,7 +103,7 @@
                         this
                             .$router
                             .push({
-                                name: 'detailfood',
+                                name: 'productdetail',
                                 params: {
                                     code: App.code
                                 }
