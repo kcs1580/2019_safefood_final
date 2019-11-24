@@ -8,7 +8,7 @@
                 |
                 <router-link class="nav_btn1" to="/productlist">상품정보</router-link>
                 |
-                <router-link class="nav_btn" to="/mytakeinfo">섭취정보</router-link>
+                <router-link class="nav_btn1" to="/mytakeinfo">섭취정보</router-link>
                 |
                 <router-link class="nav_btn1" to="/listBoard">질문게시판</router-link>
                 |
