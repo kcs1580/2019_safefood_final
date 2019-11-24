@@ -6,7 +6,9 @@
                 <a class="nav_btn1" href="http://localhost:8090">홈으로</a>
                 <router-link class="nav_btn1" to="/listNotice">공지사항</router-link>
                 |
-                <router-link class="nav_btn1" to="/insertboard">상품정보</router-link>
+                <router-link class="nav_btn1" to="/productlist">상품정보</router-link>
+                |
+                <router-link class="nav_btn" to="/mytakeinfo">섭취정보</router-link>
                 |
                 <router-link class="nav_btn1" to="/listBoard">질문게시판</router-link>
                 |
@@ -15,26 +17,28 @@
                 <button @click="modal_recommend" type="button">오늘 뭐먹징?</button>
 
                 <!-- #2 : Modal Window -->
-                
-                </nav>
-                <div v-show="is_show" style="background:white; opacity:0.9; height:auto; width:auto; float:right">
-                    <img :src="require('../' + recommend.img)" width="200">
-                        <table class="table table-hover">
-                            <tr>
-                                <th>제품명</th>
-                                <td id="name" v-html="recommend.name"></td>
-                            </tr>
-                            <tr>
-                                <th>제조사</th>
-                                <td id="maker" v-html="recommend.maker"></td>
-                            </tr>
-                            <!-- <tr> <th>원재료</th> <td> <p id="material" v-html="recommend.material"></p>
-                            </td> </tr> -->
-                        </table>
-                        <div>
-                          <button @click="modalbtn" type="button">닫기</button>
-                        </div>
+
+            </nav>
+            <div
+                v-show="is_show"
+                style="background:white; opacity:0.9; height:auto; width:auto; float:right">
+                <img :src="require('../' + recommend.img)" width="200">
+                    <table class="table table-hover">
+                        <tr>
+                            <th>제품명</th>
+                            <td id="name" v-html="recommend.name"></td>
+                        </tr>
+                        <tr>
+                            <th>제조사</th>
+                            <td id="maker" v-html="recommend.maker"></td>
+                        </tr>
+                        <!-- <tr> <th>원재료</th> <td> <p id="material" v-html="recommend.material"></p>
+                        </td> </tr> -->
+                    </table>
+                    <div>
+                        <button @click="modalbtn" type="button">닫기</button>
                     </div>
+                </div>
             </div>
 
         </template>
@@ -69,7 +73,7 @@
                             .get("http://localhost:8090/api/recommendFood")
                             .then(response => {
                                 this.recommend = response.data.recommend;
-                                this.is_show=false;
+                                this.is_show = false;
                             })
                             .catch(() => {
                                 this.errored = true
@@ -79,9 +83,7 @@
                 },
                 mounted() {
                     this.init();
-                },
-
-        
+                }
             }
         </script>
         <style>
@@ -143,6 +145,4 @@
                 transition: all 0.3s ease;
                 font-family: Helvetica, Arial, sans-serif;
             }
-
-      
         </style>
