@@ -6,9 +6,9 @@
                 <input type="hidden"/>
                 <div class="form-group">
                     <select v-model="selected" class="form-control" placeholder="선택">
-                        <option>상품명</option>
-                        <option>제조사</option>
-                        <option>재료명</option>
+                        <option value="name">상품명</option>
+                        <option value="maker">제조사</option>
+                        <option value="material">재료명</option>
                     </select>
 
                 </div>
@@ -18,35 +18,38 @@
                         name="keyword"
                         v-model="keyword"
                         class="form-control"
-                        placeholder="검색어를 입력하세요."
-                        @change="searchfood"></div>
-                    <button type="submit" class="btn btn-info">검색</button>
+                        placeholder="검색어를 입력하세요." @keyup.enter= "searchfood"></div>
+                    <div @click="searchfood()" class="btn btn-info btn-flat">검색</div>
 
-                </div>n n
+                </div>
 
             </div>
 
-            <div class="panel panel-default">
-                <div class="panel-body">
+            <div class="panel panel productPanel">
+                <!-- <div class="panel-body"> -->
 
-                    <div v-for="item in list" class="row productRow" :key="item.code">
-
+                    <span v-for="item in list" class="row productRow" :key="item.code">
+                         <span style="float: left">
                         <input type="hidden" name="code" value="item.code"/>
-                        <div class="col-sm-6 col-md-4">
+                        
                             <div class="thumbnail" style="border:none;">
                                 <div class="overlay">
                                     <p class="text">{{item.name}}</p>
                                 </div>
-                                <img :src="require('../' + item.img)" alt="item.name" width="200px">
-                                    <!-- <div class="caption" style="opacity:1;"> -->
-                                    <a class="btn btn-lg btn-block btn-primary" @click="fooddetail(item.code)">상품 정보로 이동 &nbsp; {{item.code}}</a>
-                                    <!-- </div> -->
-                                </div>
+                                <img :src="require('../' + item.img)" alt="item.name" width="300">
+                                    <div class="caption" style="opacity:1;">
+                                    <a class="btn btn-lg btn-block btn-primary" @click="fooddetail(item.code)">상품 정보로 이동 &nbsp;
+                                        {{item.code}}</a>
+                                    </div>
+                              
                             </div>
+                            <div style="width300px"></div>
+                         </span>
 
-                        </div>
+                        </span>
+                        <div  style="height:1000px; background-color: rgba( 255, 255, 255,0.5 );"></div>
                     </div>
-                </div>
+                <!-- </div> -->
 
             </div>
 
@@ -69,37 +72,20 @@
                 },
                 methods: {
                     searchfood() {
+                        
                         http
-                            .get("/findEmployeeById/" + this.cid)
-                            .then(response => (this.cemp = response.data))
-                            .catch(() => {
-                                this.errored = true;
-                            })
-                            . finally(() => (this.loading = false));
-
-                    },
-                    
-                    retrieveproduct() {
-
-                        http
-                            .get("/listfood")
+                            .get("/searchFoodByKeyword/" + this.selected + "/" + this.keyword)
+                            
                             .then(response => (this.list = response.data['list']))
                             .catch(() => {
                                 this.errored = true;
-
                             })
                             . finally(() => (this.loading = false));
 
                     },
-                    refreshList() {
-                        this.retrieveproduct();
-                    },
+
                     fooddetail: function (code) {
-                        //alert(bid + " 클릭했음");
                         App.code = code;
-                        // App.$router.push( { path: 'viewboard' }); 아래를 수정했다.
-                        // App.$router.push('/viewboard'); App.$router.push( {path:'viewboard'});
-                        // this.$router.push("/board-view/:App.bid" +  App.bid);
                         this
                             .$router
                             .push({
@@ -112,10 +98,15 @@
                 },
                 filters: {},
                 mounted() {
-                    this.retrieveproduct();
 
+                    http
+                        .get("/listfood")
+                        .then(response => (this.list = response.data['list']))
+                        .catch(() => {
+                            this.errored = true;
+                        })
+                        . finally(() => (this.loading = false));
                 }
             };
         </script>
-
         <style></style>
