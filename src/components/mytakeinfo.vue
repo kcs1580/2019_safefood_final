@@ -19,8 +19,8 @@
                                     name="keyword"
                                     placeholder="상품 이름을 입력하세요."
                                     size="80px;"></div>
-                                <button type="submit" class="btn btn-info">
-                                    검색</button>
+                                <div id="searchintake" class="btn btn-flat btn-info">
+                                    검색</div>
                             </form>
                         </div>
                         <div class="panel-body productPanel">
@@ -39,6 +39,14 @@
                                             <div style="width:300px;"></div>
                                         </span>
                                     </h1>
+                                    <div
+                                        id="insertintake"
+                                        class="btn btn-flat btn-info"
+                                        role="button"
+                                        @click="deleteintake(item.code)">
+                                        <i class="glyphicon glyphicon-tag"></i>
+                                        삭제
+                                    </div>
                                 </span>
                                 <div style="height:1000px; background-color: rgba( 255, 255, 255,0.5 );"></div>
                             </div>
@@ -56,6 +64,42 @@
                             return {upHere: false, list: [], sum: [], loading: true, errored: false};
                         },
                         methods: {
+                            searchintake(){
+                                http
+                            .get("/searchintake",{
+                                keyword: this.keyword,
+                                id: localStorage.getItem("id")
+
+                            })
+                            
+                            .then(response => (this.list = response.data['list']))
+                            .catch(() => {
+                                this.errored = true;
+                            })
+                            . finally(() => (this.loading = false));
+
+
+                            },
+                            deleteintake(dcode) {
+                                http
+                                    .delete("/deleteintake", {
+                                        code: dcode,
+                                        id: localStorage.getItem("id")
+                                    })
+                                    .then(response => {
+                                        if (response.data.state == "succ") {
+                                            alert("삭제 하였습니다.");
+                                            this.retrieveCustomers();
+                                        } else {
+                                            alert("삭제 하지 못했습니다.");
+                                        }
+                                    })
+                                    .catch(() => {
+                                        this.errored = true;
+                                    })
+                                    . finally(() => (this.loading = false));
+
+                            },
                             dynamicColors() {
                                 var r = Math.floor(Math.random() * 255);
                                 var g = Math.floor(Math.random() * 255);
