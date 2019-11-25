@@ -1,74 +1,74 @@
 <template>
     <div id="app">
         <header>
-            <nav class="navbar"> <a class="nav_btn"
-            href="http://localhost:8090">홈으로</a> <router-link class="nav_btn"
-            to="/listNotice">공지사항</router-link> <router-link class="nav_btn"
-            to="/productlist">상품정보</router-link>
-            <router-link class="nav_btn" to="/mytakeinfo">섭취정보</router-link> <router-link class="nav_btn"
-            to="/listBoard">질문게시판</router-link> <router-link class="nav_btn"
-            to="/signuppage">회원가입</router-link> <router-link class="nav_btn"
-            to="/Login">로그인</router-link> </nav> 
+            
             <nav class="navbar navbar-inverse navbar-fixed-top" style="height:100px;">
                 <div class="container-fluid">
                     <div class="navbar-header">
                         <div >
+                            <a class="nav_btn" href="http://localhost:8090">홈으로</a> |
                             <router-link class="nav_btn" to="/listNotice">공지사항</router-link> |
                             <router-link class="nav_btn" to="/productlist">상품정보</router-link> |
-							<router-link class="nav_btn" to="/listBoard">질문게시판</router-link>|
-                            <router-link class="nav_btn" to="/mytakeinfo">섭취정보</router-link>|
-                            <!-- <template v-if="isLogin">
-                                <router-link class="nav_btn" to="/listBoard">질문게시판</router-link>
-                                <router-link class="nav_btn" to="/mytakeinfo">섭취정보</router-link>
-                            </template> -->
+                            <template v-if="isLogin">
+                                <router-link class="nav_btn" to="/listBoard">질문게시판</router-link> |
+                                <router-link class="nav_btn" to="/mytakeinfo">섭취정보</router-link> | 
+                            </template>
+                            <template v-if="!isLogin">
+                            <router-link class="nav_btn" to="/signuppage">회원가입</router-link> | 
+                            </template>
+                          
 
                             <template v-if="isLogin">
-                                <p id="loginUser">{{userInfo.name}}님 환영합니다.</p>
+                                <p id="loginUser" style="color:red">{{userInfo}}님 환영합니다.</p>
                             </template>
-                            <router-link class="nav_btn" to="/signuppage">회원가입</router-link>
-                            <template v-if="!isLogin">
-                                        <li class="dropdown" v-bind:class="{ 'open': loginPopup }">
-                                            <a class="btn btn-sm dropdown-toggle" href="#" @click="loginPopupfunc()" data-toggle="dropdown">
-                                                <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
-                                                <span>&nbsp;Login</span>
-                                            </a>
-                                            <div class="dropdown-menu" style="padding: 17px;" >
-                                                <form @submit.prevent="loginfunc()">
-                                                    <div class="form-group">
-                                                        <label for="id">아이디</label>
-                                                        <input
-                                                            type="text"
-                                                            v-model="id"
-                                                            class="form-control"
-                                                            id="id"
-                                                            name="id"
-                                                            placeholder="ID"
-                                                            autocomplete="off"></div>
-                                                        <div class="form-group">
-                                                            <label for="pw">패스워드</label>
-                                                            <input
-                                                                type="password"
-                                                                v-model="pw"
-                                                                class="form-control"
-                                                                id="pw"
-                                                                name="pw"
-                                                                placeholder="Password"></div>
-                                                            <div class="form-group">
-                                                                <button type="submit" class="btn btn-block btn-primary">로그인</button>
-                                                            </div>
-                                                        </form>
 
+                            <template v-if="!isLogin">
+                                <li class="dropdown" v-bind:class="{ 'open': loginPopup }">
+                                    <a
+                                        class="btn btn-sm dropdown-toggle"
+                                        href="#"
+                                        @click="loginPopupfunc()"
+                                        data-toggle="dropdown">
+                                        <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+                                        <span>&nbsp;Login</span>
+                                    </a>
+                                    <div class="dropdown-menu" style="padding: 17px;">
+                                        <form @submit.prevent="loginfunc()">
+                                            <div class="form-group">
+                                                <label for="id">아이디</label>
+                                                <input
+                                                    type="text"
+                                                    v-model="id"
+                                                    class="form-control"
+                                                    id="id"
+                                                    name="id"
+                                                    placeholder="ID"
+                                                    autocomplete="off"></div>
+                                                <div class="form-group">
+                                                    <label for="pw">패스워드</label>
+                                                    <input
+                                                        type="password"
+                                                        v-model="pw"
+                                                        class="form-control"
+                                                        id="pw"
+                                                        name="pw"
+                                                        placeholder="Password"></div>
+                                                    <div class="form-group">
+                                                        <button type="submit" class="btn btn-block btn-primary">로그인</button>
                                                     </div>
-                                            </li>
+                                                </form>
+
+                                            </div>
+                                        </li>
                                     </template>
 
                                     <template v-if="isLogin">
-                                        <li @click="$store.dispatch('logout')">
+                                        <button @click="logoutfunc">
                                             <a class="btn btn-sm">
                                                 <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
                                                 <span>&nbsp;Logout</span>
                                             </a>
-                                        </li>
+                                        </button>
 
                                         <li>
                                             <ul class="nav navbar-nav pull-right">
@@ -113,17 +113,26 @@
                 </div>
             </template>
 
-
-
             <script>
-                import {mapState, mapActions} from "vuex"
+                import {mapActions} from "vuex"
+                import Store from "./store"
                 export default {
                     name: "app",
                     data() {
                         return {id: null, pw: null, loginPopup: false}
                     },
                     computed: {
-                        ...mapState(['isLogin', 'isLoginError', 'userInfo'])
+                        // ...mapState(['isLogin', 'isLoginError', 'userInfo']),
+                        isLogin() {
+                            return Store.state.isLogin;
+                        },
+                        isLoginError() {
+                            return Store.state.isLogin;
+                        },
+                        userInfo() {
+                            return Store.state.userInfo.name;
+                        }
+
                     },
                     methods: {
                         ...mapActions(['login']),
@@ -140,10 +149,22 @@
                             window
                                 .console
                                 .log({id: this.id, pw: this.pw})
-                            this.login({id: this.id, pw: this.pw})
+                            //this.login({id: this.id, pw: this.pw})
+                            Store.dispatch('login', {
+                                id: this.id,
+                                pw: this.pw
+                            })
                             this.id = ''
                             this.pw = null
                             this.loginPopupfunc()
+                            this.isLogin = true;
+                            this.userInfo = this.id;
+
+                        }, logoutfunc() {
+                            Store.dispatch('logout');
+                            this.id = ''
+                            this.pw = null
+                            this.isLogin = false;
                         },
                         loginPopupfunc() {
                             this.loginPopup = (
@@ -155,6 +176,10 @@
                                 .console
                                 .log(this.loginPopup)
                         }
+                    },
+
+                    mounted() {
+                        this.isLogin = false;
                     }
                 }
             </script>
@@ -181,61 +206,63 @@
                     padding: 15px;
                     margin: 0;
                 }
-				
-    .material {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        height: 120px;
-    }
 
-    .jumbotron {
-        background-color: #eef8ff;
-        text-align: center;
-        padding: 20px;
-        box-shadow: 0 10px 6px -6px #999;
-    }
+                .material {
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    height: 120px;
+                }
 
-    div.ex {
-        background-color: #ccc;
-        width: 600px; 
-        padding: 50px;
-        border-style: outset;
-        margin: 70px auto;
-    }
+                .jumbotron {
+                    background-color: #eef8ff;
+                    text-align: center;
+                    padding: 20px;
+                    box-shadow: 0 10px 6px -6px #999;
+                }
 
-    .form-group .control-label:after {
-        content: "*";
-        color: red;
-    }
+                div.ex {
+                    background-color: #ccc;
+                    width: 600px;
+                    padding: 50px;
+                    border-style: outset;
+                    margin: 70px auto;
+                }
 
-    th, td {
-        vertical-align: middle !important;
-    }
+                .form-group .control-label:after {
+                    content: "*";
+                    color: red;
+                }
 
-    th {
-        white-space: nowrap;
-        text-align: center;
-    }
+                td,
+                th {
+                    vertical-align: middle !important;
+                }
 
-    input[type=password]{
-		font-family: auto;
-	}
-	
-	#loginUser{
-		color: white;
-		padding: 15px;
-		margin: 0px;
-	}
-	
-	.dropdown-menu{
-		width:350px;
-    }
+                th {
+                    white-space: nowrap;
+                    text-align: center;
+                }
 
-    html, body{
-        height: 100%;
-    }
-    
-    .container{
-        min-height: 70%;
-    }
+                input[type=password] {
+                    font-family: auto;
+                }
+
+                #loginUser {
+                    color: white;
+                    padding: 15px;
+                    margin: 0;
+                }
+
+                .dropdown-menu {
+                    width: 350px;
+                }
+
+                body,
+                html {
+                    height: 100%;
+                }
+
+                .container {
+                    min-height: 70%;
+                }
             </style>

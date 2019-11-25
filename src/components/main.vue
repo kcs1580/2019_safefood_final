@@ -22,7 +22,7 @@
             <div
                 v-show="is_show"
                 style="background:white; opacity:0.9; height:auto; width:auto; float:right">
-                <img :src="require('../' + recommend.img)" width="200">
+                <!-- <img :src="require('../' + recommend.img)" width="200">  이거 임시로 주석! -->
                     <table class="table table-hover">
                         <tr>
                             <th>제품명</th>

@@ -22,7 +22,7 @@ export default new Vuex.Store({
             state.isLogin = true
             state.isLoginError = false
             state.userInfo.id = loginInfo.id
-            state.userInfo.name = loginInfo.name
+            state.userInfo.name = loginInfo.mname
             state.userInfo.addr = loginInfo.addr
             state.userInfo.tel = loginInfo.tel
             state.userInfo.allergy = loginInfo.allergy
@@ -52,18 +52,22 @@ export default new Vuex.Store({
             http
             .get("/memlist/" + loginObj.id)
             .then(response => {
-                if(response.data.resvalue.pw == loginObj.pw){
+                if(response.data.resvalue.password == loginObj.pw){
                     commit("loginSuccess", response.data.resvalue)
                     router.push("/").catch(err => {err})
+                    alert(response.data.resvalue.mname +" 님이 로그인 하셨습니다.")
                 }else{
                     commit("loginError")
+                    alert("로그인 실패!!1")
                 }
             })
             .catch(() => {
                 commit("loginError")
+                alert("로그인 실패!!1")
             })
         },
         logout({commit}){
+            alert("로그아웃햇지")
             commit("logout")
             router.push("/").catch(err => {err})
         }
