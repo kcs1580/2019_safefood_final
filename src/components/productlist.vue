@@ -84,14 +84,14 @@
 
                     },
 
-                    fooddetail: function (code) {
-                        App.code = code;
+                    fooddetail: function (ccode) {
+                        App.code = ccode;
                         this
                             .$router
                             .push({
                                 name: 'productdetail',
                                 params: {
-                                    code: App.code
+                                    code: ccode
                                 }
                             });
                     }
