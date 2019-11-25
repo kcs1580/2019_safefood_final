@@ -66,11 +66,8 @@
                         methods: {
                             searchintake(){
                                 http
-                            .get("/searchintake",{
-                                keyword: this.keyword,
-                                id: localStorage.getItem("id")
-
-                            })
+                            .get("/searchintake/"+this.keyword+"/"+localStorage.getItem("id"))
+                            
                             
                             .then(response => (this.list = response.data['list']))
                             .catch(() => {
