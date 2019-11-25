@@ -15,17 +15,19 @@
                         <div >
                             <router-link class="nav_btn" to="/listNotice">공지사항</router-link> |
                             <router-link class="nav_btn" to="/productlist">상품정보</router-link> |
-                            <template v-if="isLogin">
+							<router-link class="nav_btn" to="/listBoard">질문게시판</router-link>|
+                            <router-link class="nav_btn" to="/mytakeinfo">섭취정보</router-link>|
+                            <!-- <template v-if="isLogin">
                                 <router-link class="nav_btn" to="/listBoard">질문게시판</router-link>
                                 <router-link class="nav_btn" to="/mytakeinfo">섭취정보</router-link>
-                            </template>
+                            </template> -->
 
                             <template v-if="isLogin">
                                 <p id="loginUser">{{userInfo.name}}님 환영합니다.</p>
                             </template>
                             <router-link class="nav_btn" to="/signuppage">회원가입</router-link>
                             <template v-if="!isLogin">
-                                        <div class="dropdown" v-bind:class="{ 'open': loginPopup }">
+                                        <li class="dropdown" v-bind:class="{ 'open': loginPopup }">
                                             <a class="btn btn-sm dropdown-toggle" href="#" @click="loginPopupfunc()">
                                                 <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
                                                 <span>&nbsp;Login</span>
@@ -57,7 +59,7 @@
                                                         </form>
 
                                                     </div>
-                                            </div>
+                                            </li>
                                     </template>
 
                                     <template v-if="isLogin">
