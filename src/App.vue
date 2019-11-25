@@ -28,11 +28,11 @@
                             <router-link class="nav_btn" to="/signuppage">회원가입</router-link>
                             <template v-if="!isLogin">
                                         <li class="dropdown" v-bind:class="{ 'open': loginPopup }">
-                                            <a class="btn btn-sm dropdown-toggle" href="#" @click="loginPopupfunc()">
+                                            <a class="btn btn-sm dropdown-toggle" href="#" @click="loginPopupfunc()" data-toggle="dropdown">
                                                 <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
                                                 <span>&nbsp;Login</span>
                                             </a>
-                                            <div class="dropdown-menu" style="padding: 17px;">
+                                            <div class="dropdown-menu" style="padding: 17px;" >
                                                 <form @submit.prevent="loginfunc()">
                                                     <div class="form-group">
                                                         <label for="id">아이디</label>
