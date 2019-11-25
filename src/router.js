@@ -74,9 +74,10 @@ export default new Router({
             name: 'productlist',
             component: productlist
         },{
-          path: '/productdetail',
+          path: '/productdetail/:code',
           name: 'productdetail',
-          component: productdetail
+          component: productdetail,
+          props:true
       }, 
         {
             path: '/updatemem',

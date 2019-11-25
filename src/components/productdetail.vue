@@ -52,7 +52,9 @@
 
                     <hr style="margin-bottom: 40px;">
                         <div class="row">
-                            <div class="col-sm-8"></div>
+                            <div class="col-sm-8">
+                                <canvas id="myChart2" class=""></canvas>
+                            </div>
 
                             <div class="col-sm-4">
                                 <table class="table">
@@ -113,29 +115,109 @@
 
                 <script>
                     import http from "../http-common";
-                    import App from "../App.vue";
+                    // import App from "../App.vue";
+                    import Chart from 'chart.js';
                     export default {
+                        props:['code'],
                         name: "productdetail",
                         data() {
-                            return {upHere: false, food: [], loading: true, errored: false};
+                            return {
+                                upHere: false,
+                                food: [],
+                                list: [],
+                                sum: [],
+                                loading: true,
+                                errored: false
+                            };
                         },
                         methods: {
+                            dynamicColors() {
+                                var r = Math.floor(Math.random() * 255);
+                                var g = Math.floor(Math.random() * 255);
+                                var b = Math.floor(Math.random() * 255);
+                                return "rgba(" + r + "," + g + "," + b + ",0.8)";
+                            },
+                            drawchart() {
+                                
+                                const myChart = new Chart("myChart2", {
+                                    type: 'doughnut',
+                                    data: {
+                                        labels: [
+                                            "칼로리",
+                                            "탄수화물",
+                                            "단백질",
+                                            "지방",
+                                            "당류",
+                                            "나트륨",
+                                            "콜레스테롤",
+                                            "포화 지방산",
+                                            "트랜스지방"
+                                        ],
+                                        datasets: [
+                                            {
+                                                label: '# of Votes',
+                                                data: [
+                                                    this.food.calory,
+                                                    this.food.carbo,
+                                                    this.food.protein,
+                                                    this.food.fat,
+                                                    this.food.sugar,
+                                                    this.food.natrium,
+                                                    this.food.chole,
+                                                    this.food.fattyacid,
+                                                    this.food.transfat
+                                                ],
+                                                backgroundColor: [
+                                                    this.dynamicColors(),
+                                                    this.dynamicColors(),
+                                                    this.dynamicColors(),
+                                                    this.dynamicColors(),
+                                                    this.dynamicColors(),
+                                                    this.dynamicColors(),
+                                                    this.dynamicColors(),
+                                                    this.dynamicColors(),
+                                                    this.dynamicColors()
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    options: {
+                                        maintainAspectRatio: true,
+                                        scales: {
+                                            yAxes: [
+                                                {
+                                                    ticks: {
+                                                        beginAtZero: true
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                });
+                                myChart;
+
+                            },
                             infofood() {
                                 http
-                                    .get("/infofood/" + App.code)
+                                    .get("/infofood/" + this.code)
                                     .then(response => {
                                         this.food = response.data.food;
+
+                                        this.drawchart();
+
                                     })
                                     .catch(() => {
-                                        alert("fail"+App.code);
+                                        alert("fail" + this.code);
                                         this.errored = true;
                                     })
                                     . finally(() => (this.loading = false));
                             }
                         },
+
                         filters: {},
                         mounted() {
                             this.infofood();
+
                         }
                     };
                 </script>
