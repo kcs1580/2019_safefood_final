@@ -48,7 +48,7 @@ export default {
 			ccontent:'',
 			ccount:0,
 			cid:'',
-			cuser_id:'orora@com',
+			cuser_id: localStorage.getItem("id"),
 			submitted: false,
 
       upHere: false,
@@ -68,6 +68,7 @@ export default {
 			this.board = response.data.resvalue;
 			this.cid = this.board.bid;
 			this.ctitle = this.board.btitle;
+
 			this.ccontent = this.board.bcontent;
 			})
         .catch(() => {

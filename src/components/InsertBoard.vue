@@ -64,7 +64,6 @@ export default {
 			ccontent:'',
 			ccount:0,
 			cid:'',
-			cuser_id:'orora@com',
 			submitted: false
 		};
 	},
@@ -86,7 +85,7 @@ export default {
 			btitle: this.ctitle,
 			bcontent: this.ccontent,
 			bcount: this.bcount,
-			user_id: this.cuser_id
+			user_id: localStorage.getItem("id")
 		} 
 		).then(response => {
 				if (response.data.state==0) {

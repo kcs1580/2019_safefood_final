@@ -12,8 +12,10 @@
 				{{board.bcontent }}
 			</div>
 			<div class="panel-footer text-right" >
+        <template v-if="usercheck()">
 				<button class="btn btn-info btn-flat" @click="edit()">수정</button>
         <button class="btn btn-danger btn-fla" @click="remove()">삭제</button>
+        </template>
         <button class="btn btn-primary btn-flatt" @click="backtolist()">목록</button>
 			</div>
 		</div>
@@ -35,6 +37,12 @@ export default {
     };
   },
   methods: {
+    usercheck(){
+      if(localStorage.getItem("id") == this.board.user_id)
+        return true;
+      else 
+        return false;
+    },
 	showlist() {      
 			this.$router.push("/listBoard");
     },
@@ -56,7 +64,7 @@ export default {
     remove(){    
       alert(App.bid + "번 게시물 삭제합니다.");
       http
-        .delete("/deleteboard/" + App.bid+"/orora@com")
+        .delete("/deleteboard/" + App.bid+"/"+localStorage.getItem("id"))
         .then(response => {
           if (response.data.state == "succ") {
 			alert("게시글 삭제를 하였습니다.");

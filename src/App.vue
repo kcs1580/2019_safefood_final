@@ -9,20 +9,20 @@
                             <a class="nav_btn" href="http://localhost:8090">홈으로</a> |
                             <router-link class="nav_btn" to="/listNotice">공지사항</router-link> |
                             <router-link class="nav_btn" to="/productlist">상품정보</router-link> |
-                            <template v-if="isLogin">
+                            <template v-if="sessionCheck()">
                                 <router-link class="nav_btn" to="/listBoard">질문게시판</router-link> |
                                 <router-link class="nav_btn" to="/mytakeinfo">섭취정보</router-link> | 
                             </template>
-                            <template v-if="!isLogin">
+                            <template v-if="!sessionCheck()">
                             <router-link class="nav_btn" to="/signuppage">회원가입</router-link> | 
                             </template>
                           
 
-                            <template v-if="isLogin">
+                            <template v-if="sessionCheck()">
                                 <p id="loginUser" style="color:red">{{userInfo}}님 환영합니다.</p>
                             </template>
 
-                            <template v-if="!isLogin">
+                            <template v-if="!sessionCheck()">
                                 <li class="dropdown" v-bind:class="{ 'open': loginPopup }">
                                     <a
                                         class="btn btn-sm dropdown-toggle"
@@ -62,7 +62,7 @@
                                         </li>
                                     </template>
 
-                                    <template v-if="isLogin">
+                                    <template v-if="sessionCheck()">
                                         <button @click="logoutfunc">
                                             <a class="btn btn-sm">
                                                 <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
@@ -127,7 +127,7 @@
                             return Store.state.isLogin;
                         },
                         userInfo() {
-                            return Store.state.userInfo.name;
+                            return localStorage.getItem("id");
                         }
 
                     },
@@ -157,6 +157,11 @@
                             this.isLogin = true;
                             this.userInfo = this.id;
 
+                        },sessionCheck(){
+                            if(localStorage.getItem("id") != null)
+                                return true;
+                                
+                            else return false;
                         }, logoutfunc() {
                             Store.dispatch('logout');
                             this.id = ''

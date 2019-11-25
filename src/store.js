@@ -32,6 +32,7 @@ export default new Vuex.Store({
             state.userInfo.addr = loginInfo.addr
             state.userInfo.tel = loginInfo.tel
             state.userInfo.allergy = loginInfo.allergy
+            localStorage.setItem("id",loginInfo.id)
             window.console.log(state.userInfo)
         },
         //로그인 실패
@@ -49,6 +50,7 @@ export default new Vuex.Store({
                 tel: '',
                 allergy: ''
             }
+           
             window.console.log("로그아웃")
         }
     },
@@ -77,6 +79,8 @@ export default new Vuex.Store({
         logout({commit}){
             //this.$session.destroy()
             alert("로그아웃햇지")
+            localStorage.removeItem("id")
+         
             commit("logout")
             router.push("/").catch(err => {err})
         }
