@@ -138,8 +138,7 @@
                                 return "rgba(" + r + "," + g + "," + b + ",0.8)";
                             },
                             drawchart() {
-                                
-                                const myChart = new Chart("myChart2", {
+                                const myChart2 = new Chart("myChart2", {
                                     type: 'doughnut',
                                     data: {
                                         labels: [
@@ -194,7 +193,7 @@
                                         }
                                     }
                                 });
-                                myChart;
+                                myChart2;
 
                             },
                             infofood() {
@@ -202,7 +201,7 @@
                                     .get("/infofood/" + this.code)
                                     .then(response => {
                                         this.food = response.data.food;
-
+                                    
                                         this.drawchart();
 
                                     })
