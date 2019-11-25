@@ -2,8 +2,14 @@ import Vue from "vue"
 import Vuex from "vuex"
 import router from "./router"
 import http from "./http-common";
+import VueSession from 'vue-session'
+Vue.use(VueSession)
 Vue.use(Vuex)
+var options = {
+    persist: true
+}
 
+Vue.use(VueSession, options)
 export default new Vuex.Store({
     state: {
         userInfo: {
@@ -54,6 +60,8 @@ export default new Vuex.Store({
             .then(response => {
                 if(response.data.resvalue.password == loginObj.pw){
                     commit("loginSuccess", response.data.resvalue)
+                    //VueSession.start()
+                    //VueSession.set('jwt', "토큰토큰")
                     router.push("/").catch(err => {err})
                     alert(response.data.resvalue.mname +" 님이 로그인 하셨습니다.")
                 }else{
@@ -67,6 +75,7 @@ export default new Vuex.Store({
             })
         },
         logout({commit}){
+            //this.$session.destroy()
             alert("로그아웃햇지")
             commit("logout")
             router.push("/").catch(err => {err})

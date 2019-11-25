@@ -69,8 +69,6 @@
                                                 <span>&nbsp;Logout</span>
                                             </a>
                                         </button>
-
-                                        <li>
                                             <ul class="nav navbar-nav pull-right">
                                                 <li class="dropdown">
                                                     <a class="btn btn-sm dropdown-toggle" href="#" data-toggle="dropdown">
@@ -84,7 +82,6 @@
                                                     </div>
                                                 </li>
                                             </ul>
-                                        </li>
                                     </template>
 
                                 </div>
