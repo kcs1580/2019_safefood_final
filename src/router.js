@@ -17,6 +17,8 @@ import updateMember from "./components/updateMember.vue";
 import productdetail from "./components/productdetail.vue";
 //import ChartPieCustomer2 from "./components/ChartPieCustomer2.vue";
 import VueSlideUpDown from 'vue-slide-up-down'
+import banner from "./components/banner.vue";
+
 
 Vue.component('vue-slide-up-down', VueSlideUpDown)
 Vue.use(Router);
@@ -89,6 +91,11 @@ export default new Router({
             path: '/mytakeinfo',
             name: 'mytakeinfo',
             component: mytakeinfo
+
+        }, {
+            path: '/banner',
+            name: 'banner',
+            component: banner
 
         }
 
