@@ -34,14 +34,14 @@
                             <span class="input-group-addon" id="basic-addon1">검색 빈도수</span>
                             <input type="text" class="form-control" placeholder="food.searchCount">
                                 <span class="input-group-btn">
-                                    <a href="" id="insertintake" class="btn btn-flat btn-info" role="button">
+                                    <div id="insertintake" class="btn btn-flat btn-info" role="button" @click="insertintake()">
                                         <i class="glyphicon glyphicon-tag"></i>
                                         추가
-                                    </a>
-                                    <a href="#" class="btn btn-flat btn-info" role="button">
+                                    </div>
+                                    <div class="btn btn-flat btn-info" role="button">
                                         <i class="glyphicon glyphicon-tag"></i>
                                         찜
-                                    </a>
+                                    </div>
                                 </span>
                             </div>
                             <div class="btn-group" role="group"></div>
@@ -127,7 +127,10 @@
                                 list: [],
                                 sum: [],
                                 loading: true,
-                                errored: false
+                                errored: false,
+                                id: 'orora@com',
+                                icount:0
+                                
                             };
                         },
                         methods: {
@@ -211,6 +214,29 @@
                                         this.errored = true;
                                     })
                                     . finally(() => (this.loading = false));
+                            },
+                            insertintake() {
+                                this.user_id='orora@com';
+                                
+                                http
+                                    .post("/insertintake",{
+                                        code: this.food.code,
+                                        id: this.user_id
+                                    })
+                                    .then(response => {
+                                        this.res = response.data.resvalue;
+                                       
+
+                                       
+                                        alert(this.food.code+" "+this.user_id);
+
+                                    })
+                                    .catch(() => {
+                                        alert("fail" +this.user_id+" "+this.food.code)
+                                        this.errored = true;
+                                    })
+                                    . finally(() => (this.loading = false));
+
                             }
                         },
 
