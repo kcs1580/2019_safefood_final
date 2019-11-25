@@ -16,12 +16,14 @@ import productlist from "./components/productlist.vue";
 import updateMember from "./components/updateMember.vue";
 import productdetail from "./components/productdetail.vue";
 //import ChartPieCustomer2 from "./components/ChartPieCustomer2.vue";
+import VueSlideUpDown from 'vue-slide-up-down'
+
+Vue.component('vue-slide-up-down', VueSlideUpDown)
 Vue.use(Router);
 
 export default new Router({
     mode: "history",
     routes: [
-     
         {
             path: '/',
             name: 'main',
