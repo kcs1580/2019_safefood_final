@@ -1,14 +1,14 @@
 <template>
     <div id="app">
         <header>
-            <!-- <nav class="navbar"> <a class="nav_btn"
+            <nav class="navbar"> <a class="nav_btn"
             href="http://localhost:8090">홈으로</a> <router-link class="nav_btn"
             to="/listNotice">공지사항</router-link> <router-link class="nav_btn"
-            to="/productlist">상품정보</router-link> <router-link class="nav_btn"
-            to="/mytakeinfo">섭취정보</router-link> <router-link class="nav_btn"
+            to="/productlist">상품정보</router-link>
+            <router-link class="nav_btn" to="/mytakeinfo">섭취정보</router-link> <router-link class="nav_btn"
             to="/listBoard">질문게시판</router-link> <router-link class="nav_btn"
             to="/signuppage">회원가입</router-link> <router-link class="nav_btn"
-            to="/Login">로그인</router-link> </nav> -->
+            to="/Login">로그인</router-link> </nav> 
             <nav class="navbar navbar-inverse navbar-fixed-top" style="height:100px;">
                 <div class="container-fluid">
                     <div class="navbar-header">

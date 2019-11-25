@@ -14,7 +14,7 @@ import main from "./components/main.vue";
 import signUp from "./components/signUp.vue";
 import productlist from "./components/productlist.vue";
 import updateMember from "./components/updateMember.vue";
-
+import productdetail from "./components/productdetail.vue";
 //import ChartPieCustomer2 from "./components/ChartPieCustomer2.vue";
 Vue.use(Router);
 
@@ -73,7 +73,12 @@ export default new Router({
             path: '/productlist',
             name: 'productlist',
             component: productlist
-        }, {
+        },{
+          path: '/productdetail',
+          name: 'productdetail',
+          component: productdetail
+      }, 
+        {
             path: '/updatemem',
             name: 'updatemem',
             component: updateMember
