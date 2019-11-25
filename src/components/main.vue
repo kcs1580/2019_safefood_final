@@ -14,7 +14,7 @@
                 |
                 <router-link class="nav_btn1" to="/signuppage">회원가입</router-link>
                 |
-                <button @click="modal_recommend" type="button">오늘 뭐먹징?</button>
+                <button @click="modal_recommend " type="button">오늘 뭐먹징?</button>
 
                 <!-- #2 : Modal Window -->
 
@@ -88,6 +88,7 @@
         </script>
         <style>
             /* 배경화면 조정하는 css #bg랑 body, html */
+
             #bg {
                 position: fixed;
                 top: 0;
