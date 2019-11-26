@@ -2,14 +2,9 @@ import Vue from "vue"
 import Vuex from "vuex"
 import router from "./router"
 import http from "./http-common";
-import VueSession from 'vue-session'
-Vue.use(VueSession)
-Vue.use(Vuex)
-var options = {
-    persist: true
-}
 
-Vue.use(VueSession, options)
+Vue.use(Vuex)
+
 export default new Vuex.Store({
     state: {
         userInfo: {
