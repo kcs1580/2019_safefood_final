@@ -25,7 +25,8 @@
 					
 					<div class="row">
 						<div class="col-sm-12 text-right">
-								<button type="submit" class="btn btn-info btn-flat">글쓰기</button>
+								<button type="submit" class="btn btn-info btn-flat">수정</button>
+								
 								<!-- <a href="" @click="showinsert()" class="btn btn-info btn-flat">글쓰기</a> -->
 						</div>
 					</div>

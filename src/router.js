@@ -62,7 +62,8 @@ export default new Router({
             path: "/viewBoard",
             name: "viewBoard",
             alias: "/viewBoard",
-            component: viewBoard
+            component: viewBoard,
+            props: true
 
         }, {
             path: '/updateboard',
