@@ -84,7 +84,7 @@
                                                 <span >&nbsp;Logout</span>
                                             </a>
                                         </button>
-                                        <button @click="logoutfunc">
+                                        <button @click="memupdatefunc">
                                             <a class="btn btn-sm btn-dark">
                                                 <span >&nbsp;회원정보 수정</span>
                                             </a>
@@ -94,52 +94,7 @@
                                 </div>
 
                             </template>
-                            <!-- <template v-if="!sessionCheck()">
-                                <div
-                                    class="dropdown"
-                                    v-bind:class="loginPopup"
-                                    style="left:1000px; width:100px; ">
-                                    <div
-                                        class="btn dropdown-toggle"
-                                        href="#"
-                                        @click="loginPopupfunc()"
-                                        data-toggle="dropdown">
-                                        <span style="color:red;">
-                                            <i class="fas fa-user fa-2x" style="color:black; "></i>
-                                        </span>
-                                    </div>
-                                    <div class="dropdown-menu" style="padding: 17px; float:right;">
-                                        <form @submit.prevent="loginfunc()">
-                                            <div class="form-group">
-                                                <label for="id">아이디</label>
-                                                <input
-                                                    type="text"
-                                                    v-model="id"
-                                                    class="form-control"
-                                                    id="id"
-                                                    name="id"
-                                                    placeholder="ID"
-                                                    autocomplete="off"></div>
-                                                <div class="form-group">
-                                                    <label for="pw">패스워드</label>
-                                                    <input
-                                                        type="password"
-                                                        v-model="pw"
-                                                        class="form-control"
-                                                        id="pw"
-                                                        name="pw"
-                                                        placeholder="Password"></div>
-                                                    <div class="form-group">
-                                                        <button type="submit" class="btn btn-block btn-primary">로그인</button>
-                                                        <template v-if="!sessionCheck()">
-                                                            <router-link class="btn btn-block btn-danger" to="/signuppage">회원가입</router-link>
-                                                        </template>
-                                                    </div>
-                                                </form>
-
-                                            </div>
-                                        </div>
-                                    </template> -->
+            
 
                                 </div>
                             </div>
@@ -227,6 +182,9 @@ else
                                     return false;
                                 }
                             ,
+                            memupdatefunc(){
+                                this.$router.push('/updatemem');
+                            },
                             logoutfunc() {
                                 Store.dispatch('logout');
                                 this.id = ''

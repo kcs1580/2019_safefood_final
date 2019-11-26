@@ -75,7 +75,7 @@
 			</div>
 			<div class="form-group">
 				<div class="col-lg-offset-2 col-lg-10">
-					<button type="submit" class="btn btn-primary">가입하기</button>
+					<button type="submit" class="btn btn-primary">수정하기</button>
 				</div>
 			</div>
 		</form>
@@ -114,7 +114,7 @@ export default {
 	},
 	infomem(){
 		http
-		.get("http://localhost:8090/api/memlist/"+"12@12")
+		.get("http://localhost:8090/api/memlist/"+this.member.id)
         .then(response => {
 			this.member = response.data.resvalue;
 			this.cid = this.member.id;
@@ -159,7 +159,7 @@ export default {
 
 <style scoped>
 #outex{
-    width: 100%;
+    width: 500px;
     text-align: left;
     padding: 50px 650px;
     font-size: 20px;
@@ -167,8 +167,8 @@ export default {
 }
 .ex{
  display: inline-block;
- height:800px; 
- width:650px;
+ height:900px; 
+ width:800px;
  background-color: white;
  opacity: 0.9;
 }
