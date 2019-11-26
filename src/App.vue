@@ -1,27 +1,43 @@
 <template>
     <div id="app">
+        <div id="main">
+            <!-- <nav v-bind:class="active" v-on:click.prevent> <a href="#" class="home"
+            v-on:click="makeActive('home')">Home</a> <a href="#" class="projects"
+            v-on:click="makeActive('projects')">Projects</a> <a href="#" class="services"
+            v-on:click="makeActive('services')">Services</a> <a href="#" class="contact"
+            v-on:click="makeActive('contact')">Contact</a> </nav> -->
+        </div>
+
+        <div class="resource"></div>
         <header>
-            
+
             <nav class="navbar navbar-inverse navbar-fixed-top" style="height:100px;">
                 <div class="container-fluid">
                     <div class="navbar-header">
                         <div >
-                            <a class="nav_btn" href="http://localhost:8090">홈으로</a> |
-                            <router-link class="nav_btn" to="/listNotice">공지사항</router-link> |
-                            <router-link class="nav_btn" to="/productlist">상품정보</router-link> |
+                            <a class="nav_btn" href="http://localhost:8090">홈으로</a>
+                            |
+                            <router-link class="nav_btn" to="/listNotice">공지사항</router-link>
+                            |
+                            <router-link class="nav_btn" to="/productlist">상품정보</router-link>
+                            |
                             <template v-if="sessionCheck()">
-                                <router-link class="nav_btn" to="/listBoard">질문게시판</router-link> |
-                                <router-link class="nav_btn" to="/mytakeinfo">섭취정보</router-link> | 
+                                <router-link class="nav_btn" to="/listBoard">질문게시판</router-link>
+                                |
+                                <router-link class="nav_btn" to="/mytakeinfo">섭취정보</router-link>
+                                |
                             </template>
                             <template v-if="!sessionCheck()">
-                            <router-link class="nav_btn" to="/signuppage">회원가입</router-link> | 
-                            </template>
-                          
-
-                            <template v-if="sessionCheck()">
-                                <p id="loginUser" style="color:red">{{userInfo}}님 환영합니다.</p>
+                                <router-link class="nav_btn" to="/signuppage">회원가입</router-link>
+                                |
                             </template>
 
+                            <div style="float: right; ">
+                                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                                <template v-if="sessionCheck()">
+                                    <p class="glyphicon glyphicon-user" id="loginUser" style="color:red; font-size:15px;">{{userInfo}}님 환영합니다.</p>
+                                </template>
+                            </div>
                             <template v-if="!sessionCheck()">
                                 <li class="dropdown" v-bind:class="{ 'open': loginPopup }">
                                     <a
@@ -69,19 +85,7 @@
                                                 <span>&nbsp;Logout</span>
                                             </a>
                                         </button>
-                                            <ul class="nav navbar-nav pull-right">
-                                                <li class="dropdown">
-                                                    <a class="btn btn-sm dropdown-toggle" href="#" data-toggle="dropdown">
-                                                        <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
-                                                        <span>&nbsp;menu</span>
-                                                    </a>
 
-                                                    <div class="dropdown-menu" style="padding: 17px;">
-                                                        <a href="/member/infomem?pid=${loginid }" class="btn btn-block btn-info">회원정보 수정
-                                                        </a>
-                                                    </div>
-                                                </li>
-                                            </ul>
                                     </template>
 
                                 </div>
@@ -115,7 +119,9 @@
                 import Store from "./store"
                 export default {
                     name: "app",
+                    el: '#main',
                     data() {
+                        // active: 'home';
                         return {id: null, pw: null, loginPopup: false}
                     },
                     computed: {
@@ -132,6 +138,9 @@
 
                     },
                     methods: {
+                        makeActive: function (item) {
+                            this.active = item;
+                        },
                         ...mapActions(['login']),
                         loginfunc() {
                             if (this.id == '') {
@@ -157,12 +166,16 @@
                             this.isLogin = true;
                             this.userInfo = this.id;
 
-                        },sessionCheck(){
-                            if(localStorage.getItem("id") != null)
+                        },
+                        sessionCheck() {
+                            if (localStorage.getItem("id") != null) 
                                 return true;
-                                
-                            else return false;
-                        }, logoutfunc() {
+                            
+else 
+                                return false;
+                            }
+                        ,
+                        logoutfunc() {
                             Store.dispatch('logout');
                             this.id = ''
                             this.pw = null
@@ -266,5 +279,85 @@
 
                 .container {
                     min-height: 70%;
+                }
+
+                * {
+                    margin: 0;
+                    padding: 0;
+                }
+
+                a,
+                a:visited {
+                    outline: none;
+                    color: rgba(255, 255, 255,0.8);
+                }
+
+                a:hover {
+                    text-decoration: none;
+                }
+
+                aside,
+                footer,
+                header,
+                nav,
+                section {
+                    display: block;
+                }
+
+                /*-------------------------
+    The menu
+--------------------------*/
+
+                nav {
+                    display: inline-block;
+                    margin: 120px auto 100px;
+                    background-color: rgba(0, 0, 0,0.4);
+                    box-shadow: 0 1px 1px #ccc;
+                    border-radius: 2px;
+                    margin: 0 auto;
+                }
+
+                nav a {
+                    display: inline-block;
+                    padding: 18px 30px;
+                    color: #fff !important;
+                    font-weight: bold;
+                    font-size: 16px;
+                    text-decoration: none !important;
+                    line-height: 1;
+                    text-transform: uppercase;
+                    background-color: transparent;
+                    text-align: center;
+
+                    -webkit-transition: background-color 0.25s;
+                    -moz-transition: background-color 0.25s;
+                    transition: background-color 0.25s;
+                }
+
+                nav a:first-child {
+                    border-radius: 2px 0 0 2px;
+                }
+
+                nav a:last-child {
+                    border-radius: 0 2px 2px 0;
+                }
+
+                p {
+                    font-size: 22px;
+                    font-weight: bold;
+                    color: #7d9098;
+                }
+
+                p b {
+                    color: #ffffff;
+                    display: inline-block;
+                    padding: 5px 10px;
+                    background-color: #c4d7e0;
+                    border-radius: 2px;
+                    text-transform: uppercase;
+                    font-size: 18px;
+                }
+                .resource {
+                    margin: 20px 0;
                 }
             </style>
