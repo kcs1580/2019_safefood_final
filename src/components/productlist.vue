@@ -1,7 +1,6 @@
 <template>
     <div class="container">
-        <div>
-            <span class="col-xs-12" style="text-align: right; margin-bottom: 15px; display:block">
+            <div class="col-xs-12" style=" top:20px; text-align: right; margin-bottom: 15px; display:block; float:right">
                 <input type="hidden"/>
                 <div class="form-group" style="width:100px; float:left;">
                     <select v-model="selected" class="form-control" placeholder="선택">
@@ -11,7 +10,7 @@
                     </select>
                 </div>
                 <div style="width:20px; float:left;" ></div>
-                <div class="form-group" style="width:800px;  float:left;">
+                <div class="form-group" style="width:900px;  float:left;">
                     <input
                         type="text"
                         name="keyword"
@@ -22,10 +21,8 @@
                         </div>
                     <div @click="searchfood()" class="btn btn-info btn-warning" style=" float:left;">검색</div>
 
-                </span>
-
-            </div>
-            <div class="panel panel productPanel" style="height:2500px;">
+                </div>
+            <div class="panel panel productPanel" style=" width:100%; height:2500px; background-color: rgba( 255, 255, 255,0.3 ); ">
                 <span
                     v-for="item in list"
                     class="row productRow"
@@ -52,33 +49,7 @@
                         </div>
                     </span>
                 </div>
-                <!-------------------------------------------------------------------------------------
-                -->
-                <!-- <div class="panel panel productPanel" style="height:2500px;">
-                    <span
-                        v-for="item in list"
-                        class="row productRow"
-                        :key="item.code"
-                        style="display:block;  margin: 100px;">
-                        <div style="height:auto; background-color: rgba( 255, 255, 255,0.5 ); ">
-                            <div class="thumbnail" style="border:none; float:left;">
-                                <div class="overlay" style="text-align:center;">
-                                    <img :src="require('../' + item.img)" alt="item.name" style="width:300px;">
-                                        <div class="caption" style="opacity:1;">
-                                            <a
-                                                class="btn btn-sm btn-block btn-primary"
-                                                @click="fooddetail(item.code)"
-                                                style="color:white;">{{item.name}}
-                                                자세히 보기 &nbsp;
-                                            </a>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </span>
-                    </div> -->
-                    <!-- </div> -->
+          
 
                 </div>
 

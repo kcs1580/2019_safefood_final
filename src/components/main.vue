@@ -92,7 +92,6 @@
                     },
                     methods: {
                         go(page) {
-                             alert("된다구> <..");
                             if(page=="공지사항"){
                                  this.$router.push("/listNotice")
                             }else if(page=="상품정보"){

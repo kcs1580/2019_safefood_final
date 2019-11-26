@@ -17,16 +17,12 @@
                             |
                             <router-link class="nav_btn" to="/productlist">상품정보</router-link>
                             |
-                            <router-link class="nav_btn" to="/qnadetail">QNADETAIL</router-link>
-                            |
-                            <router-link class="nav_btn" to="/qnaform">QNALIST</router-link>
-                            |
-                            <router-link class="nav_btn" to="/qnaadd">qnaadd</router-link>
+                            
                         <template v-if="!sessionCheck()">
-                                <span
+                                <span 
                                     class="dropdown"
                                     v-bind:class="loginPopup"
-                                    style="left:1000px; width:100px; ">
+                                    style=" width:100px; ">
                                     <div
                                         class="btn dropdown-toggle"
                                         href="#"
