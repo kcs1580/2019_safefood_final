@@ -175,11 +175,10 @@
                             },
                             sessionCheck() {
                                 if (localStorage.getItem("id") != null) 
-                                    return true;
-                                
+                                    return true; 
                                 else 
                                     return false;
-                                }
+                            }
                             ,
                             logoutfunc() {
                                 Store.dispatch('logout');
