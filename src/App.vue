@@ -56,7 +56,7 @@
                                                     <div class="form-group">
                                                         <button type="submit" class="btn btn-block btn-primary">로그인</button>
                                                         <template v-if="!sessionCheck()">
-                                                            <router-link class="btn btn-block btn-danger" to="/signuppage">회원가입</router-link>
+                                                            <router-link class="btn btn-block btn-success" to="/signuppage">회원가입</router-link>
                                                         </template>
                                                     </div>
                                                 </form>

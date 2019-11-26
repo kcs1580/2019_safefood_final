@@ -15,7 +15,7 @@
                 </transition-group>
         </div>
                     <!-- <img src="../../public/food.jpg" id="bg" alt=""> -->
-                    <nav class="navbar">
+                    <nav class="navbar" >
                         <!-- <a class="nav_btn1" href="http://localhost:8090">홈으로</a>
                         <router-link class="nav_btn1" to="/listNotice">공지사항</router-link>
                         |
@@ -28,13 +28,15 @@
                         <router-link class="nav_btn1" to="/signuppage">회원가입</router-link>
                         |
                         <button @click="modal_recommend " type="button">오늘 뭐먹징?</button> -->
-
+                        <span style="width:700px;">  </span>
+                       <button @click="modal_recommend " type="button" class="btn btn-link" style="color:white; font-size:25px; " > <i class="fas fa-utensils"></i> 오늘 뭐먹징?</button> -->
+                      
                     </nav> 
                      
                     
                     <div
                         v-show="is_show"
-                        style="background:white; opacity:0.9; height:auto; width:auto; float:right">
+                        style="background:rgba( 255, 255, 255,0.6 ); opacity:0.9; height:auto; width:auto; float:right">
                         <img :src="require('../' + recommend.img)" width="200"> 
                         <table class="table table-hover">
                             <tr>
@@ -45,17 +47,17 @@
                                 <th>제조사</th>
                                 <td id="maker" v-html="recommend.maker"></td>
                             </tr>
-                            <!-- <tr> <th>원재료</th> <td> <p id="material" v-html="recommend.material"></p>
-                            </td> </tr> -->
+                        
                         </table>
                         <div>
-                            <button @click="modalbtn" type="button">닫기</button>
+                            <button @click="modalbtn" class="btn btn-danger" style="float:right;">닫기</button>
                         </div>
 
                         
                     </div>
                     <router-link class="nav_btn" to="/banner">공지사항</router-link> |
-                    <vue-3d-menu style="height:1000px;"
+                    
+                    <vue-3d-menu style="min-width:500px; font-size:500px; "
                         :title="'MENU'"
                          :items="items"
                         ></vue-3d-menu>
@@ -81,16 +83,21 @@
                             is_show: false,
                             recommend: [],
                             fade: [false, false, false,false,false],
-                            items: [{ title: '하이', click: ()=> this.go() },
+                            items: [{ title: 'WELCOME!', click: ()=> alert("환영합니다:) ")},
                             { title: '공지사항', click: ()=> this.go("공지사항") },
                             { title: '상품정보', click: ()=> this.go("상품정보") },
                             { title: '섭취정보', click: ()=> this.go("섭취정보") },
                             { title: '질문게시판', click: ()=> this.go("질문게시판") },
-                            { title: '회원가입', click: ()=> this.go("회원가입") },
-                            { title: '오늘 뭐먹지?', click: ()=> this.modal_recommend()}]
+                            { title: '회원가입', click: ()=> this.go("회원가입") }
+                            ]
                         }
                     },
                     methods: {
+                        fadeNext: function () {
+                            this
+                                .fade
+                                .splice(fadeIdx++, 1, true)
+                        },
                         go(page) {
                             if(page=="공지사항"){
                                  this.$router.push("/listNotice")
@@ -104,11 +111,7 @@
                                 this.$router.push("/signuppage")
                             }
                         },
-                        fadeNext: function () {
-                            this
-                                .fade
-                                .splice(fadeIdx++, 1, true)
-                        },
+                        
                         modalbtn: function () {
                         this.is_show = !this.is_show; // #2, #3
 
