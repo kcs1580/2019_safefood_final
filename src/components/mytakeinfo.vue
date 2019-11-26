@@ -6,14 +6,14 @@
             <canvas id="myChart" class=""></canvas>
             <div class="col-xs-12" style="text-align: right; margin-bottom: 15px;"></div>
         </div>
-
         <div class="panel panel-info">
             <div class="title" align="center" style="height:200px;">나의 섭취 리스트<br>
                     <br>
                         <form action="##" class="form-inline">
                             <div class="form-group"></div>
                             <div class="form-group">
-                                <input v-model="keyword"
+                                <input
+                                    v-model="keyword"
                                     type="text"
                                     class="form-control"
                                     name="keyword"
@@ -23,37 +23,36 @@
                                     검색</div>
                             </form>
                         </div>
-                        <div class="panel-body productPanel">
-                            <!-- 아이템 영역 -->
 
-                            <span v-for="item in list" :key="item.code">
-                                <h1>
-                                    <span style="float: left">
-                                        <img
-                                            :src="require('../' + item.img)"
-                                            alt="item.name"
-                                            width="300"
-                                            @click="show_detail(item.code)">
+                        <!-- 아이템 영역 -->
+                        <div style="height:1000px; background-color: rgba( 255, 255, 255,0.5 );">
+                            <span v-for="item in list" :key="item.code" style="text-align: center;">
+
+                                <span style="float: left">
+                                    <img
+                                        :src="require('../' + item.img)"
+                                        alt="item.name"
+                                        width="340"
+                                        @click="show_detail(item.code)">
+                                        <div style="text-align: -webkit-center;">
                                             <td class="productName" v-html="item.name + '&nbsp;'" style="font-size:20px;"></td>
                                             <td class="productName" v-html="item.icount + '개'" style="font-size:20px;"></td>
-                                            <div style="width:300px;"></div>
-                                        </span>
-                                    </h1>
-                                    <div
-                                        id="insertintake"
-                                        class="btn btn-flat btn-info"
-                                        role="button"
-                                        @click="deleteintake(item.code)">
-                                        <i class="glyphicon glyphicon-tag"></i>
-                                        삭제
-                                    </div>
+                                        </div>
+                                        <div
+                                            id="insertintake"
+                                            class="btn btn-flat btn-info"
+                                            role="button"
+                                            @click="deleteintake(item.code)">
+                                            <i class="glyphicon glyphicon-tag"></i>
+                                            삭제하기
+                                        </div>
+                                    </span>
+
                                 </span>
-                                <div style="height:1000px; background-color: rgba( 255, 255, 255,0.5 );"></div>
+
                             </div>
                         </div>
-
                     </div>
-
                 </template>
                 <script>
                     import http from "../http-common";
@@ -61,32 +60,35 @@
                     export default {
                         name: "intake-list",
                         data() {
-                            return {upHere: false, list: [], sum: [], loading: true, errored: false};
+                            return {
+                                upHere: false,
+                                list: [],
+                                sum: [],
+                                loading: true,
+                                errored: false,
+                                keyword: ''
+                            };
                         },
                         methods: {
                             searchintake() {
-                                
                                 http
-                                    .get("/searchintake/"+this.keyword+"/"+localStorage.getItem("id"))
-
+                                    .get("/searchintake/" + this.keyword + "/" + localStorage.getItem("id"))
                                     .then(response => (this.list = response.data.list))
                                     .catch(() => {
                                         this.errored = true;
                                     })
                                     . finally(() => (this.loading = false));
-
                             },
                             deleteintake(dcode) {
-                                alert(dcode);
+
                                 http
                                     .delete("/deleteintake/" + localStorage.getItem("id") + "/" + dcode)
                                     .then(response => {
-                                        if (response.data.state == "succ") {
-                                            alert(response.data.resmsg);
-                                            alert("삭제 하였습니다.");
 
+                                        if (response.data.resmsg == "succ") {
+                                            this.retrieveIntake()
+                                            alert("삭제 하였습니다.");
                                         } else {
-                                            alert(response.data.resmsg);
                                             alert("삭제 하지 못했습니다.");
                                         }
                                     })
@@ -94,7 +96,6 @@
                                         this.errored = true;
                                     })
                                     . finally(() => (this.loading = false));
-
                             },
                             dynamicColors() {
                                 var r = Math.floor(Math.random() * 255);
@@ -178,7 +179,6 @@
                         }
                     };
                 </script>
-
                 <style>
                     .panel-heading {
                         text-align: center;
@@ -190,6 +190,5 @@
                     }
                     .form-inline {
                         float: right;
-
                     }
                 </style>

@@ -20,12 +20,16 @@ import qnadetail from "./components/qnadetail.vue";
 import qnaadd from "./components/qnaadd.vue";
 import qnaedit from "./components/qnaedit.vue";
 //import ChartPieCustomer2 from "./components/ChartPieCustomer2.vue";
+import VueSlideUpDown from 'vue-slide-up-down'
+import banner from "./components/banner.vue";
+
+
+Vue.component('vue-slide-up-down', VueSlideUpDown)
 Vue.use(Router);
 
 export default new Router({
     mode: "history",
     routes: [
-     
         {
             path: '/',
             name: 'main',
@@ -92,6 +96,10 @@ export default new Router({
             name: 'mytakeinfo',
             component: mytakeinfo
 
+        }, {
+            path: '/banner',
+            name: 'banner',
+            component: banner
         },
         {
             path: '/qnaform',
