@@ -17,7 +17,7 @@
 				{{notice.ncontent }}
 			</div>
 			<div class="panel-footer text-right">
-				<button class="btn btn-primary" @click="edit()" style="width:200px;">수정</button>
+				<button class="btn btn-success" @click="edit()" style="width:200px;">수정</button>
         <button class="btn btn-danger" @click="remove()" style="width:200px;">삭제</button>
         <button class="btn btn-dark" @click="backtolist()" style="width:200px;">목록</button>
 			</div>

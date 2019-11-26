@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <h2 class="text-center my-4">Q n A</h2>
+	<h1 style="text-align: center; font-size: 3em; margin-bottom;">Q&amp;A</h1>
         <hr style="margin-bottom: 40px;">
 
 <div id="my_form"
@@ -21,11 +21,10 @@
 		</div>
 
             <div class="panel panel-default">
-               
-                <div class="panel-body">
-                    <table class='table table-sm table-hover text-center my-1'>
+			<div class="panel-body" style="background-color: rgba( 255, 255, 255,0.5 );">
+                    <table class="table text-center table-bordered table-hover">
                         <thead>
-                            <tr>
+                            <tr style="background:#b6b9bb;">
                                 <th>번호</th>
                                 <th>제목</th>
                                 <th>작성자</th>
@@ -82,10 +81,7 @@
                 show_detail: function (bid) {
                     //alert(bid + " 클릭했음");
                     App.bid = bid;
-                    // App.$router.push( { path: 'viewboard' }); 아래를 수정했다.
-                    // App.$router.push('/viewboard'); App.$router.push( {path:'viewboard'});
-                    // this.$router.push("/board-view/:App.bid" +  App.bid);
-                    this
+                   this
                         .$router
                         .push({
                             name: 'viewBoard',
