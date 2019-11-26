@@ -1,6 +1,7 @@
 <template class="a">
     <div class="container">
-        <!-- <transition-group
+        <div class="im">
+        <transition-group
             name="fade"
             v-on:after-enter="fadeNext"
             tag="div"
@@ -9,9 +10,11 @@
                 <img v-show="fade[1]" key="1" class="im" src="../../public/food2.jpg">
                 <img v-show="fade[2]" key="2" class="im" src="../../public/food3.jpg">
                 <img v-show="fade[3]" key="3" class="im" src="../../public/food4.jpg">
-                </transition-group> -->
+                <img v-show="fade[4]" key="0" class="im" src="../../public/food.jpg">
 
-                    <img src="../../public/food.jpg" id="bg" alt="">
+                </transition-group>
+        </div>
+                    <!-- <img src="../../public/food.jpg" id="bg" alt=""> -->
                     <nav class="navbar">
                         <a class="nav_btn1" href="http://localhost:8090">홈으로</a>
                         <router-link class="nav_btn1" to="/listNotice">공지사항</router-link>
@@ -68,7 +71,7 @@
                             loading: false,
                             is_show: false,
                             recommend: [],
-                            fade: [false, false, false,false]
+                            fade: [false, false, false,false,false]
                         }
                     },
                     methods: {
@@ -131,8 +134,8 @@
                     position: fixed;
                     top: 0;
                     left: 20;
-                    width: 800px;
-                    height: 500px;
+                      min-width: 100%;
+                    min-height: 100%;
                 }
 
                 /* body,
