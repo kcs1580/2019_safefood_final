@@ -50,46 +50,8 @@
                 </div>
             </div>
 
-<<<<<<< HEAD
         </div>
     </template>
-=======
-<script>
-import http from "../http-common";
-import App from "../App.vue";
-export default {
-  name: "board-list",
-  data() {
-    return {
-      upHere: false,
-      list: [],
-      loading: true,
-      errored: false
-    };
-  },
-  methods: {
-    showinsert() {      
-			this.$router.push("/insertboard");
-    },
-    retrieveBoards() {
-      http
-        .get("/listboard")
-        .then(response => (this.list = response.data['resvalue']))
-        .catch(() => {
-          this.errored = true;
-        })
-        .finally(() => (this.loading = false));
-    },
-    refreshList() {
-      this.retrieveBoards();
-    },
-    show_detail: function(bid) {
-      App.bid = bid;
-    this.$router.push(  {name: 'viewBoard', params:{bid: App.bid}});
-    }
-  },
-  filters: {
->>>>>>> c46024105aa07fdd0dc820391c855ed78827c285
 
     <script>
         import http from "../http-common";
