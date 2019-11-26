@@ -1,20 +1,22 @@
 <template>
  <div class="container">
-	<h1 style="text-align: center; font-size: 3em; margin-bottom:">공지사항</h1>
+   <div >
+	<h1 style="text-align: center; font-size: 3em; margin-bottom;">공지사항</h1>
+   </div>
 		<hr style="margin-bottom: 40px;">
 
 		<div class="panel panel-default">
-			<div class="panel-body">
+			<div class="panel-body" style="background-color: rgba( 255, 255, 255,0.5 );">
 				<table class="table text-center table-bordered table-hover">
 					<thead>
-						<tr>
+						<tr style="background:#b6b9bb;">
 							<th>번호</th>
 							<th>제목</th>
 							<th>조회수</th>
 						</tr>
 					</thead>
            <tr v-for="notice in list" class="#" :key="notice.nid">
-            <td v-html="notice.nid" ></td>
+            <td v-html="notice.nid" @click="show_detail(notice.nid)"></td>
             <td v-html="notice.ntitle" @click="show_detail(notice.nid)"></td>
             <td v-html="notice.ncount"></td>
       
@@ -23,8 +25,7 @@
 				</table>
 				<div class="row">
 					<div class="col-sm-12 text-right">
-						<a href="" @click="showinsert()" class="btn btn-info btn-flat">글쓰기</a>
-            
+						<a href="" @click="showinsert()" class="btn btn-secondary">글쓰기</a>
 					</div>
 				</div>
 			</div>

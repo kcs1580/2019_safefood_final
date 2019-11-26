@@ -1,13 +1,12 @@
 <template>
  <div class="container">
-	<h1 style="text-align: center; font-size: 3em; margin-bottom:">질문 게시판List</h1>
+	<h1 style="text-align: center; font-size: 3em; margin-bottom:">질문 게시판</h1>
 		<hr style="margin-bottom: 40px;">
-
-		<div class="panel panel-default">
-			<div class="panel-body">
+		<div class="panel panel-default" >
+			<div class="panel-body" style="background-color: rgba( 255, 255, 255,0.5 );">
 				<table class="table text-center table-bordered table-hover">
 					<thead>
-						<tr>
+						<tr style="background:#b6b9bb;">
 							<th>번호</th>
 							<th>제목</th>
 							<th>작성자</th>
@@ -19,13 +18,11 @@
             <td v-html="board.btitle" @click="show_detail(board.bid)"></td>
             <td v-html="board.user_id"></td>
             <td v-html="board.bcount"></td>
-      
         </tr>
-				
 				</table>
 				<div class="row">
 					<div class="col-sm-12 text-right">
-						<a href="" @click="showinsert()" class="btn btn-info btn-flat">글쓰기</a>
+						<a href="" @click="showinsert()"  class="btn btn-secondary">글쓰기</a>
             
 					</div>
 				</div>
@@ -65,13 +62,7 @@ export default {
       this.retrieveBoards();
     },
     show_detail: function(bid) {
-      //alert(bid + " 클릭했음");
       App.bid = bid;
-      //App.$router.push( { path: 'viewboard' });
-      //아래를 수정했다.
-     // App.$router.push('/viewboard');
-      //App.$router.push( {path:'viewboard'});
-    //this.$router.push("/board-view/:App.bid" +  App.bid);
     this.$router.push(  {name: 'viewBoard', params:{bid: App.bid}});
     }
   },
