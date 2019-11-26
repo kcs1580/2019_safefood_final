@@ -13,13 +13,13 @@
                         <form action="##" class="form-inline">
                             <div class="form-group"></div>
                             <div class="form-group">
-                                <input
+                                <input v-model="keyword"
                                     type="text"
                                     class="form-control"
                                     name="keyword"
                                     placeholder="상품 이름을 입력하세요."
                                     size="80px;"></div>
-                                <div id="searchintake" class="btn btn-flat btn-info">
+                                <div id="searchintake" class="btn btn-flat btn-info" @click="searchintake()">
                                     검색</div>
                             </form>
                         </div>
@@ -64,30 +64,29 @@
                             return {upHere: false, list: [], sum: [], loading: true, errored: false};
                         },
                         methods: {
-                            searchintake(){
+                            searchintake() {
+                                
                                 http
-                            .get("/searchintake/"+this.keyword+"/"+localStorage.getItem("id"))
-                            
-                            
-                            .then(response => (this.list = response.data['list']))
-                            .catch(() => {
-                                this.errored = true;
-                            })
-                            . finally(() => (this.loading = false));
+                                    .get("/searchintake/"+this.keyword+"/"+localStorage.getItem("id"))
 
+                                    .then(response => (this.list = response.data.list))
+                                    .catch(() => {
+                                        this.errored = true;
+                                    })
+                                    . finally(() => (this.loading = false));
 
                             },
                             deleteintake(dcode) {
+                                alert(dcode);
                                 http
-                                    .delete("/deleteintake", {
-                                        code: dcode,
-                                        id: localStorage.getItem("id")
-                                    })
+                                    .delete("/deleteintake/" + localStorage.getItem("id") + "/" + dcode)
                                     .then(response => {
                                         if (response.data.state == "succ") {
+                                            alert(response.data.resmsg);
                                             alert("삭제 하였습니다.");
-                                            this.retrieveCustomers();
+
                                         } else {
+                                            alert(response.data.resmsg);
                                             alert("삭제 하지 못했습니다.");
                                         }
                                     })
@@ -105,7 +104,7 @@
                             },
                             retrieveIntake() {
                                 http
-                                    .get("/searchallintake")
+                                    .get("/searchallintake/" + localStorage.getItem("id"))
                                     .then((response) => {
                                         this.list = response.data['list'];
                                         this.sum = response.data['sum'];
