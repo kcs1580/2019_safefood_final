@@ -1,14 +1,5 @@
 <template>
     <div id="app">
-        <div id="main">
-            <!-- <nav v-bind:class="active" v-on:click.prevent> <a href="#" class="home"
-            v-on:click="makeActive('home')">Home</a> <a href="#" class="projects"
-            v-on:click="makeActive('projects')">Projects</a> <a href="#" class="services"
-            v-on:click="makeActive('services')">Services</a> <a href="#" class="contact"
-            v-on:click="makeActive('contact')">Contact</a> </nav> -->
-        </div>
-
-        <div class="resource"></div>
         <header>
 
             <nav class="navbar navbar-inverse navbar-fixed-top justify-content-end" style="height:100px;">
@@ -100,6 +91,7 @@
                             </div>
                         </nav>
                     </header>
+                    <div style="height:100px;"></div>
                     <router-view/>
                     <footer style="background: #ececec; padding: 50px;">
                         <h1>Find Us</h1>
