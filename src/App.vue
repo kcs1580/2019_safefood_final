@@ -11,22 +11,28 @@
         <div class="resource"></div>
         <header>
 
-            <nav class="navbar navbar-inverse navbar-fixed-top justify-content-end" style="height:80px;">
+            <nav class="navbar navbar-inverse navbar-fixed-top justify-content-end" style="height:100px;">
+                
                 <div class="container-fluid">
                     <div class="navbar-header">
+                                   
                             <a href="/">
-                                <img src="assets/ssafy_logo.png" alt="logo"></a>
+                                <img src="../public/ssafy_logo.png" alt="logo" style="width:80px;height:60px; ;"></a>
                                 <router-link class="nav_btn" to="/">홈으로</router-link>
                                 |
                                 <router-link class="nav_btn" to="/listNotice">공지사항</router-link>
                                 |
                                 <router-link class="nav_btn" to="/productlist">상품정보</router-link>
                                 |
+                                    <router-link class="nav_btn" to="/qnadetail">QNADETAIL</router-link> |
+                            <router-link class="nav_btn" to="/qnaform">QNALIST</router-link> |
+                            <router-link class="nav_btn" to="/qnaadd">qnaadd</router-link> |
                                 <template v-if="sessionCheck()">
                                     <router-link class="nav_btn" to="/listBoard">질문게시판</router-link>
                                     |
                                     <router-link class="nav_btn" to="/mytakeinfo">섭취정보</router-link>
                                     |
+                                    
                                     <div style="float: right; ">
                                         <!-- <span class="glyphicon glyphicon-user" aria-hidden="true"></span> -->
                                         <template v-if="sessionCheck()">
@@ -48,10 +54,7 @@
                                     </template>
                                 </template>
                                 <template v-if="!sessionCheck()">
-                                    <router-link class="nav_btn" to="/signuppage">회원가입</router-link>
-                                </template>
-                                     <template v-if="!sessionCheck()">
-                                    <div class="dropdown" v-bind:class="{ 'open': loginPopup }" >
+                                    <div class="dropdown" v-bind:class="{ 'open': loginPopup }" style="left:1500px;">
                                         <a
                                             class="btn btn-sm dropdown-toggle"
                                             href="#"
@@ -83,6 +86,9 @@
                                                             placeholder="Password"></div>
                                                         <div class="form-group">
                                                             <button type="submit" class="btn btn-block btn-primary">로그인</button>
+                                                            <template v-if="!sessionCheck()">
+                                                            <router-link class="btn btn-block btn-danger" to="/signuppage">회원가입</router-link>
+                                                                </template>
                                                         </div>
                                                     </form>
 
@@ -214,7 +220,7 @@ else
 
                     .nav_btn {
                         color: black;
-                        font-size: 30px;
+                        font-size: 20px;
                     }
                     #loginUser {
                         color: white;
