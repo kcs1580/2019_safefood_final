@@ -8,6 +8,9 @@
                         <div >
                             <a class="nav_btn" href="http://localhost:8090">홈으로</a> |
                             <router-link class="nav_btn" to="/listNotice">공지사항</router-link> |
+                            <router-link class="nav_btn" to="/qnadetail">QNADETAIL</router-link> |
+                            <router-link class="nav_btn" to="/qnaform">QNALIST</router-link> |
+                            <router-link class="nav_btn" to="/qnaadd">qnaadd</router-link> |
                             <router-link class="nav_btn" to="/productlist">상품정보</router-link> |
                             <template v-if="sessionCheck()">
                                 <router-link class="nav_btn" to="/listBoard">질문게시판</router-link> |
