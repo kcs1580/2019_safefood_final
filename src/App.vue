@@ -19,7 +19,7 @@
                           
 
                             <template v-if="sessionCheck()">
-                                <p id="loginUser" style="color:red">{{userInfo}}님 환영합니다.</p>
+                                <p id="loginUser" style="color:chocolate; ">{{userInfo}} 님 환영합니다.</p>
                             </template>
 
                             <template v-if="!sessionCheck()">
@@ -127,7 +127,7 @@
                             return Store.state.isLogin;
                         },
                         userInfo() {
-                            return localStorage.getItem("id");
+                            return localStorage.getItem("name");
                         }
 
                     },
