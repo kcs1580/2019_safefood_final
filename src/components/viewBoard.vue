@@ -2,10 +2,24 @@
  <div class="container">
 <h1 style="text-align: center; font-size: 3em; margin-bottom:">질문 게시판</h1>
 		<hr style="margin-bottom: 40px;">
-		
-		<div class="panel panel-info" style="background-color: rgba( 255, 255, 255,0.8 ); height: 800px; ">
+		<div class='row my-2 bg-light border-bottom'>
+			<div class='col-8' style="height:650px font-size:40px;">
+				<strong>{{board.btitle}}</strong>
+			</div>
+			<div class='col-2'>
+				<strong>{{board.user_id}}</strong>
+			</div>
+
+		</div>
+		<div class="panel panel-info" style="background-color: rgba( 255, 255, 255,0.8 ); height: 500px; ">
       <div class="panel-heading" >
-				<strong>{{board.btitle }}</strong>
+        
+			<span class='col-8'>
+				<strong>{{board.btitle}}</strong>
+			</span>
+			<span class='col-2 text-right'>
+				<strong>{{board.user_id}}</strong>
+			</span>
 			</div>
       <hr>
 			<div class="panel-body"  style="height:650px; font-size:40px;">

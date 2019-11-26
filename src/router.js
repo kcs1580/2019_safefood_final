@@ -18,6 +18,7 @@ import productdetail from "./components/productdetail.vue";
 import qnaform from "./components/qnaform.vue";
 import qnadetail from "./components/qnadetail.vue";
 import qnaadd from "./components/qnaadd.vue";
+import qnaedit from "./components/qnaedit.vue";
 //import ChartPieCustomer2 from "./components/ChartPieCustomer2.vue";
 Vue.use(Router);
 
@@ -109,7 +110,14 @@ export default new Router({
             name: 'qnaadd',
             component: qnaadd
 
+        },
+        {
+            path: '/qnaedit',
+            name: 'qnaedit',
+            component: qnaedit            
+
         }
+
 
     ]
 });

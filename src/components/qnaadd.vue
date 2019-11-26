@@ -10,7 +10,7 @@
 						<input name="q_title" type="text" class="form-control mb-2"
 							placeholder="제목을 입력하세요" aria-describedby="basic-addon1">
 
-
+						<div id="summernote"></div>
 						<textarea class="form-control" rows="6" name="q_desc"
 							placeholder="내용을 입력하세요"></textarea>
 					</div>
@@ -47,6 +47,7 @@ export default {
 	},
 
 	methods: {
+		
 		showlist() {      
 			this.$router.push("/listBoard");
     },
@@ -77,4 +78,3 @@ export default {
   }
 }
 </script>
-
