@@ -1,88 +1,99 @@
 <template>
     <div id="app">
         <header>
-
-            <nav class="navbar navbar-inverse navbar-fixed-top justify-content-end" style="height:100px;">
-                
+            <nav
+                class="navbar navbar-inverse navbar-fixed-top justify-content-end"
+                style="height:100px;">
                 <div class="container-fluid">
                     <div class="navbar-header">
-                                   
-                            <a href="/">
-                                <img src="../public/ssafy_logo.png" alt="logo" style="width:80px;height:60px; ;"></a>
-                                <router-link class="nav_btn" to="/">홈으로</router-link>
+                        
+                        <a href="/">
+                            <img
+                                src="../public/ssafy_logo.png"
+                                alt="logo"
+                                style="width:80px;height:60px; ;"></a>
+                            <router-link class="nav_btn" to="/">홈으로</router-link>
+                            |
+                            <router-link class="nav_btn" to="/listNotice">공지사항</router-link>
+                            |
+                            <router-link class="nav_btn" to="/productlist">상품정보</router-link>
+                            |
+                            <router-link class="nav_btn" to="/qnadetail">QNADETAIL</router-link>
+                            |
+                            <router-link class="nav_btn" to="/qnaform">QNALIST</router-link>
+                            |
+                            <router-link class="nav_btn" to="/qnaadd">qnaadd</router-link>
+                            |
+                            
+                            <template v-if="sessionCheck()">
+                                <router-link class="nav_btn" to="/listBoard">질문게시판</router-link>
                                 |
-                                <router-link class="nav_btn" to="/listNotice">공지사항</router-link>
+                                <router-link class="nav_btn" to="/mytakeinfo">섭취정보</router-link>
                                 |
-                                <router-link class="nav_btn" to="/productlist">상품정보</router-link>
-                                |                                   
-                                <template v-if="sessionCheck()">
-                                    <router-link class="nav_btn" to="/listBoard">질문게시판</router-link>
-                                    |
-                                    <router-link class="nav_btn" to="/mytakeinfo">섭취정보</router-link>
-                                    |
-                                    
-                                    <div style="float: right; ">
-                                        <!-- <span class="glyphicon glyphicon-user" aria-hidden="true"></span> -->
-                                        <template v-if="sessionCheck()">
-                                            <p
-                                                class="glyphicon glyphicon-user"
-                                                id="loginUser"
-                                                style="color:black; font-size:15px; float:right;">{{userInfo}}님 환영합니다.</p>
-                                        </template>
-
-                                    </div>
+                                
+                                <div style="float: right; ">
                                     <template v-if="sessionCheck()">
-                                        <button @click="logoutfunc">
-                                            <a class="btn btn-sm">
-                                                <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
-                                                <span>&nbsp;Logout</span>
-                                            </a>
-                                        </button>
-
-                                    </template>
-                                </template>
-                                <template v-if="!sessionCheck()">
-                                    <div class="dropdown" v-bind:class="{ 'open': loginPopup }" style="left:1500px;">
-                                        <a
-                                            class="btn btn-sm dropdown-toggle"
-                                            href="#"
-                                            @click="loginPopupfunc()"
-                                            data-toggle="dropdown">
-                                            <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
-                                            <span style="color:red;">&nbsp;Login</span>
+                                        <p
+                                            class="glyphicon glyphicon-user"
+                                            id="loginUser"
+                                            style="color:black; font-size:15px; ">                                        
+                                             <i class="fas fa-user-plus"></i>  ID: {{userInfo}}</p>
+                                             <button @click="logoutfunc">
+                                        <a class="btn btn-sm btn-dark" >
+                                            <span >&nbsp;Logout</span>
                                         </a>
-                                        <div class="dropdown-menu" style="padding: 17px;">
-                                            <form @submit.prevent="loginfunc()">
-                                                <div class="form-group">
-                                                    <label for="id">아이디</label>
-                                                    <input
-                                                        type="text"
-                                                        v-model="id"
-                                                        class="form-control"
-                                                        id="id"
-                                                        name="id"
-                                                        placeholder="ID"
-                                                        autocomplete="off"></div>
-                                                    <div class="form-group">
-                                                        <label for="pw">패스워드</label>
-                                                        <input
-                                                            type="password"
-                                                            v-model="pw"
-                                                            class="form-control"
-                                                            id="pw"
-                                                            name="pw"
-                                                            placeholder="Password"></div>
-                                                        <div class="form-group">
-                                                            <button type="submit" class="btn btn-block btn-primary">로그인</button>
-                                                            <template v-if="!sessionCheck()">
-                                                            <router-link class="btn btn-block btn-danger" to="/signuppage">회원가입</router-link>
-                                                                </template>
-                                                        </div>
-                                                    </form>
+                                    </button>
+                                    </template>
 
-                                                </div>
+                                </div>
+                                                             
+                            </template>
+                            <template v-if="!sessionCheck()">
+                                <div
+                                    class="dropdown"
+                                    v-bind:class="{ 'open': loginPopup }"
+                                    style="left:1000px; width:100px; ">
+                                    <a
+                                        class="btn btn-sm dropdown-toggle"
+                                        href="#"
+                                        @click="loginPopupfunc()"
+                                        data-toggle="dropdown">
+                                        <span style="color:red;">
+                                            <i class="fas fa-user fa-2x" style="color:black; "></i>
+                                        </span>
+                                    </a>
+                                    <div class="dropdown-menu" style="padding: 17px; float:right;">
+                                        <form @submit.prevent="loginfunc()">
+                                            <div class="form-group">
+                                                <label for="id">아이디</label>
+                                                <input
+                                                    type="text"
+                                                    v-model="id"
+                                                    class="form-control"
+                                                    id="id"
+                                                    name="id"
+                                                    placeholder="ID"
+                                                    autocomplete="off"></div>
+                                                <div class="form-group">
+                                                    <label for="pw">패스워드</label>
+                                                    <input
+                                                        type="password"
+                                                        v-model="pw"
+                                                        class="form-control"
+                                                        id="pw"
+                                                        name="pw"
+                                                        placeholder="Password"></div>
+                                                    <div class="form-group">
+                                                        <button type="submit" class="btn btn-block btn-primary">로그인</button>
+                                                        <template v-if="!sessionCheck()">
+                                                            <router-link class="btn btn-block btn-danger" to="/signuppage">회원가입</router-link>
+                                                        </template>
+                                                    </div>
+                                                </form>
+
                                             </div>
-                                        </template>
+                                        </div>
+                                    </template>
 
                                 </div>
                             </div>
@@ -125,10 +136,10 @@
                                 return Store.state.isLogin;
                             },
                             isLoginError() {
-                                return Store.state.isLogin;
+                                return Store.state.isLoginError;
                             },
                             userInfo() {
-                                return localStorage.getItem("id");
+                                return localStorage.getItem("name");
                             }
 
                         },
@@ -166,9 +177,9 @@
                                 if (localStorage.getItem("id") != null) 
                                     return true;
                                 
-                                else 
+else 
                                     return false;
-                                }
+                            }
                             ,
                             logoutfunc() {
                                 Store.dispatch('logout');
@@ -265,6 +276,7 @@
 
                     .dropdown-menu {
                         width: 350px;
+                        color: black;
                     }
 
                     body,

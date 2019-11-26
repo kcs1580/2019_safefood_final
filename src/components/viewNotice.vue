@@ -4,17 +4,22 @@
 		<hr style="margin-bottom: 40px;">
 		
 		<div class="panel panel-info" style="background-color: rgba( 255, 255, 255,0.8 ); height: 800px; ">
-			<div class="panel-heading">
-				<strong>{{notice.ntitle }}</strong>
+			<div class="panel-heading" style="height:70px; padding: 20px; background:#b6b9bb ">
+				<h3> <i class="far fa-bell"></i> [공지 no. {{notice.nid}}] {{notice.ntitle }}</h3>
 			</div>
+      <br>
+      <div style="float:right;">
+        작성자: 관리자   조회수: {{notice.ncount}}
+      </div>
+      <br>
       <hr>
-			<div class="panel-body" style="height:650px; font-size:40px;">
+			<div class="panel-body" style="height:650px; font-size:20px; padding:40px;">
 				{{notice.ncontent }}
 			</div>
 			<div class="panel-footer text-right">
-				<button class="btn btn-info btn-flat" @click="edit()">수정</button>
-        <button class="btn btn-danger btn-fla" @click="remove()">삭제</button>
-        <button class="btn btn-primary btn-flatt" @click="backtolist()">목록</button>
+				<button class="btn btn-primary" @click="edit()" style="width:200px;">수정</button>
+        <button class="btn btn-danger" @click="remove()" style="width:200px;">삭제</button>
+        <button class="btn btn-dark" @click="backtolist()" style="width:200px;">목록</button>
 			</div>
 		</div>
 		

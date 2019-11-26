@@ -8,7 +8,8 @@
 				<label for="inputId" class="col-lg-2 control-label">아이디</label>
 				<div class="col-lg-10">
 					<input type="email" class="form-control onlyAlphabetAndNumber"
-						id="id" name="id" data-rule-required="true" placeholder="" maxlength="30" v-model="cid">
+						id="id" name="id" data-rule-required="true" placeholder="***@***.com" 
+						maxlength="30" v-model="cid">
 				</div>
 			</div>
 
@@ -142,7 +143,7 @@ export default {
 
 <style scoped>
 #outex{
-    width: 100%;
+    width: 500px;
     text-align: left;
     padding: 50px 650px;
     font-size: 20px;
@@ -150,8 +151,8 @@ export default {
 }
 .ex{
  display: inline-block;
- height:800px; 
- width:650px;
+ height:900px; 
+ width:800px;
  background-color: white;
  opacity: 0.9;
 }
