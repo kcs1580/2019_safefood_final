@@ -16,7 +16,7 @@
         </div>
                     <!-- <img src="../../public/food.jpg" id="bg" alt=""> -->
                     <nav class="navbar">
-                        <a class="nav_btn1" href="http://localhost:8090">홈으로</a>
+                        <!-- <a class="nav_btn1" href="http://localhost:8090">홈으로</a>
                         <router-link class="nav_btn1" to="/listNotice">공지사항</router-link>
                         |
                         <router-link class="nav_btn1" to="/productlist">상품정보</router-link>
@@ -27,7 +27,7 @@
                         |
                         <router-link class="nav_btn1" to="/signuppage">회원가입</router-link>
                         |
-                        <button @click="modal_recommend " type="button">오늘 뭐먹징?</button>
+                        <button @click="modal_recommend " type="button">오늘 뭐먹징?</button> -->
 
                     </nav> 
                      
@@ -35,7 +35,7 @@
                     <div
                         v-show="is_show"
                         style="background:white; opacity:0.9; height:auto; width:auto; float:right">
-                        <!-- <img :src="require('../' + recommend.img)" width="200"> 이거 임시로 주석! -->
+                        <img :src="require('../' + recommend.img)" width="200"> 
                         <table class="table table-hover">
                             <tr>
                                 <th>제품명</th>
@@ -55,26 +55,56 @@
                         
                     </div>
                     <router-link class="nav_btn" to="/banner">공지사항</router-link> |
+                    <vue-3d-menu style="height:1000px;"
+                        :title="'MENU'"
+                         :items="items"
+                        ></vue-3d-menu>
+                    
                                     <router-view/>
 
                 </div>
 
             </template>
             <script>
+             import Vue from 'vue';
+            import Vue3dMenu from 'vue-3d-menu';
                 import axios from 'axios'
+
+                Vue.use(Vue3dMenu);
                 let fadeIdx = 0
                 export default {
                     name: 'App',
 
-                    data: () => { // #1
+                    data(){ // #1
                         return {
                             loading: false,
                             is_show: false,
                             recommend: [],
-                            fade: [false, false, false,false,false]
+                            fade: [false, false, false,false,false],
+                            items: [{ title: '하이', click: ()=> this.go() },
+                            { title: '공지사항', click: ()=> this.go("공지사항") },
+                            { title: '상품정보', click: ()=> this.go("상품정보") },
+                            { title: '섭취정보', click: ()=> this.go("섭취정보") },
+                            { title: '질문게시판', click: ()=> this.go("질문게시판") },
+                            { title: '회원가입', click: ()=> this.go("회원가입") },
+                            { title: '오늘 뭐먹지?', click: ()=> this.modal_recommend()}]
                         }
                     },
                     methods: {
+                        go(page) {
+                             alert("된다구> <..");
+                            if(page=="공지사항"){
+                                 this.$router.push("/listNotice")
+                            }else if(page=="상품정보"){
+                                this.$router.push("/productlist")
+                            }else if(page=="섭취정보"){
+                                this.$router.push("/mytakeinfo")
+                            }else if(page=="질문게시판"){
+                                this.$router.push("/listBoard")
+                            }else if(page=="회원가입"){
+                                this.$router.push("/signuppage")
+                            }
+                        },
                         fadeNext: function () {
                             this
                                 .fade
@@ -114,7 +144,7 @@
                     }
                 },
                 mounted() {
-                    setTimeout(this.fadeNext, 0.1);
+                    setTimeout(this.fadeNext, 0.5);
                     this.init();
                 }
             }
@@ -210,4 +240,6 @@
                 .fade-enter-active {
                     transition: opacity 3.0s;
                 }
+
+                
             </style>
