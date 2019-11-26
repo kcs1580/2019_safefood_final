@@ -6,7 +6,6 @@
             <canvas id="myChart" class=""></canvas>
             <div class="col-xs-12" style="text-align: right; margin-bottom: 15px;"></div>
         </div>
-
         <div class="panel panel-info">
             <div class="title" align="center" style="height:200px;">나의 섭취 리스트<br>
                     <br>
@@ -25,7 +24,6 @@
                         </div>
                         <div class="panel-body productPanel">
                             <!-- 아이템 영역 -->
-
                             <span v-for="item in list" :key="item.code">
                                 <h1>
                                     <span style="float: left">
@@ -51,9 +49,7 @@
                                 <div style="height:1000px; background-color: rgba( 255, 255, 255,0.5 );"></div>
                             </div>
                         </div>
-
                     </div>
-
                 </template>
                 <script>
                     import http from "../http-common";
@@ -65,28 +61,24 @@
                         },
                         methods: {
                             searchintake() {
-                                
                                 http
                                     .get("/searchintake/"+this.keyword+"/"+localStorage.getItem("id"))
-
                                     .then(response => (this.list = response.data.list))
                                     .catch(() => {
                                         this.errored = true;
                                     })
                                     . finally(() => (this.loading = false));
-
                             },
                             deleteintake(dcode) {
-                                alert(dcode);
+
                                 http
                                     .delete("/deleteintake/" + localStorage.getItem("id") + "/" + dcode)
                                     .then(response => {
-                                        if (response.data.state == "succ") {
-                                            alert(response.data.resmsg);
-                                            alert("삭제 하였습니다.");
 
+                                        if (response.data.resmsg == "succ") {
+                                            this.retrieveIntake()
+                                            alert("삭제 하였습니다.");
                                         } else {
-                                            alert(response.data.resmsg);
                                             alert("삭제 하지 못했습니다.");
                                         }
                                     })
@@ -94,7 +86,6 @@
                                         this.errored = true;
                                     })
                                     . finally(() => (this.loading = false));
-
                             },
                             dynamicColors() {
                                 var r = Math.floor(Math.random() * 255);
@@ -178,7 +169,6 @@
                         }
                     };
                 </script>
-
                 <style>
                     .panel-heading {
                         text-align: center;
@@ -190,6 +180,5 @@
                     }
                     .form-inline {
                         float: right;
-
                     }
                 </style>

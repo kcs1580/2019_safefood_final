@@ -177,7 +177,7 @@
                                 if (localStorage.getItem("id") != null) 
                                     return true;
                                 
-else 
+                                else 
                                     return false;
                                 }
                             ,
