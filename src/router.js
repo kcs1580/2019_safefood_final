@@ -15,9 +15,6 @@ import signUp from "./components/signUp.vue";
 import productlist from "./components/productlist.vue";
 import updateMember from "./components/updateMember.vue";
 import productdetail from "./components/productdetail.vue";
-import qnaform from "./components/qnaform.vue";
-import qnadetail from "./components/qnadetail.vue";
-import qnaadd from "./components/qnaadd.vue";
 //import ChartPieCustomer2 from "./components/ChartPieCustomer2.vue";
 import VueSlideUpDown from 'vue-slide-up-down'
 import banner from "./components/banner.vue";
@@ -99,25 +96,8 @@ export default new Router({
             path: '/banner',
             name: 'banner',
             component: banner
-        },
-        {
-            path: '/qnaform',
-            name: 'qnaform',
-            component: qnaform
+        }      
 
-        },
-        {
-            path: '/qnadetail',
-            name: 'qnadetail',
-            component: qnadetail
-
-        },
-        {
-            path: '/qnaadd',
-            name: 'qnaadd',
-            component: qnaadd
-
-        }
 
     ]
 });

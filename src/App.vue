@@ -136,10 +136,10 @@
                                 return Store.state.isLogin;
                             },
                             isLoginError() {
-                                return Store.state.isLogin;
+                                return Store.state.isLoginError;
                             },
                             userInfo() {
-                                return localStorage.getItem("id");
+                                return localStorage.getItem("name");
                             }
 
                         },
@@ -179,7 +179,7 @@
                                 
 else 
                                     return false;
-                                }
+                            }
                             ,
                             logoutfunc() {
                                 Store.dispatch('logout');
