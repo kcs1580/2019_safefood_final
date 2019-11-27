@@ -29,7 +29,7 @@
                                     style="color:white; font-size:25px; ">
                                     <i class="fas fa-utensils"></i>
                                     오늘 뭐먹징?</button>
-                                -->
+                                
 
                             </nav>
 
