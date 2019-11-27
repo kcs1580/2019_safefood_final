@@ -34,7 +34,7 @@
                         <tr v-for="board in list" :key="board.bid">
                             <td v-html="board.bid"></td>
                             <td v-html="board.btitle" @click="show_detail(board.bid)"></td>
-                            <td v-html="board.user_id"></td>
+                            <td v-html="board.user_name"></td>
                             <td v-html="board.bcount"></td>
 
                         </tr>

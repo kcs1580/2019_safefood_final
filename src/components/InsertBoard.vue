@@ -64,6 +64,7 @@ export default {
 			ccontent:'',
 			ccount:0,
 			cid:'',
+			user_name:'',
 			submitted: false
 		};
 	},
@@ -85,6 +86,7 @@ export default {
 			btitle: this.ctitle,
 			bcontent: this.ccontent,
 			bcount: this.bcount,
+			user_name: localStorage.getItem("name"),
 			user_id: localStorage.getItem("id")
 		} 
 		).then(response => {
