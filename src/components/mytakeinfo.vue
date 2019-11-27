@@ -18,7 +18,8 @@
                                     class="form-control"
                                     name="keyword"
                                     placeholder="상품 이름을 입력하세요."
-                                    size="80px;"></div>
+                                    size="80px;"
+                                    @keyup.enter="searchintake"></div>
                                 <div id="searchintake" class="btn btn-flat btn-info" @click="searchintake()">
                                     검색</div>
                             </form>

@@ -19,6 +19,7 @@ import productdetail from "./components/productdetail.vue";
 import VueSlideUpDown from 'vue-slide-up-down'
 import banner from "./components/banner.vue";
 import community from "./components/community.vue";
+import chatting from "./components/chatting.vue";
 
 
 Vue.component('vue-slide-up-down', VueSlideUpDown)
@@ -102,7 +103,13 @@ export default new Router({
             path:'/community',
             name:'community',
             component: community
-        }       
+        },
+        {
+            path:'/chatting',
+            name:'chatting',
+            component: chatting
+        }   
+             
 
 
     ]

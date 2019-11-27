@@ -16,6 +16,8 @@
                             <router-link class="nav_btn" to="/listNotice">공지사항</router-link>
                             |
                             <router-link class="nav_btn" to="/productlist">상품정보</router-link>
+                            |  
+                             <router-link class="nav_btn" to="/chatting">채팅방</router-link>
                             |                           
 
                             <template v-if="!sessionCheck()">
