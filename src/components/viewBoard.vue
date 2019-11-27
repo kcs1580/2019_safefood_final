@@ -24,7 +24,7 @@
                     </div>
                     <br>
                         <hr>
-                            <div class="panel-body" style="height:400px; font-size:20px; padding:40px;">
+                            <div class="panel-body" style="height:400px; font-size:20px; padding:40px; ">
                                 {{board.bcontent }}
                             </div>
                             <hr>
@@ -35,9 +35,9 @@
                                     :key="com.cnum"
                                     style="display:block;  margin: 50px;">
                                     <div class="container" style="display:block;">
-                                        <div class="content" style="border:none; float:left; font-size:20px;">
+                                        <div class="content" style="border:none; float:left; font-size:20px; font-weight:bold;">
                                             <i class="fab fa-replyd fa-2x"></i>
-                                            <i class="flaticon-airplane49"></i>
+                                            {{com.user_id}} :
                                             {{com.ccontent }}
                                         </div>
                                     </div>
@@ -63,7 +63,7 @@
                                                                 id="ccontent"
                                                                 v-model="ccontent"
                                                                 class="form-control"
-                                                                style="height:50px; width:800px;"
+                                                                style="height:50px; width:800px; margin-left:20px;"
                                                                 placeholder=" 내용을 입력해주세요."></span>
 
                                                         </span>
