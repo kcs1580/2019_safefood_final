@@ -73,6 +73,13 @@
 
 				</div>
 			</div>
+			<div class= "form-group" id="userCalorie">
+				<label for="inputCalorie" class="col-lg-2">일일 목표 칼로리</label>
+				<div class="col-lg-10">
+					<input type="text" class="form-control" id="calorie" name="calorie"
+						placeholder="목표 칼로리" maxlength="50"  v-model="ccal" style="width:200px;">
+				</div>	
+			</div>
 			<div class="form-group">
 				<div class="col-lg-offset-2 col-lg-10">
 					<button type="submit" class="btn btn-primary">수정하기</button>
@@ -100,7 +107,9 @@ export default {
             callergy:"",
             cquestion:"",
             canswer:"",
-            carr: [],
+			carr: [],
+			ccal: "",
+			member:[],
 			submitted: false
 		};
 	},
@@ -114,14 +123,16 @@ export default {
 	},
 	infomem(){
 		http
-		.get("http://localhost:8090/api/memlist/"+this.member.id)
+		.get("http://localhost:8090/api/memlist/"+localStorage.getItem("id"))
         .then(response => {
+			alert(response.data.resvalue.calorie_goal)
 			this.member = response.data.resvalue;
 			this.cid = this.member.id;
             this.cpassword = this.member.password;
             this.cmname = this.member.mname;
             this.caddr = this.member.addr;
-            this.ctel = this.member.tel;
+			this.ctel = this.member.tel;
+			this.ccal = this.member.calorie_goal;
             this.carr = this.member.addr;
 			})
         .catch(() => {
@@ -167,7 +178,7 @@ export default {
 }
 .ex{
  display: inline-block;
- height:900px; 
+ height:950px; 
  width:800px;
  background-color: white;
  opacity: 0.9;
