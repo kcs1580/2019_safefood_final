@@ -19,7 +19,7 @@
                         <span style="margin: 5px;"></span>
                         조회수:
                         {{board.bcount}}
-                                                <span style="margin: 5px;"></span>
+                        <span style="margin: 5px;"></span>
 
                     </div>
                     <br>
@@ -35,13 +35,19 @@
                                     :key="com.cnum"
                                     style="display:block;  margin: 50px;">
                                     <div class="container" style="display:block;">
-                                        <div class="content" style="border:none; float:left; font-size:20px; font-weight:bold;">
+                                        <div 
+                                            class="content"
+                                            style="border:none; float:left; font-size:20px; font-weight:bold;">
                                             <i class="fab fa-replyd fa-2x"></i>
-                                            {{com.user_id}} :
+                                            {{com.user_name}}
+                                            :
                                             {{com.ccontent }}
+                                            
                                         </div>
                                     </div>
+                                    <template v-if="cusercheck(com.user_id)">
                                     <button class="btn btn-outline-danger " @click="removecomment(com.cnum)">삭제하기</button>
+                                    </template>
                                 </span>
                                 <br>
                                     <br>
@@ -59,8 +65,6 @@
                                                             <input
                                                                 data-msg="내용"
                                                                 type="text"
-                                                                name="ccontent"
-                                                                id="ccontent"
                                                                 v-model="ccontent"
                                                                 class="form-control"
                                                                 style="height:50px; width:800px; margin-left:20px;"
@@ -80,153 +84,170 @@
                                                             </div>
                                                         </div>
                                                     </form>
-<br>
-                                                    <div class="panel-footer text-right">
-                                                        <template v-if="usercheck()">
-                                                            <button class="btn btn-success" @click="edit()" style="width:200px;">수정</button>
-                                                            <button class="btn btn-danger" @click="remove()" style="width:200px;">삭제</button>
-                                                        </template>
-                                                        <button class="btn btn-dark" @click="backtolist()" style="width:200px;">목록</button>
+                                                    <br>
+                                                        <div class="panel-footer text-right">
+                                                            <template v-if="usercheck()">
+                                                                <button class="btn btn-success" @click="edit()" style="width:200px;">수정</button>
+                                                                <button class="btn btn-danger" @click="remove()" style="width:200px;">삭제</button>
+                                                            </template>
+                                                            <button class="btn btn-dark" @click="backtolist()" style="width:200px;">목록</button>
+                                                        </div>
                                                     </div>
+
                                                 </div>
+                                            </template>
+                                            <script>
+                                                import http from "../http-common";
 
-                                            </div>
-                                        </template>
-                                        <script>
-                                            import http from "../http-common";
-
-                                            export default {
-                                                props: ['bid'],
-                                                name: "viewBoard",
-                                                data() {
-                                                    return {upHere: false, board: [], loading: true, errored: false, list: []};
-                                                },
-                                                methods: {
-                                                    insertcomment() {
-                                                        if (this.ccontent == '') {
-                                                            alert('내용을 입력하세요.');
-                                                            return;
-                                                        }
-
-                                                        http
-                                                            .post('/registercomment', {
-                                                                cnum: 0,
-                                                                bid: this.bid,
-                                                                ccontent: this.ccontent,
-                                                                user_id: localStorage.getItem("id")
-                                                            })
+                                                export default {
+                                                    props: ['bid'],
+                                                    name: "viewBoard",
+                                                    data() {
+                                                        return {upHere: false, board: [], loading: true, errored: false, list: []};
+                                                    },
+                                                    methods: {
+                                                        getname(id){
+                                                            http.get('/memlist/'+id)
                                                             .then(response => {
-                                                                if (response.data.resCode == 'succ') {
-                                                                    alert("댓글등록 완료.");
-                                                                    this.ccontent = '';
-                                                                    this.getcomment();
-                                                                } else {
-                                                                    alert("댓글등록 실패");
-
-                                                                    this.getcomment();
-                                                                }
+                                                                this.name = response.data.mem.mname;
                                                             });
-                                                        this.submitted = true;
-                                                    },
-                                                    getcomment() {
-                                                        http
-                                                            .get("/listcomment/" + this.bid)
-                                                            .then(response => {
-                                                                this.list = response.data.resvalue;
-                                                            })
-                                                            .catch(() => {
-                                                                alert("fail");
-                                                                this.errored = true;
-                                                            })
-                                                            . finally(() => (this.loading = false));
+                                                            alert(this.name);
 
-                                                    },
-                                                    removecomment(cnum) {
 
-                                                        http
-                                                            .delete("/deletecomment/" + cnum)
-                                                            .then(response => {
-                                                                if (response.data.state == "succ") {
-                                                                    alert("댓글 삭제 완료.");
-                                                                    // this.retrieveCustomers();
-                                                                } else {
-                                                                    alert("댓글 삭제 완료.");
+                                                        },
+                                                        insertcomment() {
+                                                            if (this.ccontent == '') {
+                                                                alert('내용을 입력하세요.');
+                                                                return;
+                                                            }
 
-                                                                }
-                                                            })
-                                                            .catch(() => {
-                                                                this.errored = true;
-                                                            })
-                                                            . finally(() => {
-                                                                this.loading = false;
+                                                            http
+                                                                .post('/registercomment', {
+                                                                    cnum: 0,
+                                                                    bid: this.bid,
+                                                                    ccontent: this.ccontent,
+                                                                    user_id: localStorage.getItem("id"),
+                                                                    user_name: ''
+                                                                })
+                                                                .then(response => {
+                                                                    if (response.data.resCode == 'succ') {
+                                                                        alert("댓글등록 완료.");
+                                                                        this.ccontent = '';
+                                                                        this.getcomment();
+                                                                    } else {
+                                                                        alert("댓글등록 실패");
 
-                                                                this.getcomment();
-                                                            });
+                                                                        this.getcomment();
+                                                                    }
+                                                                });
+                                                            this.submitted = true;
+                                                        },
+                                                        getcomment() {
+                                                            http
+                                                                .get("/listcomment/" + this.bid)
+                                                                .then(response => {
+                                                                    this.list = response.data.resvalue;
+                                                                })
+                                                                .catch(() => {
+                                                                    alert("fail");
+                                                                    this.errored = true;
+                                                                })
+                                                                . finally(() => (this.loading = false));
 
-                                                    },
+                                                        },
+                                                        removecomment(cnum) {
 
-                                                    usercheck() {
-                                                        if (localStorage.getItem("id") == this.board.user_id) 
-                                                            return true;
-                                                        else 
-                                                            return false;
+                                                            http
+                                                                .delete("/deletecomment/" + cnum)
+                                                                .then(response => {
+                                                                    if (response.data.state == "succ") {
+                                                                        alert("댓글 삭제 완료.");
+                                                                        // this.retrieveCustomers();
+                                                                    } else {
+                                                                        alert("댓글 삭제 완료.");
+
+                                                                    }
+                                                                })
+                                                                .catch(() => {
+                                                                    this.errored = true;
+                                                                })
+                                                                . finally(() => {
+                                                                    this.loading = false;
+
+                                                                    this.getcomment();
+                                                                });
+
+                                                        },
+
+                                                        usercheck() {
+                                                            if (localStorage.getItem("id") == this.board.user_id) 
+                                                                return true;
+                                                            else 
+                                                                return false;
+                                                            },
+                                                             cusercheck(cid) {
+                                                            if (localStorage.getItem("id") == cid) 
+                                                                return true;
+                                                            else 
+                                                                return false;
+                                                            }
+
+                                                        ,
+                                                        showlist() {
+                                                            this
+                                                                .$router
+                                                                .push("/listBoard");
+                                                        },
+                                                        viewBoards() {
+                                                            http
+                                                                .get("http://localhost:8090/api/infoboard/" + this.bid)
+                                                                .then(response => {
+                                                                    this.board = response.data.resvalue;
+                                                                })
+                                                                .catch(() => {
+                                                                    alert("fail");
+                                                                    this.errored = true;
+                                                                })
+                                                                . finally(() => (this.loading = false));
+                                                            this.getcomment();
+                                                        },
+                                                        edit() {
+                                                            this
+                                                                .$router
+                                                                .push("/UpdateBoard");
+                                                        },
+                                                        remove() {
+                                                            alert(this.bid + "번 게시물 삭제합니다.");
+                                                            http
+                                                                .delete("/deleteboard/" + this.bid + "/" + localStorage.getItem("id"))
+                                                                .then(response => {
+                                                                    if (response.data.state == "succ") {
+                                                                        alert("게시글 삭제를 하였습니다.");
+                                                                        this
+                                                                            .$router
+                                                                            .push("/listBoard");
+                                                                        // this.retrieveCustomers();
+                                                                    } else {
+                                                                        alert("게시글 삭제를 하였습니다.");
+                                                                        this
+                                                                            .$router
+                                                                            .push("/listBoard");
+                                                                    }
+                                                                })
+                                                                .catch(() => {
+                                                                    this.errored = true;
+                                                                })
+                                                                . finally(() => (this.loading = false));
+
+                                                        },
+                                                        backtolist() {
+                                                            this.showlist();
                                                         }
-                                                    ,
-                                                    showlist() {
-                                                        this
-                                                            .$router
-                                                            .push("/listBoard");
                                                     },
-                                                    viewBoards() {
-                                                        http
-                                                            .get("http://localhost:8090/api/infoboard/" + this.bid)
-                                                            .then(response => {
-                                                                this.board = response.data.resvalue;
-                                                            })
-                                                            .catch(() => {
-                                                                alert("fail");
-                                                                this.errored = true;
-                                                            })
-                                                            . finally(() => (this.loading = false));
-                                                        this.getcomment();
-                                                    },
-                                                    edit() {
-                                                        this
-                                                            .$router
-                                                            .push("/UpdateBoard");
-                                                    },
-                                                    remove() {
-                                                        alert(this.bid + "번 게시물 삭제합니다.");
-                                                        http
-                                                            .delete("/deleteboard/" + this.bid + "/" + localStorage.getItem("id"))
-                                                            .then(response => {
-                                                                if (response.data.state == "succ") {
-                                                                    alert("게시글 삭제를 하였습니다.");
-                                                                    this
-                                                                        .$router
-                                                                        .push("/listBoard");
-                                                                    // this.retrieveCustomers();
-                                                                } else {
-                                                                    alert("게시글 삭제를 하였습니다.");
-                                                                    this
-                                                                        .$router
-                                                                        .push("/listBoard");
-                                                                }
-                                                            })
-                                                            .catch(() => {
-                                                                this.errored = true;
-                                                            })
-                                                            . finally(() => (this.loading = false));
-
-                                                    },
-                                                    backtolist() {
-                                                        this.showlist();
+                                                    filters: {},
+                                                    mounted() {
+                                                        this.viewBoards();
                                                     }
-                                                },
-                                                filters: {},
-                                                mounted() {
-                                                    this.viewBoards();
-                                                }
-                                            };
-                                        </script>
-                                        <style></style>
+                                                };
+                                            </script>
+                                            <style></style>
