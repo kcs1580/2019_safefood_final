@@ -18,6 +18,7 @@ import productdetail from "./components/productdetail.vue";
 //import ChartPieCustomer2 from "./components/ChartPieCustomer2.vue";
 import VueSlideUpDown from 'vue-slide-up-down'
 import banner from "./components/banner.vue";
+import community from "./components/community.vue";
 
 
 Vue.component('vue-slide-up-down', VueSlideUpDown)
@@ -97,6 +98,10 @@ export default new Router({
             path: '/banner',
             name: 'banner',
             component: banner
+        },{
+            path:'/community',
+            name:'community',
+            component: community
         }      
 
 

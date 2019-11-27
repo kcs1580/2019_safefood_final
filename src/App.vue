@@ -17,12 +17,9 @@
                             |
                             <router-link class="nav_btn" to="/productlist">상품정보</router-link>
                             |
-                            
-                        <template v-if="!sessionCheck()">
-                                <span 
-                                    class="dropdown"
-                                    v-bind:class="loginPopup"
-                                    style=" width:100px; ">
+
+                            <template v-if="!sessionCheck()">
+                                <span class="dropdown" v-bind:class="loginPopup" style=" width:100px; ">
                                     <div
                                         class="btn dropdown-toggle"
                                         href="#"
@@ -64,37 +61,36 @@
                                             </div>
                                         </span>
                                     </template>
-                            <template v-if="sessionCheck()">
-                                <router-link class="nav_btn" to="/listBoard">질문게시판</router-link>
-                                |
-                                <router-link class="nav_btn" to="/mytakeinfo">섭취정보</router-link>
-                                |
-
-                                <div style="float: right; ">
                                     <template v-if="sessionCheck()">
-                                        <p
-                                            class="glyphicon glyphicon-user"
-                                            id="loginUser"
-                                            style="color:black; font-size:15px; ">
-                                            <i class="fas fa-user-plus"></i>
-                                            ID:
-                                            {{userInfo}}</p>
-                                        <button @click="logoutfunc">
-                                            <a class="btn btn-sm btn-dark">
-                                                <span >&nbsp;Logout</span>
-                                            </a>
-                                        </button>
-                                        <button @click="memupdatefunc">
-                                            <a class="btn btn-sm btn-dark">
-                                                <span >&nbsp;회원정보 수정</span>
-                                            </a>
-                                        </button>
+                                        <router-link class="nav_btn" to="/listBoard">질문게시판</router-link>
+                                        |
+                                        <router-link class="nav_btn" to="/mytakeinfo">섭취정보</router-link>
+                                        |
+
+                                        <div style="float: right; ">
+                                            <template v-if="sessionCheck()">
+                                                <p
+                                                    class="glyphicon glyphicon-user"
+                                                    id="loginUser"
+                                                    style="color:black; font-size:15px; ">
+                                                    <i class="fas fa-user-plus"></i>
+                                                    ID:
+                                                    {{userInfo}}</p>
+                                                <button @click="logoutfunc">
+                                                    <a class="btn btn-sm btn-dark">
+                                                        <span >&nbsp;Logout</span>
+                                                    </a>
+                                                </button>
+                                                <button @click="memupdatefunc">
+                                                    <a class="btn btn-sm btn-dark">
+                                                        <span >&nbsp;회원정보 수정</span>
+                                                    </a>
+                                                </button>
+                                            </template>
+
+                                        </div>
+
                                     </template>
-
-                                </div>
-
-                            </template>
-            
 
                                 </div>
                             </div>
@@ -126,7 +122,6 @@
                     import Store from "./store"
                     export default {
                         name: "app",
-                        el: '#main',
                         data() {
                             // active: 'home';
                             return {id: null, pw: null, loginPopup: false}
@@ -178,12 +173,14 @@
                                 if (localStorage.getItem("id") != null) 
                                     return true;
                                 
-else 
+                                else 
                                     return false;
                                 }
                             ,
-                            memupdatefunc(){
-                                this.$router.push('/updatemem');
+                            memupdatefunc() {
+                                this
+                                    .$router
+                                    .push('/updatemem');
                             },
                             logoutfunc() {
                                 Store.dispatch('logout');
