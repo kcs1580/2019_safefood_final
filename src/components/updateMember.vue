@@ -46,7 +46,7 @@
 				<label for="inputAllergy" class="col-lg-2 control-label">알레르기</label>
 				<div class="col-lg-10">
 					<fieldset>
-						<legend>check</legend>
+						
 						<label class="checkbox-inline"><input type="checkbox" name="allergy"
 							value="대두"  v-model="carr">대두</label> <label class="checkbox-inline"><input
 							type="checkbox" name="allergy" value="땅콩" v-model="carr">땅콩</label> <label
@@ -91,7 +91,6 @@
 </template>
 <script>
 import http from "../http-common";
-// import App from "../App.vue";
 
 export default {
 	name: "updatemem",
@@ -125,7 +124,6 @@ export default {
 		http
 		.get("http://localhost:8090/api/memlist/"+localStorage.getItem("id"))
         .then(response => {
-			alert(response.data.resvalue.calorie_goal)
 			this.member = response.data.resvalue;
 			this.cid = this.member.id;
             this.cpassword = this.member.password;
@@ -133,10 +131,9 @@ export default {
             this.caddr = this.member.addr;
 			this.ctel = this.member.tel;
 			this.ccal = this.member.calorie_goal;
-            this.carr = this.member.addr;
+			this.carr = this.member.allergyArr;
 			})
         .catch(() => {
-			//alert("fail");
           this.errored = true;
         })
         .finally(() => (this.loading = false));
@@ -147,8 +144,9 @@ export default {
             password: this.cpassword,
             mname: this.cmname,
             addr: this.caddr,
-            tel: this.ctel,
-            allergyArr: this.carr
+			tel: this.ctel,
+			allergyArr: this.carr,
+			calorie_goal: this.ccal
 		} 
 		).then(response => {
 				if (response.data.state==0) {
@@ -158,7 +156,10 @@ export default {
 					alert("회원정보 수정 성공.");
 						this.showlist();
 				}
-		});
+		}).catch(() => {
+			alert("fail");
+          this.errored = true;
+        });
 		this.submitted = true;
 	},
 

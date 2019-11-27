@@ -234,8 +234,7 @@
                                         .get("/insertintake/" + this.user_id + "/" + this.food.code)
                                         .then(response => {
                                             this.res = response.data.resvalue;
-
-                                            alert(response.data.resvalue);
+                                            alert(this.food.name + " 섭취목록에 넣었습니다.");
 
                                         })
                                         .catch(() => {
