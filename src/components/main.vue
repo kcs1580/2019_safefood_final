@@ -10,7 +10,7 @@
                     <img v-show="fade[1]" key="1" class="im" src="../../public/food2.jpg">
                         <img v-show="fade[2]" key="2" class="im" src="../../public/food3.jpg">
                             <img v-show="fade[3]" key="3" class="im" src="../../public/food4.jpg">
-                                <img v-show="fade[4]" key="0" class="im" src="../../public/food.jpg"></transition-group>
+                                <img v-show="fade[4]" key="4" class="im" src="../../public/food.jpg"></transition-group>
                             </div>
                             <!-- <img src="../../public/food.jpg" id="bg" alt=""> -->
                             <nav class="navbar">
