@@ -18,7 +18,7 @@
 				<div class="col-lg-10">
 					<input type="password" class="form-control" id="password"
 						name="password" data-rule-required="true"
-						placeholder="영문 숫자포함  6자리 이상" maxlength="30"  v-model="cpassword">
+						placeholder="영문 숫자포함 6자리 이상" maxlength="30"  v-model="cpassword">
 				</div>
 			</div>
 			<div class="form-group" id="divName">
@@ -47,7 +47,7 @@
 				<label for="inputAllergy" class="col-lg-2 control-label">알레르기</label>
 				<div class="col-lg-10">
 					<fieldset>
-						<legend>check</legend>
+						
 						<label class="checkbox-inline"><input type="checkbox" name="allergy"
 							value="대두"  v-model="carr">대두</label> <label class="checkbox-inline"><input
 							type="checkbox" name="allergy" value="땅콩" v-model="carr">땅콩</label> <label
@@ -74,6 +74,14 @@
 
 				</div>
 			</div>
+			<div class= "form-group" id="userCalorie">
+				<label for="inputCalorie" class="col-lg-2">일일 목표 칼로리</label>
+				<div class="col-lg-10">
+					<input type="text" class="form-control" id="calorie" name="calorie"
+						placeholder="목표 칼로리" maxlength="50"  v-model="ccal" style="width:200px;">
+				</div>	
+			</div>
+
 			<div class="form-group">
 				<div class="col-lg-offset-2 col-lg-10">
 					<button type="submit" class="btn btn-primary">가입하기</button>
@@ -100,7 +108,8 @@ export default {
             callergy:"",
             cquestion:"",
             canswer:"",
-            carr: [],
+			carr: [],
+			ccal: "",
 			submitted: false
 		};
 	},
@@ -120,7 +129,8 @@ export default {
             mname: this.cmname,
             addr: this.caddr,
             tel: this.ctel,
-            allergyArr: this.carr
+			allergyArr: this.carr,
+			calorie_goal: this.ccal
 
 		} 
 		).then(response => {
