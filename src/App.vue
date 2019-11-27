@@ -120,6 +120,7 @@
                 <script>
                     import {mapActions} from "vuex"
                     import Store from "./store"
+                    global.jQuery = require('jquery')
                     export default {
                         name: "app",
                         data() {
