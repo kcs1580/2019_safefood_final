@@ -23,7 +23,7 @@
                                             @click="loginPopupfunc()"
                                             data-toggle="dropdown">
                                             <span style="color:red;">
-                                                <i class="fas fa-user fa-2x" style="color:black; "></i>
+                                                <i class="fas fa-user fa-2x" style="color:white; "></i>
                                             </span>
                                         </div>
                                         <div class="dropdown-menu" style="padding: 17px; float:right;">
