@@ -8,16 +8,19 @@
                 style="background-color: rgba( 255, 255, 255,0.8 ); height: 100%;">
                 <div
                     class="panel-heading"
-                    style="text-align:left; font-weight: bold;  padding: 20px;background:#b6b9bb ">
+                    style="text-align:center; font-weight: bold;  padding: 20px;background:#b6b9bb ">
                     [Q.
                     {{board.bid}}]
                     {{board.btitle }}</div>
                 <br>
                     <div style="float:right;">
                         작성자:
-                        {{board.user_id}}
+                        {{board.user_name}}
+                        <span style="margin: 5px;"></span>
                         조회수:
                         {{board.bcount}}
+                                                <span style="margin: 5px;"></span>
+
                     </div>
                     <br>
                         <hr>

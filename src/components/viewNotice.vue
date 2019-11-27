@@ -9,7 +9,11 @@
 			</div>
       <br>
       <div style="float:right;">
-        작성자: 관리자   조회수: {{notice.ncount}}
+        작성자: 관리자 
+                                <span style="margin: 5px;"></span>
+  조회수: {{notice.ncount}}
+                          <span style="margin: 5px;"></span>
+
       </div>
       <br>
       <hr>
