@@ -58,8 +58,7 @@ export default new Vuex.Store({
             .then(response => {
                 if(response.data.resvalue.password == loginObj.pw){
                     commit("loginSuccess", response.data.resvalue)
-                    router.push("/").catch(err => {err})
-                    alert(response.data.resvalue.mname +" 님이 로그인 하셨습니다.")
+                        alert(response.data.resvalue.mname +" 님이 로그인 하셨습니다.")
                 }else{
                     commit("loginError")
                     alert("로그인 실패!!1")
