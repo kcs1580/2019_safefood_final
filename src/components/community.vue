@@ -44,7 +44,7 @@
     </div>
   </div>
 </div>
-<!-- <collapsible>
+<!-- <collapsi ble>
   <collapsible-item>
     <h4 slot="header">header1</h4>
     <p>body 1</p>
