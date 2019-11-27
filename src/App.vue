@@ -16,7 +16,7 @@
                             <router-link class="nav_btn" to="/listNotice">공지사항</router-link>
                             |
                             <router-link class="nav_btn" to="/productlist">상품정보</router-link>
-                            |
+                            |                           
 
                             <template v-if="!sessionCheck()">
                                 <span class="dropdown" v-bind:class="loginPopup" style=" width:100px; ">

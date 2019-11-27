@@ -102,7 +102,7 @@ export default new Router({
             path:'/community',
             name:'community',
             component: community
-        }      
+        }       
 
 
     ]
