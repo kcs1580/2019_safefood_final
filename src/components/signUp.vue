@@ -18,7 +18,7 @@
 				<div class="col-lg-10">
 					<input type="password" class="form-control" id="password"
 						name="password" data-rule-required="true"
-						placeholder="영문 숫자포함  6자리 이상" maxlength="30"  v-model="cpassword">
+						placeholder="영문 숫자포함 6자리 이상" maxlength="30"  v-model="cpassword">
 				</div>
 			</div>
 			<div class="form-group" id="divName">
