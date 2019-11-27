@@ -74,6 +74,14 @@
 
 				</div>
 			</div>
+			<div class= "form-group" id="userCalorie">
+				<label for="inputCalorie" class="col-lg-2">일일 목표 칼로리</label>
+				<div class="col-lg-10">
+					<input type="text" class="form-control" id="calorie" name="calorie"
+						placeholder="목표 칼로리" maxlength="50"  v-model="ccal" style="width:200px;">
+				</div>	
+			</div>
+
 			<div class="form-group">
 				<div class="col-lg-offset-2 col-lg-10">
 					<button type="submit" class="btn btn-primary">가입하기</button>
@@ -100,7 +108,8 @@ export default {
             callergy:"",
             cquestion:"",
             canswer:"",
-            carr: [],
+			carr: [],
+			ccal: "",
 			submitted: false
 		};
 	},
@@ -120,7 +129,8 @@ export default {
             mname: this.cmname,
             addr: this.caddr,
             tel: this.ctel,
-            allergyArr: this.carr
+			allergyArr: this.carr,
+			calorie_goal: this.ccal
 
 		} 
 		).then(response => {
