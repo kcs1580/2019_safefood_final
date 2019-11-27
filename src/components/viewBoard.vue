@@ -8,20 +8,23 @@
                 style="background-color: rgba( 255, 255, 255,0.8 ); height: 100%;">
                 <div
                     class="panel-heading"
-                    style="text-align:left; font-weight: bold;  padding: 20px;background:#b6b9bb ">
+                    style="text-align:center; font-weight: bold;  padding: 20px;background:#b6b9bb ">
                     [Q.
                     {{board.bid}}]
                     {{board.btitle }}</div>
                 <br>
                     <div style="float:right;">
                         작성자:
-                        {{board.user_id}}
+                        {{board.user_name}}
+                        <span style="margin: 5px;"></span>
                         조회수:
                         {{board.bcount}}
+                                                <span style="margin: 5px;"></span>
+
                     </div>
                     <br>
                         <hr>
-                            <div class="panel-body" style="height:400px; font-size:20px; padding:40px;">
+                            <div class="panel-body" style="height:400px; font-size:20px; padding:40px; ">
                                 {{board.bcontent }}
                             </div>
                             <hr>
@@ -32,9 +35,9 @@
                                     :key="com.cnum"
                                     style="display:block;  margin: 50px;">
                                     <div class="container" style="display:block;">
-                                        <div class="content" style="border:none; float:left; font-size:20px;">
+                                        <div class="content" style="border:none; float:left; font-size:20px; font-weight:bold;">
                                             <i class="fab fa-replyd fa-2x"></i>
-                                            <i class="flaticon-airplane49"></i>
+                                            {{com.user_id}} :
                                             {{com.ccontent }}
                                         </div>
                                     </div>
@@ -60,7 +63,7 @@
                                                                 id="ccontent"
                                                                 v-model="ccontent"
                                                                 class="form-control"
-                                                                style="height:50px; width:800px;"
+                                                                style="height:50px; width:800px; margin-left:20px;"
                                                                 placeholder=" 내용을 입력해주세요."></span>
 
                                                         </span>

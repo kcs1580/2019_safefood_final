@@ -12,7 +12,7 @@
 <template>
 	<div class="container">
 <div>
-	<h1 style="text-align: center; font-size: 50px; margin-bottom:">지일무운게시판</h1>
+	<h1 style="text-align: center; font-size: 50px; margin-bottom:">Q&amp;A</h1>
 
 		<hr style="margin-bottom: 40px;">
 		<div class="panel panel-default">
