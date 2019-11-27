@@ -96,7 +96,7 @@
                             </div>
                         </nav>
                     </header>
-                    <div style="height:100px;"></div>
+                    <!-- <div style="height:100px;"></div> -->
                     <router-view/>
                     <footer style="background: #ececec; padding: 50px;">
                         <h1>Find Us</h1>
