@@ -47,7 +47,7 @@
 				<label for="inputAllergy" class="col-lg-2 control-label">알레르기</label>
 				<div class="col-lg-10">
 					<fieldset>
-						<legend>check</legend>
+						
 						<label class="checkbox-inline"><input type="checkbox" name="allergy"
 							value="대두"  v-model="carr">대두</label> <label class="checkbox-inline"><input
 							type="checkbox" name="allergy" value="땅콩" v-model="carr">땅콩</label> <label
