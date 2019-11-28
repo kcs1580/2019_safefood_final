@@ -1,6 +1,6 @@
 <template>
  <div class="container">
-<h1 style="text-align: center; font-size: 3em; margin-bottom:">공지 사항 </h1>
+<h1 style="text-align: center; font-size: 3em; margin-top:40px;">공지 사항 </h1>
 		<hr style="margin-bottom: 40px;">
 		
 		<div class="panel panel-info" style="background-color: rgba( 255, 255, 255,0.8 ); height: 800px; ">
