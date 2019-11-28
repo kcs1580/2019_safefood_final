@@ -1,28 +1,34 @@
 <template>
     <div class="container">
-            <div class="col-xs-12" style=" top:20px; text-align: right; margin-bottom: 15px; display:block; float:right">
-                <input type="hidden"/>
-                <div class="form-group" style="width:100px; float:left;">
-                    <select v-model="selected" class="form-control" placeholder="선택">
-                        <option value="name">상품명</option>
-                        <option value="maker">제조사</option>
-                        <option value="material">재료명</option>
-                    </select>
-                </div>
-                <div style="width:20px; float:left;" ></div>
-                <div class="form-group" style="width:900px;  float:left;">
-                    <input
-                        type="text"
-                        name="keyword"
-                        v-model="keyword"
-                        class="form-control"
-                        placeholder="검색어를 입력하세요."
-                        @keyup.enter="searchfood">
-                        </div>
-                    <div @click="searchfood()" class="btn btn-info btn-warning" style=" float:left;">검색</div>
+        <div
+            class="col-xs-12"
+            style=" top:20px; text-align: right; margin-bottom: 15px; display:block; float:right">
+            <input type="hidden"/>
+            <div class="form-group" style="width:120px; float:left;">
+                <select v-model="selected" class="form-control" placeholder="선택">
+                    <option value="name">상품명</option>
+                    <option value="maker">제조사</option>
+                    <option value="material">재료명</option>
+                </select>
+            </div>
+            <div style="width:20px; float:left;"></div>
+            <div class="form-group" style="width:900px;  float:left;">
+                <input
+                    type="text"
+                    name="keyword"
+                    v-model="keyword"
+                    class="form-control"
+                    placeholder="검색어를 입력하세요."
+                    @keyup.enter="searchfood"></div>
+                <div
+                    @click="searchfood()"
+                    class="btn btn-info btn-warning"
+                    style=" float:left;">검색</div>
 
-                </div>
-            <div class="panel panel productPanel" style=" width:100%; height:2500px; background-color: rgba( 255, 255, 255,0.3 ); ">
+            </div>
+            <div
+                class="panel panel productPanel"
+                style=" width:100%; height:2500px; background-color: rgba( 255, 255, 255,0.3 ); ">
                 <span
                     v-for="item in list"
                     class="row productRow"
@@ -30,26 +36,25 @@
                     style="display:block;  margin: 50px;">
                     <div class="container" style="display:block;">
                         <div class="content" style="border:none; float:left;">
-                            <a  @click="fooddetail(item.code)">
+                            <a @click="fooddetail(item.code)">
                                 <div class="content-overlay"></div>
                                 <img :src="require('../' + item.img)" alt="item.name" style="width:300px;">
                                     <div class="content-details fadeIn-bottom">
-                                        <h3 class="content-title">{{item.name}} 
+                                        <h3 class="content-title">{{item.name}}
                                             <br>자세히보기</h3>
-                                    </div>
-                                     <a
-                                                class="btn btn-lg btn-warning"
-                                                @click="fooddetail(item.code)"
-                                                style="text-align: center;color:white; font-weight:bold;  width:280px;">{{item.name}}
-                                                &nbsp;
-                                            </a>
-                                           
-                                </a>
+                                        </div>
+                                        <a
+                                            class="btn btn-lg btn-warning"
+                                            @click="fooddetail(item.code)"
+                                            style="text-align: center;color:white; font-weight:bold;  width:280px;">{{item.name}}
+                                            &nbsp;
+                                        </a>
+
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                    </span>
-                </div>
-          
+                        </span>
+                    </div>
 
                 </div>
 
@@ -59,7 +64,7 @@
                 import http from "../http-common";
                 import App from "../App.vue";
                 export default {
-                    name: "productlist",
+                    name: "productlist",    
                     data() {
                         return {
                             upHere: false,
@@ -67,20 +72,22 @@
                             loading: true,
                             errored: false,
                             keyword: '',
-                            selected: ''
+                            selected: 'name'
                         };
                     },
                     methods: {
                         searchfood() {
-
-                            http
-                                .get("/searchFoodByKeyword/" + this.selected + "/" + this.keyword)
-                                .then(response => (this.list = response.data['list']))
-                                .catch(() => {
-                                    this.errored = true;
-                                })
-                                . finally(() => (this.loading = false));
-
+                            if (this.keyword == "") {
+                                alert("검색어를 입력해주세요.")
+                            } else {
+                                http
+                                    .get("/searchFoodByKeyword/" + this.selected + "/" + this.keyword)
+                                    .then(response => (this.list = response.data['list']))
+                                    .catch(() => {
+                                        this.errored = true;
+                                    })
+                                    . finally(() => (this.loading = false));
+                            }
                         },
 
                         fooddetail: function (ccode) {
