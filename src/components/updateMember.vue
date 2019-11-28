@@ -46,7 +46,7 @@
 				<label for="inputAllergy" class="col-lg-2 control-label">알레르기</label>
 				<div class="col-lg-10">
 					<fieldset>
-						<legend>check</legend>
+						
 						<label class="checkbox-inline"><input type="checkbox" name="allergy"
 							value="대두"  v-model="carr">대두</label> <label class="checkbox-inline"><input
 							type="checkbox" name="allergy" value="땅콩" v-model="carr">땅콩</label> <label
@@ -73,6 +73,13 @@
 
 				</div>
 			</div>
+			<div class= "form-group" id="userCalorie">
+				<label for="inputCalorie" class="col-lg-2">일일 목표 칼로리</label>
+				<div class="col-lg-10">
+					<input type="text" class="form-control" id="calorie" name="calorie"
+						placeholder="목표 칼로리" maxlength="50"  v-model="ccal" style="width:200px;">
+				</div>	
+			</div>
 			<div class="form-group">
 				<div class="col-lg-offset-2 col-lg-10">
 					<button type="submit" class="btn btn-primary">수정하기</button>
@@ -84,7 +91,6 @@
 </template>
 <script>
 import http from "../http-common";
-// import App from "../App.vue";
 
 export default {
 	name: "updatemem",
@@ -100,7 +106,9 @@ export default {
             callergy:"",
             cquestion:"",
             canswer:"",
-            carr: [],
+			carr: [],
+			ccal: "",
+			member:[],
 			submitted: false
 		};
 	},
@@ -114,18 +122,18 @@ export default {
 	},
 	infomem(){
 		http
-		.get("http://localhost:8090/api/memlist/"+this.member.id)
+		.get("http://localhost:8090/api/memlist/"+localStorage.getItem("id"))
         .then(response => {
 			this.member = response.data.resvalue;
 			this.cid = this.member.id;
             this.cpassword = this.member.password;
             this.cmname = this.member.mname;
             this.caddr = this.member.addr;
-            this.ctel = this.member.tel;
-            this.carr = this.member.addr;
+			this.ctel = this.member.tel;
+			this.ccal = this.member.calorie_goal;
+			this.carr = this.member.allergyArr;
 			})
         .catch(() => {
-			//alert("fail");
           this.errored = true;
         })
         .finally(() => (this.loading = false));
@@ -136,8 +144,9 @@ export default {
             password: this.cpassword,
             mname: this.cmname,
             addr: this.caddr,
-            tel: this.ctel,
-            allergyArr: this.carr
+			tel: this.ctel,
+			allergyArr: this.carr,
+			calorie_goal: this.ccal
 		} 
 		).then(response => {
 				if (response.data.state==0) {
@@ -147,7 +156,10 @@ export default {
 					alert("회원정보 수정 성공.");
 						this.showlist();
 				}
-		});
+		}).catch(() => {
+			alert("fail");
+          this.errored = true;
+        });
 		this.submitted = true;
 	},
 
@@ -167,7 +179,7 @@ export default {
 }
 .ex{
  display: inline-block;
- height:900px; 
+ height:950px; 
  width:800px;
  background-color: white;
  opacity: 0.9;
