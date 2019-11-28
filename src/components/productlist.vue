@@ -64,7 +64,7 @@
                 import http from "../http-common";
                 import App from "../App.vue";
                 export default {
-                    name: "productlist",    
+                    name: "productlist",
                     data() {
                         return {
                             upHere: false,
@@ -78,7 +78,13 @@
                     methods: {
                         searchfood() {
                             if (this.keyword == "") {
-                                alert("검색어를 입력해주세요.")
+                                http
+                                    .get("/listfood")
+                                    .then(response => (this.list = response.data['list']))
+                                    .catch(() => {
+                                        this.errored = true;
+                                    })
+                                    . finally(() => (this.loading = false));
                             } else {
                                 http
                                     .get("/searchFoodByKeyword/" + this.selected + "/" + this.keyword)
