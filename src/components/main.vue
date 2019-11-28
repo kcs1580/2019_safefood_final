@@ -22,8 +22,8 @@
                                             href="#"
                                             @click="loginPopupfunc()"
                                             data-toggle="dropdown">
-                                            <span style="color:red;">
-                                                <i class="fas fa-user fa-2x" style="color:white; "></i>
+                                            <span > <i class="fas fa-user fa-2x" style="color:white; float:left;"></i> 
+                                            <p style="color:white;"> 로그인</p>
                                             </span>
                                         </div>
                                         <div class="dropdown-menu" style="padding: 17px; float:right;">
@@ -63,9 +63,9 @@
                                                 <p
                                                     class="glyphicon glyphicon-user"
                                                     id="loginUser"
-                                                    style="color:black; font-size:15px; ">
-                                                    <i class="fas fa-user-plus"></i>
-                                                    ID:
+                                                    style="color:white; font-size:15px; ">
+                                                    <i class="fas fa-user-plus fa-2x"></i>
+                                                     ID:
                                                     {{userInfo}}</p>
                                                 <button @click="logoutfunc">
                                                     <a class="btn btn-sm btn-dark">
@@ -156,10 +156,12 @@
                                                     }, {
                                                         title: '상품정보',
                                                         click: () => this.go("상품정보")
-                                                    }, {
-                                                        title: '섭취정보',
-                                                        click: () => this.go("섭취정보")
-                                                    }, {
+                                                    },
+                                                    // {
+                                                    //     title: '섭취정보',
+                                                    //     click: () => this.go("섭취정보")
+                                                    // },
+                                                     {
                                                         title: '질문게시판',
                                                         click: () => this.go("질문게시판")
                                                     }, {
