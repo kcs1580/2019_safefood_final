@@ -71,17 +71,17 @@ export default new Vuex.Store({
                         location.reload();
                     } else {
                         commit("loginError")
-                        alert("로그인 실패!!1")
+                        alert("아이디 또는 비밀번호를 확인해주세요.")
                     }
                 })
                 .catch(() => {
                     commit("loginError")
-                    alert("로그인 실패!!1")
+                    alert("아이디 또는 비밀번호를 확인해주세요.")
                 })
             },
         logout({commit}) {
             //this.$session.destroy()
-            alert("로그아웃햇지")
+            alert("로그아웃 되었습니다.")
             localStorage.removeItem("id")
             localStorage.removeItem("name")
             commit("logout")
