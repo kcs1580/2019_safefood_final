@@ -8,7 +8,7 @@
 				<label for="inputId" class="col-lg-2 control-label">아이디</label>
 				<div class="col-lg-10">
 					<input type="email" class="form-control onlyAlphabetAndNumber"
-						id="id" name="id" data-rule-required="true" placeholder="" maxlength="30" v-model="cid">
+						id="id" name="id" data-rule-required="true" placeholder="" maxlength="30" v-model="cid" disabled>
 				</div>
 			</div>
 

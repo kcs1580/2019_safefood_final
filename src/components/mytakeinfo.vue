@@ -72,6 +72,7 @@
                         },
                         methods: {
                             searchintake() {
+                                
                                 http
                                     .get("/searchintake/" + this.keyword + "/" + localStorage.getItem("id"))
                                     .then(response => (this.list = response.data.list))

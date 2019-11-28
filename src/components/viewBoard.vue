@@ -1,7 +1,7 @@
 <template>
     <div class="container">
 
-        <h1 style="text-align: center; font-size: 3em; margin-bottom:">Q&amp;A</h1>
+        <h1 style="text-align: center; font-size: 3em; margin-top:40px;">Q&amp;A</h1>
         <hr style="margin-bottom: 40px;">
             <div
                 class="panel panel-info"
@@ -9,9 +9,11 @@
                 <div
                     class="panel-heading"
                     style="text-align:center; font-weight: bold;  padding: 20px;background:#b6b9bb ">
-                    [Q.
+                      <h3><i class="fab fa-quora"></i>
+                    [질문 no.
                     {{board.bid}}]
-                    {{board.btitle }}</div>
+                    {{board.btitle }}
+                    </h3></div>
                 <br>
                     <div style="float:right;">
                         작성자:
@@ -29,26 +31,27 @@
                             </div>
                             <hr>
 
-                                <span
+                                <div
                                     v-for="com in list"
                                     class="row productRow"
                                     :key="com.cnum"
                                     style="display:block;  margin: 50px;">
+                                    <hr color="lightgrey" width="50%" align="left">
                                     <div class="container" style="display:block;">
                                         <div
-                                            class="content"
-                                            style="border:none; float:left; font-size:20px; font-weight:bold;">
+                                            class="container"
+                                            style="border:none; font-size:20px; font-weight:bold;">
                                             <i class="fab fa-replyd fa-2x"></i>
-                                            {{com.user_name}}
+                                            [{{com.user_name}}]
                                             :
                                             {{com.ccontent }}
-
+                                    <template v-if="cusercheck(com.user_id)">
+                                        <button class="btn btn-outline-danger " @click="removecomment(com.cnum)" >삭제</button>
+                                    </template>
                                         </div>
                                     </div>
-                                    <template v-if="cusercheck(com.user_id)">
-                                        <button class="btn btn-outline-danger " @click="removecomment(com.cnum)">삭제하기</button>
-                                    </template>
-                                </span>
+                                   
+                                </div>
                                 <br>
                                     <br>
                                         <br>
