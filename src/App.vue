@@ -138,7 +138,7 @@
                                 return Store.state.isLoginError;
                             },
                             userInfo() {
-                                return localStorage.getItem("name");
+                                return localStorage.getItem("id");
                             }
 
                         },
