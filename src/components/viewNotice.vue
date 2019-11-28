@@ -4,8 +4,9 @@
 		<hr style="margin-bottom: 40px;">
 		
 		<div class="panel panel-info" style="background-color: rgba( 255, 255, 255,0.8 ); height: 800px; ">
-			<div class="panel-heading" style="height:70px; padding: 20px; background:#b6b9bb ">
-				<h3> <i class="far fa-bell"></i> [공지 no. {{notice.nid}}] {{notice.ntitle }}</h3>
+			<div class="panel-heading" style="height:70px; padding: 20px;  font-weight: bold;background:#b6b9bb ">
+				<h3> <i class="far fa-bell"></i>
+         [공지 no. {{notice.nid}}] {{notice.ntitle }}</h3>
 			</div>
       <br>
       <div style="float:right;">

@@ -9,9 +9,11 @@
                 <div
                     class="panel-heading"
                     style="text-align:center; font-weight: bold;  padding: 20px;background:#b6b9bb ">
-                    [Q.
+                      <h3><i class="fab fa-quora"></i>
+                    [질문 no.
                     {{board.bid}}]
-                    {{board.btitle }}</div>
+                    {{board.btitle }}
+                    </h3></div>
                 <br>
                     <div style="float:right;">
                         작성자:
