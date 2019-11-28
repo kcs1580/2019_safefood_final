@@ -1,7 +1,7 @@
 <template>
     <div class="container">
 
-        <h1 style="text-align: center; font-size: 3em; margin-bottom:">Q&amp;A</h1>
+        <h1 style="text-align: center; font-size: 3em; margin-top:40px;">Q&amp;A</h1>
         <hr style="margin-bottom: 40px;">
             <div
                 class="panel panel-info"
