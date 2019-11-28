@@ -35,37 +35,33 @@
                                     :key="com.cnum"
                                     style="display:block;  margin: 50px;">
                                     <div class="container" style="display:block;">
-                                        <div 
+                                        <div
                                             class="content"
                                             style="border:none; float:left; font-size:20px; font-weight:bold;">
                                             <i class="fab fa-replyd fa-2x"></i>
                                             {{com.user_name}}
                                             :
                                             {{com.ccontent }}
-                                            
+
                                         </div>
                                     </div>
                                     <template v-if="cusercheck(com.user_id)">
-                                    <button class="btn btn-outline-danger " @click="removecomment(com.cnum)">삭제하기</button>
+                                        <button class="btn btn-outline-danger " @click="removecomment(com.cnum)">삭제하기</button>
                                     </template>
                                 </span>
                                 <br>
                                     <br>
                                         <br>
                                             <hr>
-                                                <form
-                                                    action=""
-                                                    method="post"
-                                                    id="_brdFrom"
-                                                    name="brdForm"
-                                                    @submit.prevent="insertcomment">
+                                                <div>
+
                                                     <span class="form-group">
                                                         <span style="float: left; width:70px;"></span>
                                                         <span style="float: left;">
                                                             <input
                                                                 data-msg="내용"
                                                                 type="text"
-                                                                v-model="ccontent"
+                                                                v-model="iccontent"
                                                                 class="form-control"
                                                                 style="height:50px; width:800px; margin-left:20px;"
                                                                 placeholder=" 내용을 입력해주세요."></span>
@@ -75,15 +71,13 @@
                                                             <div class="col-sm-12 text-right">
 
                                                                 <div style="float:left;">
-                                                                    <button type="submit" class="btn btn-primary" style="width:60px;">등록</button>
+                                                                    <div class="btn btn-primary" style="width:60px;" @click="insertcomment()">등록</div>
                                                                 </div>
-                                                                <div style="float:left;">
-                                                                    <button type="reset" class="btn btn-danger" style="width:60px;">취소
-                                                                    </button>
-                                                                </div>
+
                                                             </div>
                                                         </div>
-                                                    </form>
+
+                                                    </div>
                                                     <br>
                                                         <div class="panel-footer text-right">
                                                             <template v-if="usercheck()">
@@ -106,17 +100,17 @@
                                                         return {upHere: false, board: [], loading: true, errored: false, list: []};
                                                     },
                                                     methods: {
-                                                        getname(id){
-                                                            http.get('/memlist/'+id)
-                                                            .then(response => {
-                                                                this.name = response.data.mem.mname;
-                                                            });
+                                                        getname(id) {
+                                                            http
+                                                                .get('/memlist/' + id)
+                                                                .then(response => {
+                                                                    this.name = response.data.mem.mname;
+                                                                });
                                                             alert(this.name);
-
 
                                                         },
                                                         insertcomment() {
-                                                            if (this.ccontent == '') {
+                                                            if (this.iccontent == '') {
                                                                 alert('내용을 입력하세요.');
                                                                 return;
                                                             }
@@ -125,14 +119,14 @@
                                                                 .post('/registercomment', {
                                                                     cnum: 0,
                                                                     bid: this.bid,
-                                                                    ccontent: this.ccontent,
+                                                                    ccontent: this.iccontent,
                                                                     user_id: localStorage.getItem("id"),
                                                                     user_name: ''
                                                                 })
                                                                 .then(response => {
                                                                     if (response.data.resCode == 'succ') {
                                                                         alert("댓글등록 완료.");
-                                                                        this.ccontent = '';
+                                                                        this.iccontent = '';
                                                                         this.getcomment();
                                                                     } else {
                                                                         alert("댓글등록 실패");
@@ -184,14 +178,14 @@
                                                                 return true;
                                                             else 
                                                                 return false;
-                                                            },
-                                                             cusercheck(cid) {
+                                                            }
+                                                        ,
+                                                        cusercheck(cid) {
                                                             if (localStorage.getItem("id") == cid) 
                                                                 return true;
                                                             else 
                                                                 return false;
                                                             }
-
                                                         ,
                                                         showlist() {
                                                             this
