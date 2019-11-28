@@ -102,10 +102,10 @@
 
                                          <router-view/>
                     <span style="margin-right:100px;">
-                        <div style="width:500px; height:550px;margin-top:50px; background:rgba(255,255,255,0.7);">
+                        <div style="width:350px; height:550px;margin-top:50px; background:rgba(255,255,255,0.7);">
                             <div
                                 class="panel-heading"
-                                style="text-align:center; font-weight: bold; font-size:20px; padding: 10px;background:#b6b9bb ">실시간 채팅</div>
+                                style="text-align:center; font-weight: bold; font-size:20px; padding: 5px;background:#b6b9bb ">실시간 채팅</div>
                             <br>
                                 <div id="send" >
                                     <span class="form-group" >
@@ -116,14 +116,14 @@
                                                 type="text"
                                                 v-model="iccontent"
                                                 class="form-control"
-                                                style=" width:300px; margin-left:40px;"
+                                                style=" width:250px; margin-left:5px;"
                                                 placeholder=" 내용을 입력해주세요."></span>
 
                                         </span>
                                         <span class="row">
                                             <div class="col-sm-12 text-right">
                                                 <div style="float:left;">
-                                                    <div class="btn btn-primary" style="width:80px;" @click="insertchat()">보내기</div>
+                                                    <div class="btn btn-primary" style="width:70px;" @click="insertchat()">보내기</div>
                                                 </div>
 
                                             </div>
