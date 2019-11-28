@@ -36,7 +36,7 @@
                                     class="row productRow"
                                     :key="com.cnum"
                                     style="display:block;  margin: 50px;">
-                                    <hr color="green" width="50%" align="left">
+                                    <hr color="lightgrey" width="50%" align="left">
                                     <div class="container" style="display:block;">
                                         <div
                                             class="container"
