@@ -1,12 +1,7 @@
 
 <template>
 	<div class="container">
-		<div class="jumbotron"><h1>
-				WHAT WE <strong style="color: #4d7d5a;">PROVIDE</strong>
-			</h1>
-			<hr>
-			<p>건강한 삶을 위한 먹거리 프로젝트</p>
-		</div>
+	
     <h1 style="text-align: center; font-size: 3em; margin-bottom:"> 질문 게시판 </h1>
 		<hr style="margin-bottom: 40px;">
 		<div class="panel panel-default">

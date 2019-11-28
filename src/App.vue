@@ -239,9 +239,11 @@
                                         },
                                         pageCheck(){
                                             
-
-                                            if(window.location.pathname!='/')
-                                            return true;
+                                            if(window.location.pathname!='/'){
+                                                 if(window.location.pathname!='/updatemem'){
+                                                     return true;
+                                                     }
+                                            }
                                             else return false;
 
 
