@@ -129,6 +129,7 @@
                                     import axios from 'axios'
                                     import Store from "../store"
                                     import {mapActions} from "vuex"
+                                    import http from "../http-common";
 
                                     Vue.use(Vue3dMenu);
                                     let fadeIdx = 0
@@ -310,6 +311,11 @@
                                         },
                                         mounted() {
                                             this.isLogin = false;
+                                            http.get('/countfood')
+                                            .catch(() => {
+                                                        this.errored = true
+                                                    })
+                                                    . finally(() => this.loading = false)
 
                                             setTimeout(this.fadeNext, 0.5);
                                             this.init();
