@@ -31,26 +31,27 @@
                             </div>
                             <hr>
 
-                                <span
+                                <div
                                     v-for="com in list"
                                     class="row productRow"
                                     :key="com.cnum"
                                     style="display:block;  margin: 50px;">
+                                    <hr color="green" width="50%" align="left">
                                     <div class="container" style="display:block;">
                                         <div
-                                            class="content"
-                                            style="border:none; float:left; font-size:20px; font-weight:bold;">
+                                            class="container"
+                                            style="border:none; font-size:20px; font-weight:bold;">
                                             <i class="fab fa-replyd fa-2x"></i>
-                                            {{com.user_name}}
+                                            [{{com.user_name}}]
                                             :
                                             {{com.ccontent }}
-
+                                    <template v-if="cusercheck(com.user_id)">
+                                        <button class="btn btn-outline-danger " @click="removecomment(com.cnum)" >삭제</button>
+                                    </template>
                                         </div>
                                     </div>
-                                    <template v-if="cusercheck(com.user_id)">
-                                        <button class="btn btn-outline-danger " @click="removecomment(com.cnum)">삭제하기</button>
-                                    </template>
-                                </span>
+                                   
+                                </div>
                                 <br>
                                     <br>
                                         <br>
