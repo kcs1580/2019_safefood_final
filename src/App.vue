@@ -101,7 +101,8 @@
                                     <div class="row" style="margin-top:100px;">
 
                                          <router-view/>
-                    <span style="margin-right:100px;">
+                                         <template v-if="pageCheck()">
+                    <span v-if="sessionCheck()" style="margin-right:100px;">
                         <div style="width:500px; height:550px;margin-top:50px; background:rgba(255,255,255,0.7);">
                             <div
                                 class="panel-heading"
@@ -123,7 +124,7 @@
                                         <span class="row">
                                             <div class="col-sm-12 text-right">
                                                 <div style="float:left;">
-                                                    <div class="btn btn-primary" style="width:80px;" @click="insertchat()">보내기</div>
+                                                    <div class="btn btn-primary" style="width:80px;" @click="insertchat">보내기</div>
                                                 </div>
 
                                             </div>
@@ -153,7 +154,7 @@
                                     </div>
 
                     </span>
-
+</template>
                                     </div>
                                
                                 </span>
@@ -234,6 +235,15 @@
                                             this.loginPopupfunc()
                                             this.isLogin = true;
                                             this.userInfo = this.id;
+
+                                        },
+                                        pageCheck(){
+                                            
+
+                                            if(window.location.pathname!='/')
+                                            return true;
+                                            else return false;
+
 
                                         },
                                         sessionCheck() {
