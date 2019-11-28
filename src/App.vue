@@ -67,9 +67,9 @@
                                         <router-link class="nav_btn" to="/listBoard">질문게시판</router-link>
                                         |
                                         <router-link class="nav_btn" to="/mytakeinfo">섭취정보</router-link>
-                                        |
+                                        
 
-                                        <div style="float: right; ">
+                                        <div style="float: right; margin-left:700px; ">
                                             <template v-if="sessionCheck()">
                                                 <p
                                                     class="glyphicon glyphicon-user"
