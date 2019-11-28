@@ -9,7 +9,7 @@
         <div class="panel panel-info">
             <div class="title" align="center" style="height:200px;">나의 섭취 리스트<br>
                     <br>
-                        <form action="##" class="form-inline">
+                        <div class="form-inline">
                             <div class="form-group"></div>
                             <div class="form-group">
                                 <input
@@ -19,10 +19,10 @@
                                     name="keyword"
                                     placeholder="상품 이름을 입력하세요."
                                     size="80px;"
-                                    @keyup.enter="searchintake"></div>
+                                    @keyup.enter="searchintake()"></div>
                                 <div id="searchintake" class="btn btn-flat btn-info" @click="searchintake()">
                                     검색</div>
-                            </form>
+                            </div>
                         </div>
 
                         <!-- 아이템 영역 -->
@@ -177,6 +177,7 @@
                         filters: {},
                         mounted() {
                             this.retrieveIntake();
+
                         }
                     };
                 </script>
