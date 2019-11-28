@@ -17,7 +17,6 @@
                             |
                             <router-link class="nav_btn" to="/productlist">상품정보</router-link>
                             |
-                           
 
                             <template v-if="!sessionCheck()">
                                 <span class="dropdown" v-bind:class="loginPopup" style=" width:100px; ">
@@ -97,66 +96,67 @@
                         </nav>
                     </header>
                     <!-- <div style="height:100px;"></div> -->
-                                <span>
-                                    <div class="row" style="margin-top:100px;">
+                    <span>
+                        <div class="row" style="margin-top:100px;">
 
-                                         <router-view/>
-                                         <template v-if="pageCheck()">
-                    <span v-if="sessionCheck()" style="margin-right:100px;">
-                        <div style="width:500px; height:550px;margin-top:50px; background:rgba(255,255,255,0.7);">
-                            <div
-                                class="panel-heading"
-                                style="text-align:center; font-weight: bold; font-size:20px; padding: 5px;background:#b6b9bb ">실시간 채팅</div>
-                            <br>
-                                <div id="send" >
-                                    <span class="form-group" >
-                                        <span style="float: left; width:70px; "></span>
-                                        <span style="float: left;">
-                                            <input
-                                                data-msg="내용"
-                                                type="text"
-                                                v-model="iccontent"
-                                                class="form-control"
-                                                style=" width:250px; margin-left:5px;"
-                                                placeholder=" 내용을 입력해주세요."></span>
-
-                                        </span>
-                                        <span class="row">
-                                            <div class="col-sm-12 text-right">
-                                                <div style="float:left;">
-                                                    <div class="btn btn-primary" style="width:70px;" @click="insertchat()">보내기</div>
-                                                </div>
-
-                                            </div>
-                                        </span>
-
-                                    </div>
-                                    <hr>
+                            <router-view/>
+                            <template v-if="pageCheck()">
+                                <span v-if="sessionCheck()" style="margin-right:100px;">
+                                    <div
+                                        style="width:500px; height:550px;margin-top:50px; background:rgba(255,255,255,0.7);">
                                         <div
-                                            v-for="com in list"
-                                            class="row productRow"
-                                            :key="com.cnum"
-                                            style="display:block;  margin: 10px;">
-                                            
-                                            <div class="container" style="display:block;">
-                                                <div class="row">
-                                                    <div class="content" style="border:none; float:left; font-size:20px; ">
+                                            class="panel-heading"
+                                            style="text-align:center; font-weight: bold; font-size:20px; padding: 5px;background:#b6b9bb ">실시간 채팅</div>
+                                        <br>
+                                            <div id="send">
+                                                <span class="form-group">
+                                                    <span style="float: left; width:70px; "></span>
+                                                    <span style="float: left;">
+                                                        <input
+                                                            data-msg="내용"
+                                                            type="text"
+                                                            v-model="iccontent"
+                                                            class="form-control"
+                                                            style=" width:250px; margin-left:5px;"
+                                                            placeholder=" 내용을 입력해주세요."></span>
 
-                                                        {{com.user_name}}
-                                                        :
-                                                        {{com.ccontent }}
+                                                    </span>
+                                                    <span class="row">
+                                                        <div class="col-sm-12 text-right">
+                                                            <div style="float:left;">
+                                                                <div class="btn btn-primary" style="width:70px;" @click="insertchat()">보내기</div>
+                                                            </div>
+
+                                                        </div>
+                                                    </span>
+
+                                                </div>
+                                                <hr>
+                                                    <div
+                                                        v-for="com in list"
+                                                        class="row productRow"
+                                                        :key="com.cnum"
+                                                        style="display:block;  margin: 10px;">
+
+                                                        <div class="container" style="display:block;">
+                                                            <div class="row">
+                                                                <div class="content" style="border:none; float:left; font-size:20px; ">
+
+                                                                    {{com.user_name}}
+                                                                    :
+                                                                    {{com.ccontent }}
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
 
                                                     </div>
                                                 </div>
-                                            </div>
 
-                                        </div>
+                                            </span>
+                                        </template>
                                     </div>
 
-                    </span>
-</template>
-                                    </div>
-                               
                                 </span>
                                 <footer style="background: #ececec; padding: 50px;">
                                     <h1>Find Us</h1>
@@ -186,13 +186,17 @@
                                     name: "app",
                                     data() {
                                         // active: 'home';
-                                        return {id: null, pw: null, loginPopup: false,
-                                        upHere: false,
-                            board: [],
-                            loading: true,
-                            errored: false,
-                            list: [],
-                            timer: ''}
+                                        return {
+                                            id: null,
+                                            pw: null,
+                                            loginPopup: false,
+                                            upHere: false,
+                                            board: [],
+                                            loading: true,
+                                            errored: false,
+                                            list: [],
+                                            timer: ''
+                                        }
                                     },
                                     computed: {
                                         // ...mapState(['isLogin', 'isLoginError', 'userInfo']),
@@ -237,17 +241,15 @@
                                             this.userInfo = this.id;
 
                                         },
-                                        pageCheck(){
-                                            
-                                            if(window.location.pathname!='/'){
-                                                 if(window.location.pathname!='/updatemem'){
-                                                     return true;
-                                                     }
+                                        pageCheck() {
+
+                                            if (window.location.pathname != '/' && window.location.pathname != '/updatemem' && window.location.pathname != '/signuppage') 
+                                                return true;
+                                            else 
+                                                return false;
+
                                             }
-                                            else return false;
-
-
-                                        },
+                                        ,
                                         sessionCheck() {
                                             if (localStorage.getItem("id") != null) 
                                                 return true;
@@ -279,71 +281,59 @@ else
                                         },
                                         autoreload: function () {
 
-                            this.getchat()
+                                            this.getchat()
 
-                        },
-                        insertchat() {
-                            if (this.iccontent == '') {
-                                alert('내용을 입력하세요.');
-                                return;
-                            }
+                                        },
+                                        insertchat() {
+                                            if (this.iccontent == '') {
+                                                alert('내용을 입력하세요.');
+                                                return;
+                                            }
 
-                            http
-                                .post('/registerchat', {
-                                    cnum: 0,
-                                    ccontent: this.iccontent,
-                                    user_id: localStorage.getItem("id"),
-                                    user_name: ''
-                                })
-                                .then(response => {
-                                    if (response.data.resCode == 'succ') {
+                                            http
+                                                .post('/registerchat', {
+                                                    cnum: 0,
+                                                    ccontent: this.iccontent,
+                                                    user_id: localStorage.getItem("id"),
+                                                    user_name: ''
+                                                })
+                                                .then(response => {
+                                                    if (response.data.resCode == 'succ') {
 
-                                        this.iccontent = '';
-                                        this.getchat();
-                                    } else {
-                                        alert("댓글등록 실패");
-                                    }
-                                });
-                            this.submitted = true;
-                        },
-                        getchat() {
-                            http
-                                .get("/listchat")
-                                .then(response => {
-                                    this.list = response.data.resvalue;
-                                })
-                                .catch(() => {
-                                    alert("fail");
-                                    this.errored = true;
-                                })
-                                . finally(() => (this.loading = false));
+                                                        this.iccontent = '';
+                                                        this.getchat();
+                                                    } else {
+                                                        alert("댓글등록 실패");
+                                                    }
+                                                });
+                                            this.submitted = true;
+                                        },
+                                        getchat() {
+                                            http
+                                                .get("/listchat")
+                                                .then(response => {
+                                                    this.list = response.data.resvalue;
+                                                })
+                                                .catch(() => {
+                                                   
+                                                    this.errored = true;
+                                                })
+                                                . finally(() => (this.loading = false));
 
-                        }
+                                        }
                                     },
-                                     filters: {},
-                    created() {
-                        // http
-                        //     .post('/registerchat', {
-                        //         cnum: 0,
-                        //         ccontent: localStorage.getItem("id") + '님이 입장하셨습니다.',
-                        //         user_id: localStorage.getItem("id"),
-                        //         user_name: ''
-                        //     })
-                        //     .then(response => {
-                        //         if (response.data.resCode == 'succ') {
+                                    filters: {},
+                                    created() {
+                                        // http     .post('/registerchat', {         cnum: 0,         ccontent:
+                                        // localStorage.getItem("id") + '님이 입장하셨습니다.',         user_id:
+                                        // localStorage.getItem("id"),         user_name: ''     })     .then(response
+                                        // => {         if (response.data.resCode == 'succ') {
+                                        // this.iccontent = '';             this.getchat();         } else {
+                                        // alert("댓글등록 실패");         }     }); this.submitted = true;
+                                        this.autoreload();
+                                        this.timer = setInterval(this.autoreload, 300);
 
-                        //             this.iccontent = '';
-                        //             this.getchat();
-                        //         } else {
-                        //             alert("댓글등록 실패");
-                        //         }
-                        //     });
-                        // this.submitted = true;
-                        this.autoreload();
-                        this.timer = setInterval(this.autoreload, 300);
-
-
-                    },
+                                    },
 
                                     mounted() {
                                         this.isLogin = false;
