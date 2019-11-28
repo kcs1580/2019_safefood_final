@@ -15,7 +15,7 @@
                 <br>
                     <div style="float:right;">
                         작성자:
-                        {{board.user_id}}
+                        {{board.user_name}}
                         조회수:
                         {{board.bcount}}
                     </div>
@@ -35,6 +35,7 @@
                                         <div class="content" style="border:none; float:left; font-size:20px;">
                                             <i class="fab fa-replyd fa-2x"></i>
                                             <i class="flaticon-airplane49"></i>
+                                            {{com.user_id}}
                                             {{com.ccontent }}
                                         </div>
                                     </div>
@@ -110,7 +111,7 @@
                                                                 cnum: 0,
                                                                 bid: this.bid,
                                                                 ccontent: this.ccontent,
-                                                                user_id: localStorage.getItem("id")
+                                                                user_id: localStorage.getItem("name")
                                                             })
                                                             .then(response => {
                                                                 if (response.data.resCode == 'succ') {
@@ -119,6 +120,7 @@
                                                                     this.getcomment();
                                                                 } else {
                                                                     alert("댓글등록 실패");
+                                                                    alert(localStorage.getItem("name"));
 
                                                                     this.getcomment();
                                                                 }
